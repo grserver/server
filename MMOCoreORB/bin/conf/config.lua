@@ -90,20 +90,23 @@ ZonesEnabled = {
 	--"11",
 	--"character_farm",
 	--"cinco_city_test_m5",
-	--"corellia",
+	"corellia",
 	--"creature_test",
-	--"dantooine",
-	--"dathomir",
+	"dantooine",
+	"dathomir",
 	--"dungeon1",
-	--"endor",
+	"endor",
 	--"endor_asommers",
 	--"floratest",
+	--"ghomrassen",
 	--"godclient_test",
-	--"lok",
-	--"naboo",
+	--"hoth",
+	--"kaas",
+	"lok",
+	"naboo",
 	--"otoh_gunga",
 	--"rivertest",
-	--"rori",
+	"rori",
 	--"runtimerules",
 	--"simple",
 	--"space_09",
@@ -123,20 +126,30 @@ ZonesEnabled = {
 	--"space_tatooine_2",
 	--"space_yavin4",
 	--"taanab",
-	--"talus",
+	"talus",
 	"tatooine",
 	--"test_wearables",
 	"tutorial",
 	--"umbra",
 	--"watertabletest",
-	--"yavin4"
+	"yavin4"
 }
 
 
 -- directory of tres with live.cfg
-TrePath = "/home/swgemu/Desktop/SWGEmu"
+TrePath = "/home/swgemu/workspace/tre"
 
 TreFiles = {
+	"gr_hotfix_01.tre",
+	"gr_publish_06_01.tre",
+	"gr_publish_05_01.tre",
+	"gr_publish_04_02.tre",
+	"gr_publish_04_01.tre",
+	"gr_publish_03_01.tre",
+	"gr_publish_02_01.tre",
+	"gr_publish_01_03.tre",
+	"gr_publish_01_02.tre",
+	"gr_publish_01_01.tre",
 	"default_patch.tre",
 	"patch_sku1_14_00.tre",
 	"patch_14_00.tre",
@@ -187,7 +200,7 @@ TreFiles = {
 	"data_sample_01.tre",
 	"data_sample_00.tre",
 	"data_music_00.tre",
-	"bottom.tre"
+	"bottom.tre",
 }
 
 --Status Server Config
