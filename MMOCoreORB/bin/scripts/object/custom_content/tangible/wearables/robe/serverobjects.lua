@@ -43,6 +43,15 @@
 
 
 --Children folder includes
-includeFile("custom_content/tangible/wearables/armor/serverobjects.lua")
-includeFile("custom_content/tangible/wearables/backpack/serverobjects.lua")
-includeFile("custom_content/tangible/wearables/robe/serverobjects.lua")
+
+-- Server Objects
+includeFile("custom_content/tangible/wearables/robe/robe_chronicle_master.lua")
+includeFile("custom_content/tangible/wearables/robe/robe_jedi_padawan_generic.lua")
+includeFile("custom_content/tangible/wearables/robe/robe_s32.lua")
+includeFile("custom_content/tangible/wearables/robe/robe_s33.lua")
+includeFile("custom_content/tangible/wearables/robe/exar_cultist_hood_up.lua")
+includeFile("custom_content/tangible/wearables/robe/exar_cultist_hood_up_f.lua")
+includeFile("custom_content/tangible/wearables/robe/exar_cultist_hood_down.lua")
+includeFile("custom_content/tangible/wearables/robe/exar_cultist_hood_down_f.lua")
+includeFile("custom_content/tangible/wearables/robe/robe_s32_h1.lua")
+includeFile("custom_content/tangible/wearables/robe/robe_s33_h1.lua")

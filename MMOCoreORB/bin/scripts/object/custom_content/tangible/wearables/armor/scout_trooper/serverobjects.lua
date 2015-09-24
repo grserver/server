@@ -43,6 +43,15 @@
 
 
 --Children folder includes
-includeFile("custom_content/tangible/wearables/armor/serverobjects.lua")
-includeFile("custom_content/tangible/wearables/backpack/serverobjects.lua")
-includeFile("custom_content/tangible/wearables/robe/serverobjects.lua")
+
+-- Server Objects
+includeFile("custom_content/tangible/wearables/armor/scout_trooper/armor_scout_trooper_bicep_l.lua")
+includeFile("custom_content/tangible/wearables/armor/scout_trooper/armor_scout_trooper_bicep_r.lua")
+includeFile("custom_content/tangible/wearables/armor/scout_trooper/armor_scout_trooper_boots.lua")
+includeFile("custom_content/tangible/wearables/armor/scout_trooper/armor_scout_trooper_bracer_l.lua")
+includeFile("custom_content/tangible/wearables/armor/scout_trooper/armor_scout_trooper_bracer_r.lua")
+includeFile("custom_content/tangible/wearables/armor/scout_trooper/armor_scout_trooper_chest_plate.lua")
+includeFile("custom_content/tangible/wearables/armor/scout_trooper/armor_scout_trooper_gloves.lua")
+includeFile("custom_content/tangible/wearables/armor/scout_trooper/armor_scout_trooper_helmet.lua")
+includeFile("custom_content/tangible/wearables/armor/scout_trooper/armor_scout_trooper_leggings.lua")
+includeFile("custom_content/tangible/wearables/armor/scout_trooper/armor_scout_trooper_utility_belt.lua")

@@ -1530,87 +1530,152 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--},
 			"Armor",
 			{
-			--	"Bone Armor",
-			--	{
-			--		"Bone Left Bicep", "object/tangible/wearables/armor/bone/armor_bone_s01_bicep_l.iff",
-			--		"Bone Right Bicep", "object/tangible/wearables/armor/bone/armor_bone_s01_bicep_r.iff",
-			--		"Bone Boots", "object/tangible/wearables/armor/bone/armor_bone_s01_boots.iff",
-			--		"Bone Left Bracer", "object/tangible/wearables/armor/bone/armor_bone_s01_bracer_l.iff",
-			--		"Bone Right Bracer", "object/tangible/wearables/armor/bone/armor_bone_s01_bracer_r.iff",
-			--		"Bone Chest Plate", "object/tangible/wearables/armor/bone/armor_bone_s01_chest_plate.iff",
-			--		"Bone Gloves", "object/tangible/wearables/armor/bone/armor_bone_s01_gloves.iff",
-			--		"Bone Helmet", "object/tangible/wearables/armor/bone/armor_bone_s01_helmet.iff",
-			--		"Bone Leggings", "object/tangible/wearables/armor/bone/armor_bone_s01_leggings.iff"
-			--	},
-				"Ithorian Armor",
+			    "Shock Trooper",
 				{
-					"Ithorian Sentinel",
-					{
-						"Ithorian Sentinel Left Bicep", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_bicep_l.iff",
-						"Ithorian Sentinel Right Bicep", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_bicep_r.iff",
-						"Ithorian Sentinel Boots", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_boots.iff",
-						"Ithorian Sentinel Left Bracer", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_bracer_l.iff",
-						"Ithorian Sentinel Right Bracer", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_bracer_r.iff",
-						"Ithorian Sentinel Chest Plate", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_chest_plate.iff",
-						"Ithorian Sentinel Gloves", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_gloves.iff",
-						"Ithorian Sentinel Helmet", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_helmet.iff",
-						"Ithorian Sentinel Leggings", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_leggings.iff"
-					}
+					"Assault Trooper Left Bicep", "object/tangible/wearables/armor/assault_trooper/armor_assault_trooper_bicep_l.iff",
+					"Assault Trooper Right Bicep", "object/tangible/wearables/armor/assault_trooper/armor_assault_trooper_bicep_r.iff",
+					"Assault Trooper Boots", "object/tangible/wearables/armor/assault_trooper/armor_assault_trooper_boots.iff",
+					"Assault Trooper Left Bracer", "object/tangible/wearables/armor/assault_trooper/armor_assault_trooper_bracer_l.iff",
+					"Assault Trooper Right Bracer", "object/tangible/wearables/armor/assault_trooper/armor_assault_trooper_bracer_r.iff",
+					"Assault Trooper Chest Plate", "object/tangible/wearables/armor/assault_trooper/armor_assault_trooper_chest_plate.iff",
+					"Assault Trooper Gloves", "object/tangible/wearables/armor/assault_trooper/armor_assault_trooper_gloves.iff",
+					"Assault Trooper Helmet", "object/tangible/wearables/armor/assault_trooper/armor_assault_trooper_helmet.iff",
+					"Assault Trooper Leggings", "object/tangible/wearables/armor/assault_trooper/armor_assault_trooper_leggings.iff",
+					"Assault Trooper Utility Belt", "object/tangible/wearables/armor/assault_trooper/armor_assault_trooper_utility_belt.iff",
 				},
-				"Kashyyykian Armor",
+				 "Scout Trooper",
 				{
-			--		"Kashyyykian Black Mountain",
-			--		{
-			--			"Kashyyykian Black Mountain Left Bracer", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_bracer_l.iff",
-			--			"Kashyyykian Black Mountain Right Bracer", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_bracer_r.iff",
-			--			"Kashyyykian Black Mountain Chest Plate", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_chest_plate.iff",
-			--			"Kashyyykian Black Mountain Leggings", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_leggings.iff"
-			--		},
-			--		
-			--		"Kashyyykian Ceremonial",
-			--		{
-			--			"Kashyyykian Ceremonial Left Bracer", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_bracer_l.iff",
-			--			"Kashyyykian Ceremonial Right Bracer", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_bracer_r.iff",
-			--			"Kashyyykian Ceremonial Chest Plate", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_chest_plate.iff",
-			--			"Kashyyykian Ceremonial Leggings", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_leggings.iff"
-			--		},
-					"Kashyyykian Hunting",
-					{
-						"Kashyyykian Hunting Left Bracer", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_bracer_l.iff",
-						"Kashyyykian Hunting Right Bracer", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_bracer_r.iff",
-						"Kashyyykian Hunting Chest Plate", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_chest_plate.iff",
-						"Kashyyykian Hunting Leggings", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_leggings.iff"
-					}
+					"Scout Trooper Left Bicep", "object/tangible/wearables/armor/scout_trooper/armor_scout_trooper_bicep_l.iff",
+					"Scout Trooper Right Bicep", "object/tangible/wearables/armor/scout_trooper/armor_scout_trooper_bicep_r.iff",
+					"Scout Trooper Boots", "object/tangible/wearables/armor/scout_trooper/armor_scout_trooper_boots.iff",
+					"Scout Trooper Left Bracer", "object/tangible/wearables/armor/scout_trooper/armor_scout_trooper_bracer_l.iff",
+					"Scout Trooper Right Bracer", "object/tangible/wearables/armor/scout_trooper/armor_scout_trooper_bracer_r.iff",
+					"Scout Trooper Chest Plate", "object/tangible/wearables/armor/scout_trooper/armor_scout_trooper_chest_plate.iff",
+					"Scout Trooper Gloves", "object/tangible/wearables/armor/scout_trooper/armor_scout_trooper_gloves.iff",
+					"Scout Trooper Helmet", "object/tangible/wearables/armor/scout_trooper/armor_scout_trooper_helmet.iff",
+					"Scout Trooper Leggings", "object/tangible/wearables/armor/scout_trooper/armor_scout_trooper_leggings.iff",
+					"Scout Trooper Utility Belt", "object/tangible/wearables/armor/scout_trooper/armor_scout_trooper_utility_belt.iff",
 				},
-			--	"Chitin Armor",
-			--	{
-			--		"Chitin Left Bicep", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bicep_l.iff",
-			--		"Chitin Right Bicep", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bicep_r.iff",
-			--		"Chitin Boots", "object/tangible/wearables/armor/chitin/armor_chitin_s01_boots.iff",
-			--		"Chitin Left Bracer", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bracer_l.iff",
-			--		"Chitin Right Bracer", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bracer_r.iff",
-			--		"Chitin Chest Plate", "object/tangible/wearables/armor/chitin/armor_chitin_s01_chest_plate.iff",
-			--		"Chitin Gloves", "object/tangible/wearables/armor/chitin/armor_chitin_s01_gloves.iff",
-			--		"Chitin Helmet", "object/tangible/wearables/armor/chitin/armor_chitin_s01_helmet.iff",
-			--		"Chitin Leggings", "object/tangible/wearables/armor/chitin/armor_chitin_s01_leggings.iff"
-			--	},
-				"Composite Armor",
+				"Clone Trooper Imperial Armor",
 				{
-					"Composite Left Bicep", "object/tangible/wearables/armor/composite/armor_composite_bicep_l.iff",
-					"Composite Right Bicep", "object/tangible/wearables/armor/composite/armor_composite_bicep_r.iff",
-					"Composite Boots", "object/tangible/wearables/armor/composite/armor_composite_boots.iff",
-					"Composite Left Bracer", "object/tangible/wearables/armor/composite/armor_composite_bracer_l.iff",
-					"Composite Right Bracer", "object/tangible/wearables/armor/composite/armor_composite_bracer_r.iff",
-					"Composite Chest Plate", "object/tangible/wearables/armor/composite/armor_composite_chest_plate.iff",
-					"Composite Gloves", "object/tangible/wearables/armor/composite/armor_composite_gloves.iff",
-					"Composite Helmet", "object/tangible/wearables/armor/composite/armor_composite_helmet.iff",
-					"Composite Leggings", "object/tangible/wearables/armor/composite/armor_composite_leggings.iff"
+					"Clone Trooper Belt", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_belt.iff",
+					"Clone Trooper Left Bicep", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bicep_l.iff",
+					"Clone Trooper Right Bicep", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bicep_r.iff",
+					"Clone Trooper Boots", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_boots.iff",
+					"Clone Trooper Left Bracer", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bracer_l.iff",
+					"Clone Trooper Right Bracer", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_bracer_r.iff",
+					"Clone Trooper Chest Plate", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_chest_plate.iff",
+					"Clone Trooper Gloves", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_gloves.iff",
+					"Clone Trooper Helmet", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_helmet.iff",
+					"Clone Trooper Leggings", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_imperial_s01_leggings.iff"
 				},
-			--	"Singing Mountain Clan Armor",
-			--	{
-			--		"Singing Mountain Clan Bicep", "object/tangible/wearables/armor/bone/armor_smc_s01_bicep_l.iff"
-			--	}
+				"Clone Trooper Neutral Armor",
+				{
+					"Clone Trooper Belt", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_belt.iff",
+					"Clone Trooper Left Bicep", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bicep_l.iff",
+					"Clone Trooper Right Bicep", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bicep_r.iff",
+					"Clone Trooper Boots", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_boots.iff",
+					"Clone Trooper Left Bracer", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bracer_l.iff",
+					"Clone Trooper Right Bracer", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_bracer_r.iff",
+					"Clone Trooper Chest Plate", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_chest_plate.iff",
+					"Clone Trooper Gloves", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_gloves.iff",
+					"Clone Trooper Helmet", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_helmet.iff",
+					"Clone Trooper Leggings", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_neutral_s01_leggings.iff"
+				},
+				"Clone Trooper Rebel Armor",
+				{
+					"Clone Trooper Belt", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_belt.iff",
+					"Clone Trooper Left Bicep", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bicep_l.iff",
+					"Clone Trooper Right Bicep", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bicep_r.iff",
+					"Clone Trooper Boots", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_boots.iff",
+					"Clone Trooper Left Bracer", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bracer_l.iff",
+					"Clone Trooper Right Bracer", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_bracer_r.iff",
+					"Clone Trooper Chest Plate", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_chest_plate.iff",
+					"Clone Trooper Gloves", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_gloves.iff",
+					"Clone Trooper Helmet", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_helmet.iff",
+					"Clone Trooper Leggings", "object/tangible/wearables/armor/clone_trooper/armor_clone_trooper_rebel_s01_leggings.iff"
+				},	
+				"Bone Armor",
+				{
+					"Bone Left Bicep", "object/tangible/wearables/armor/bone/armor_bone_s01_bicep_l.iff",
+					"Bone Right Bicep", "object/tangible/wearables/armor/bone/armor_bone_s01_bicep_r.iff",
+					"Bone Boots", "object/tangible/wearables/armor/bone/armor_bone_s01_boots.iff",
+					"Bone Left Bracer", "object/tangible/wearables/armor/bone/armor_bone_s01_bracer_l.iff",
+					"Bone Right Bracer", "object/tangible/wearables/armor/bone/armor_bone_s01_bracer_r.iff",
+					"Bone Chest Plate", "object/tangible/wearables/armor/bone/armor_bone_s01_chest_plate.iff",
+					"Bone Gloves", "object/tangible/wearables/armor/bone/armor_bone_s01_gloves.iff",
+					"Bone Helmet", "object/tangible/wearables/armor/bone/armor_bone_s01_helmet.iff",
+					"Bone Leggings", "object/tangible/wearables/armor/bone/armor_bone_s01_leggings.iff"
+				},
+			"Ithorian Armor",
+			{
+				"Ithorian Sentinel",
+				{
+					"Ithorian Sentinel Left Bicep", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_bicep_l.iff",
+					"Ithorian Sentinel Right Bicep", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_bicep_r.iff",
+					"Ithorian Sentinel Boots", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_boots.iff",
+					"Ithorian Sentinel Left Bracer", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_bracer_l.iff",
+					"Ithorian Sentinel Right Bracer", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_bracer_r.iff",
+					"Ithorian Sentinel Chest Plate", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_chest_plate.iff",
+					"Ithorian Sentinel Gloves", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_gloves.iff",
+					"Ithorian Sentinel Helmet", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_helmet.iff",
+					"Ithorian Sentinel Leggings", "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_leggings.iff"
+				},
 			},
+			"Kashyyykian Armor",
+			{
+				"Kashyyykian Black Mountain",
+				{
+					"Kashyyykian Black Mountain Left Bracer", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_bracer_l.iff",
+					"Kashyyykian Black Mountain Right Bracer", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_bracer_r.iff",
+					"Kashyyykian Black Mountain Chest Plate", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_chest_plate.iff",
+					"Kashyyykian Black Mountain Leggings", "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_leggings.iff"
+				},
+				
+				"Kashyyykian Ceremonial",
+				{
+					"Kashyyykian Ceremonial Left Bracer", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_bracer_l.iff",
+					"Kashyyykian Ceremonial Right Bracer", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_bracer_r.iff",
+					"Kashyyykian Ceremonial Chest Plate", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_chest_plate.iff",
+					"Kashyyykian Ceremonial Leggings", "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_leggings.iff"
+				},
+				"Kashyyykian Hunting",
+				{
+					"Kashyyykian Hunting Left Bracer", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_bracer_l.iff",
+					"Kashyyykian Hunting Right Bracer", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_bracer_r.iff",
+					"Kashyyykian Hunting Chest Plate", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_chest_plate.iff",
+					"Kashyyykian Hunting Leggings", "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_leggings.iff"
+				},
+			},
+			"Chitin Armor",
+			{
+				"Chitin Left Bicep", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bicep_l.iff",
+				"Chitin Right Bicep", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bicep_r.iff",
+				"Chitin Boots", "object/tangible/wearables/armor/chitin/armor_chitin_s01_boots.iff",
+				"Chitin Left Bracer", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bracer_l.iff",
+				"Chitin Right Bracer", "object/tangible/wearables/armor/chitin/armor_chitin_s01_bracer_r.iff",
+				"Chitin Chest Plate", "object/tangible/wearables/armor/chitin/armor_chitin_s01_chest_plate.iff",
+				"Chitin Gloves", "object/tangible/wearables/armor/chitin/armor_chitin_s01_gloves.iff",
+				"Chitin Helmet", "object/tangible/wearables/armor/chitin/armor_chitin_s01_helmet.iff",
+				"Chitin Leggings", "object/tangible/wearables/armor/chitin/armor_chitin_s01_leggings.iff"
+			},
+			"Composite Armor",
+			{
+				"Composite Left Bicep", "object/tangible/wearables/armor/composite/armor_composite_bicep_l.iff",
+				"Composite Right Bicep", "object/tangible/wearables/armor/composite/armor_composite_bicep_r.iff",
+				"Composite Boots", "object/tangible/wearables/armor/composite/armor_composite_boots.iff",
+				"Composite Left Bracer", "object/tangible/wearables/armor/composite/armor_composite_bracer_l.iff",
+				"Composite Right Bracer", "object/tangible/wearables/armor/composite/armor_composite_bracer_r.iff",
+				"Composite Chest Plate", "object/tangible/wearables/armor/composite/armor_composite_chest_plate.iff",
+				"Composite Gloves", "object/tangible/wearables/armor/composite/armor_composite_gloves.iff",
+				"Composite Helmet", "object/tangible/wearables/armor/composite/armor_composite_helmet.iff",
+				"Composite Leggings", "object/tangible/wearables/armor/composite/armor_composite_leggings.iff"
+			},
+			"Singing Mountain Clan Armor",
+			{
+				"Singing Mountain Clan Bicep", "object/tangible/wearables/armor/bone/armor_smc_s01_bicep_l.iff"
+			}
+		},
 			"Clothes",
 			{
 				"Crafting Aprons",
