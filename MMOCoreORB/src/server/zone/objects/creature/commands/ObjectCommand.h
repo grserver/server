@@ -75,14 +75,8 @@ public:
 				object->createChildObjects();
 
 				// Set Crafter name and generate serial number
-				ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-				if (ghost->getAdminLevel() == 16) {
-					String name = player->getFirstName();
-				} else {
-					String name = "Generated with GenerateC Command";
-				}
+				String name = "Generated with Object Command";
 				object->setCraftersName(name);
-
 
 				StringBuffer customName;
 				customName << object->getDisplayedName() <<  " (System Generated)";

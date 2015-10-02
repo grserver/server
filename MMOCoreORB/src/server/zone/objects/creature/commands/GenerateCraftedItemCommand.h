@@ -152,26 +152,19 @@ public:
 
 			prototype->createChildObjects();
 
-			// Crafter Name
+			// Set Crafter name and generate serial number
 			ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 			if (ghost->getAdminLevel() == 16) {
 				String name = player->getFirstName();
-				prototype->setCraftersName(name);
 			} else {
 				String name = "Generated with GenerateC Command";
-				prototype->setCraftersName(name);
-			}			
-
-			// Object Name
-			StringBuffer customName;
-			if (ghost->getAdminLevel() == 16) {
-				customName << prototype->getDisplayedName() << player->getFirstName();
-			} else {
-				customName << prototype->getDisplayedName() <<  " (System Generated)";
 			}
+			prototype->setCraftersName(name);
+
+			StringBuffer customName;
+			customName << prototype->getDisplayedName(); //<<  " (System Generated)";
 			prototype->setCustomObjectName(customName.toString(), false);
 
-			// Serial Number
 			String serial = craftingManager->generateSerial();
 			prototype->setSerialNumber(serial);
 
