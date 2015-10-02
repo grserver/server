@@ -131,8 +131,12 @@ public:
 		Vector3 endPoint(x, y, z);
 
 		if (!checkCollision(obj, endPoint)) {
-			creature->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
-			return GENERALERROR;
+			if (ghost->getAdminLevel() == 16) {
+				creature->sendSystemMessage("Ingoring Collision Check - God Only"); //That is not a valid location.
+			} else {
+				creature->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
+				return GENERALERROR;
+			}
 		}
 
 		obj->incrementMovementCounter();
