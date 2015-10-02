@@ -78,21 +78,16 @@ public:
 				ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 				if (ghost->getAdminLevel() == 16) {
 					String name = player->getFirstName();
-					object->setCraftersName(name);
 				} else {
 					String name = "Generated with GenerateC Command";
-					object->setCraftersName(name);
 				}
+				object->setCraftersName(name);
 
 
 				StringBuffer customName;
-				if (ghost->getAdminLevel() == 16) {
-					customName << object->getDisplayedName(); // <<  " (System Generated)";
-					object->setCustomObjectName(customName.toString(), false);
-				} else {
-					customName << object->getDisplayedName() <<  " (System Generated)";
-					object->setCustomObjectName(customName.toString(), false);
-				}				
+				customName << object->getDisplayedName() <<  " (System Generated)";
+
+				object->setCustomObjectName(customName.toString(), false);
 
 				String serial = craftingManager->generateSerial();
 				object->setSerialNumber(serial);
