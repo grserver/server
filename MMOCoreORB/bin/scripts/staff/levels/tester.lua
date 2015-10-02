@@ -1,11 +1,8 @@
 tester = {
-	level = 6,
+	level = 10,
 	name = "tester",
-	tag = "Tester",
+	tag = "",
 	skills = {
-		"admin_debug_01",
-		"admin_general_admin_01",
-		"admin_player_management_01"
 	}
 }
 
