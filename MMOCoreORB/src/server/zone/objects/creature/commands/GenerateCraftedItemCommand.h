@@ -153,11 +153,15 @@ public:
 			prototype->createChildObjects();
 
 			// Set Crafter name and generate serial number
-			String name = "Generated with GenerateC Command";
+			if (player->getAdminLevel() == 16) {
+				String name = player->getDisplayedName();
+			} else {
+				String name = "Generated with GenerateC Command";
+			}
 			prototype->setCraftersName(name);
 
 			StringBuffer customName;
-			customName << prototype->getDisplayedName() <<  " (System Generated)";
+			customName << prototype->getDisplayedName(); //<<  " (System Generated)";
 			prototype->setCustomObjectName(customName.toString(), false);
 
 			String serial = craftingManager->generateSerial();
