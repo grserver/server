@@ -1,4 +1,4 @@
-admin = {
+god = {
 	level = 16,
 	name = "god",
 	tag = "God",
@@ -26,4 +26,4 @@ admin = {
 	}
 }
 
-addLevel(admin)
+addLevel(god)
