@@ -75,7 +75,7 @@ public:
 				object->createChildObjects();
 
 				// Set Crafter name and generate serial number
-				ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
+				ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 				if (ghost->getAdminLevel() == 16) {
 					String name = player->getFirstName();
 					object->setCraftersName(name);
