@@ -114,8 +114,8 @@ object_weapon_ranged_rifle_rifle_massassi_ink = object_weapon_ranged_rifle_share
 	maxRange = 150,
 	maxRangeAccuracy = 100,
 
-	minDamage = 9999998,
-	maxDamage = 9999999,
+	minDamage = 900,
+	maxDamage = 1200,
 
 	attackSpeed = 1,
 

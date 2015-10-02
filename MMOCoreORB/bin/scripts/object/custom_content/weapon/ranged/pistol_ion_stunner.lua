@@ -114,8 +114,8 @@ object_weapon_ranged_pistol_ep3_pistol_ion_stunner = object_weapon_ranged_pistol
 	maxRange = 200,
 	maxRangeAccuracy = 100,
 
-	minDamage = 99999999998,
-	maxDamage = 99999999999,
+	minDamage = 900,
+	maxDamage = 1200,
 
 	attackSpeed = 1,
 

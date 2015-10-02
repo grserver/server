@@ -114,8 +114,8 @@ object_weapon_ranged_pistol_som_ion_relic_pistol_generic = object_weapon_ranged_
 	maxRange = 200,
 	maxRangeAccuracy = 100,
 
-	minDamage = 99999999998,
-	maxDamage = 99999999999,
+	minDamage = 900,
+	maxDamage = 1200,
 
 	attackSpeed = 1,
 
