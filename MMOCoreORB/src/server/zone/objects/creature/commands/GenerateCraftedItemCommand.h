@@ -153,8 +153,9 @@ public:
 			prototype->createChildObjects();
 
 			// Set Crafter name and generate serial number
-			if (player->getAdminLevel() == 16) {
-				String name = player->getDisplayedName();
+			ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+			if (ghost->getAdminLevel() == 16) {
+				String name = player->getFirstName();
 			} else {
 				String name = "Generated with GenerateC Command";
 			}
