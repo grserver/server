@@ -41,26 +41,26 @@
 --which carries forward this exception.
 
 --Determines how often exceptional and legendary items can drop.
-yellowChance = 1000 -- 1 in 1,000
-exceptionalChance = 100000 --1 in 100,000
-legendaryChance = 1000000 --1 in 1,000,000
+yellowChance = 1 -- 1 in 1,000
+exceptionalChance = 10 --1 in 100,000
+legendaryChance = 100 --1 in 1,000,000
 --yellowChance = 50 --1 in 50 for testing
 --exceptionalChance = 100 --1 in 100 for testing
 --legendaryChance = 1000 --1 in 1000 for testing
 
 --Determines how much of an increase in the base stats will be applied to the object.
-yellowModifier = 1.5
-exceptionalModifier = 2.5
-legendaryModifier = 5.0
+yellowModifier = 3.0
+exceptionalModifier = 5.0
+legendaryModifier = 10.0
 
 --The chance for random skill mods to be on looted weapons/wearables
-skillModChance = 1000 -- 1 in 1,000
+skillModChance = 10 -- 1 in 1,000
 
 -- Value ranges for random dots on looted weapons (chance is set individually on the loot items)
 randomDotAttribute = {0, 8} -- See CreatureAttributes.h in src for numbers.
-randomDotStrength = {10, 200} -- Set for disease. Fire will be x1.5, poison x2.
-randomDotDuration = {30, 240} -- Set for poison. Fire will be x1.5, disease x5.
-randomDotPotency = {1, 100}
+randomDotStrength = {100, 2000} -- Set for disease. Fire will be x1.5, poison x2.
+randomDotDuration = {500, 2400} -- Set for poison. Fire will be x1.5, disease x5.
+randomDotPotency = {50, 100}
 randomDotUses = {250, 9999}
 
 -- Modifier applied to min/max junk values found in loot item lua
@@ -554,39 +554,20 @@ lootableTwoHandedMeleeStatMods = {
 	"blind_defense",
 	"block",
 	"camouflage",
-	"carbine_accuracy",
-	"carbine_aim",
-	"carbine_hit_while_moving",
-	"carbine_speed",
 	"combat_bleeding_defense",
 	"counterattack",
 	"cover",
 	"dizzy_defense",
-	"dodge",
 	"droid_find_chance",
 	"droid_find_speed",
 	"droid_track_chance",
 	"droid_track_speed",
 	"foraging",
 	"group_slope_move",
-	"heavy_rifle_lightning_accuracy",
-	"heavy_rifle_lightning_speed",
-	"heavyweapon_accuracy",
-	"heavyweapon_speed",
 	"intimidate",
 	"intimidate_defense",
 	"knockdown_defense",
 	"melee_defense",
-	"onehandmelee_accuracy",
-	"onehandmelee_damage",
-	"onehandmelee_speed",
-	"pistol_accuracy",
-	"pistol_aim",
-	"pistol_hit_while_moving",
-	"pistol_speed",
-	"pistol_accuracy_while_standing",
-	"polearm_accuracy",
-	"polearm_speed",
 	"posture_change_down_defense",
 	"posture_change_up_defense",
 	"ranged_defense",
@@ -595,10 +576,6 @@ lootableTwoHandedMeleeStatMods = {
 	"resistance_disease",
 	"resistance_fire",
 	"resistance_poison",
-	"rifle_accuracy",
-	"rifle_aim",
-	"rifle_hit_while_moving",
-	"rifle_speed",
 	"slope_move",
 	"steadyaim",
 	"stun_defense",
@@ -610,9 +587,6 @@ lootableTwoHandedMeleeStatMods = {
 	"twohandmelee_accuracy",
 	"twohandmelee_damage",
 	"twohandmelee_speed",
-	"unarmed_accuracy",
-	"unarmed_damage",
-	"unarmed_speed",
 	"volley",
 	"warcry"
 }
