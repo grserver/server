@@ -438,3 +438,15 @@ object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTempla
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_vehicle_pcd_base, "object/intangible/vehicle/shared_vehicle_pcd_base.iff")
+
+object_intangible_vehicle_shared_grievous_wheel_bike = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/vehicle/shared_grievous_wheel_bike.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_grievous_wheel_bike, "object/intangible/vehicle/shared_grievous_wheel_bike.iff")
+
+object_intangible_vehicle_shared_mustafar_panning_droid = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/vehicle/shared_mustafar_panning_droid.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_mustafar_panning_droid, "object/intangible/vehicle/shared_mustafar_panning_droid.iff")

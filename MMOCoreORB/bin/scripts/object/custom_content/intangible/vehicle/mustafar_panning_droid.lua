@@ -41,10 +41,9 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_intangible_vehicle_mustafar_panning_droid = object_intangible_vehicle_shared_mustafar_panning_droid:new {
 
---Children folder includes
 
--- Server Objects
-includeFile("custom_content/intangible/vehicle/barc_speeder_pcd.lua")
-includeFile("custom_content/intangible/vehicle/grievous_wheel_bike.lua")
-includeFile("custom_content/intangible/vehicle/mustafar_panning_droid.lua")
+}
+
+ObjectTemplates:addTemplate(object_intangible_vehicle_mustafar_panning_droid, "object/intangible/vehicle/mustafar_panning_droid.iff")

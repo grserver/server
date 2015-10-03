@@ -41,10 +41,9 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_intangible_vehicle_grievous_wheel_bike = object_intangible_vehicle_shared_grievous_wheel_bike:new {
 
---Children folder includes
 
--- Server Objects
-includeFile("custom_content/intangible/vehicle/barc_speeder_pcd.lua")
-includeFile("custom_content/intangible/vehicle/grievous_wheel_bike.lua")
-includeFile("custom_content/intangible/vehicle/mustafar_panning_droid.lua")
+}
+
+ObjectTemplates:addTemplate(object_intangible_vehicle_grievous_wheel_bike, "object/intangible/vehicle/grievous_wheel_bike.iff")
