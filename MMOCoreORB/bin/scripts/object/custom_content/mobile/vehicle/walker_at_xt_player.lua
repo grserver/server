@@ -41,11 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_mobile_vehicle_walker_at_xt_player = object_mobile_vehicle_shared_walker_at_xt_player:new {
 
---Children folder includes
+}
 
--- New Objects
-includeFile("custom_content/mobile/vehicle/barc_speeder.lua")
-includeFile("custom_content/mobile/vehicle/grievous_wheel_bike.lua")
-includeFile("custom_content/mobile/vehicle/mustafar_panning_droid.lua")
-includeFile("custom_content/mobile/vehicle/walker_at_xt_player.lua")
+ObjectTemplates:addTemplate(object_mobile_vehicle_walker_at_xt_player, "object/mobile/vehicle/walker_at_xt_player.iff")

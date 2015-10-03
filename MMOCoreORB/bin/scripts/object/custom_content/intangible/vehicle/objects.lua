@@ -450,3 +450,9 @@ object_intangible_vehicle_shared_mustafar_panning_droid = SharedIntangibleObject
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_mustafar_panning_droid, "object/intangible/vehicle/shared_mustafar_panning_droid.iff")
+
+object_intangible_vehicle_shared_walker_at_xt_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/vehicle/shared_walker_at_xt_pcd.iff"
+}
+
+ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_walker_at_xt_pcd, "object/intangible/vehicle/shared_walker_at_xt_pcd.iff")

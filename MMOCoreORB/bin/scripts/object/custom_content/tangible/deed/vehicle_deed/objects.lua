@@ -54,4 +54,9 @@ object_tangible_deed_vehicle_deed_shared_grievous_wheel_bike_deed = SharedTangib
 	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_grievous_wheel_bike_deed.iff"
 }
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_grievous_wheel_bike_deed, "object/tangible/deed/vehicle_deed/shared_grievous_wheel_bike_deed.iff")
+
+object_tangible_deed_vehicle_deed_shared_walker_at_xt_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_walker_at_xt_deed.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_walker_at_xt_deed, "object/tangible/deed/vehicle_deed/shared_walker_at_xt_deed.iff")
 --*****************************************************************************************************************************************************************

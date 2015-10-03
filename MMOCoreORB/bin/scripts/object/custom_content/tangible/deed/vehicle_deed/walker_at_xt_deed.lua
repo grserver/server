@@ -41,11 +41,22 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_tangible_deed_vehicle_deed_walker_at_xt_deed = object_tangible_deed_vehicle_deed_shared_walker_at_xt_deed:new {
 
---Children folder includes
+	templateType = VEHICLEDEED,
 
--- New Objects
-includeFile("custom_content/mobile/vehicle/barc_speeder.lua")
-includeFile("custom_content/mobile/vehicle/grievous_wheel_bike.lua")
-includeFile("custom_content/mobile/vehicle/mustafar_panning_droid.lua")
-includeFile("custom_content/mobile/vehicle/walker_at_xt_player.lua")
+	controlDeviceObjectTemplate = "object/intangible/vehicle/walker_at_xt_pcd.iff",
+	generatedObjectTemplate = "object/mobile/vehicle/walker_at_xt_player.iff",
+
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "SR"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability"},
+	experimentalSubGroupTitles = {"null", "null", "hit_points"},
+	experimentalMin = {0, 0, 28000},
+	experimentalMax = {0, 0, 30000},
+	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
+}
+
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_walker_at_xt_deed, "object/tangible/deed/vehicle_deed/walker_at_xt_deed.iff")
