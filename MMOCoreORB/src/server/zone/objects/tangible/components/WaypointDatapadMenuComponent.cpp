@@ -19,12 +19,16 @@ void WaypointDatapadMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 	}
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
-
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 	if (sceneObject->getObjectTemplate()->getFullTemplateString() == "object/tangible/loot/quest/force_sensitive/waypoint_datapad.iff")
 		menuResponse->addRadialMenuItem(6, 3, "@ui_radial:item_activate"); //Activate
 
 	if (sceneObject->getObjectTemplate()->getFullTemplateString() == "object/tangible/loot/quest/force_sensitive/theater_datapad.iff")
 		menuResponse->addRadialMenuItem(7, 3, "@ui_radial:item_activate"); //Activate
+
+	if (ghost->getAdminLevel == 16) {
+		menuResponse->addRadialMenuItem(8, 3, "@go"); //Teleport
+	}
 
 }
 
@@ -37,7 +41,6 @@ int WaypointDatapadMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 	if (selectedID == 7)
 	JediManager::instance()->useItem(sceneObject, JediManager::ITEMTHEATERDATAPAD, player);
-
 	return 0;
 }
 
