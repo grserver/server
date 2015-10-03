@@ -45,9 +45,13 @@ object_tangible_deed_vehicle_deed_shared_barc_speeder_deed = SharedTangibleObjec
 }
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_barc_speeder_deed, "object/tangible/deed/vehicle_deed/shared_barc_speeder_deed.iff")
 
-
 object_tangible_deed_vehicle_deed_shared_mustafar_panning_droid = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_mustafar_panning_droid.iff"
 }
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_mustafar_panning_droid, "object/tangible/deed/vehicle_deed/shared_mustafar_panning_droid.iff")
+
+object_tangible_deed_vehicle_deed_shared_grievous_wheel_bike_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_grievous_wheel_bike_deed.iff"
+}
+ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_grievous_wheel_bike_deed, "object/tangible/deed/vehicle_deed/shared_grievous_wheel_bike_deed.iff")
 --*****************************************************************************************************************************************************************
