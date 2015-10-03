@@ -26,7 +26,7 @@ void WaypointDatapadMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 	if (sceneObject->getObjectTemplate()->getFullTemplateString() == "object/tangible/loot/quest/force_sensitive/theater_datapad.iff")
 		menuResponse->addRadialMenuItem(7, 3, "@ui_radial:item_activate"); //Activate
 
-	if (ghost->getAdminLevel == 16) {
+	if (ghost->getAdminLevel() == 16) {
 		menuResponse->addRadialMenuItem(8, 3, "@go"); //Teleport
 	}
 
