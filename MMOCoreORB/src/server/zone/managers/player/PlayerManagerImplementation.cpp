@@ -721,6 +721,11 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	player->updateTimeOfDeath();
 	player->clearBuffs(true);
 
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost != NULL)
+		ghost->resetIncapacitationTimes();
+
 	if (attacker->getFaction() != 0) {
 		if (attacker->isPlayerCreature() || attacker->isPet()) {
 			CreatureObject* attackerCreature = cast<CreatureObject*>(attacker);
@@ -744,9 +749,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	CombatManager::instance()->freeDuelList(player, false);
 
 	player->notifyObjectKillObservers(attacker);
-
-	/*Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
-	task->schedule(10 * 1000);*/
 }
 
 void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* player, int typeofdeath) {
@@ -1395,6 +1397,10 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 		int amount, bool sendSystemMessage, float localMultiplier) {
 
 	PlayerObject* playerObject = player->getPlayerObject();
+
+	if (playerObject == NULL)
+		return;
+
 	int xp = playerObject->addExperience(xpType, (int) (amount * localMultiplier * globalExpMultiplier));
 
 	player->notifyObservers(ObserverEventType::XPAWARDED, player, xp);
@@ -2861,12 +2867,6 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 
 	if (creatureInventory == NULL)
 		return;
-
-	if (creatureInventory->getContainerPermissions()->getOwnerID() != player->getObjectID() && creatureInventory->getContainerPermissions()->getOwnerID() != player->getGroupID()) {
-		player->sendSystemMessage("@error_message:no_corpse_permission"); //You do not have permission to access this corpse.
-
-		return;
-	}
 
 	int cashCredits = ai->getCashCredits();
 
