@@ -1,4 +1,4 @@
-n --Copyright (C) 2010 <SWGEmu>
+--Copyright (C) 2010 <SWGEmu>
 
 
  --This File is part of Core3.
