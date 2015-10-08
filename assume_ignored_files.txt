@@ -1,3 +1,0 @@
-MMOCoreORB/bin/scripts/managers/planet_manager.lua
-MMOCoreORB/bin/scripts/managers/player_manager.lua
-MMOCoreORB/bin/scripts/managers/player_creation_manager.lua
