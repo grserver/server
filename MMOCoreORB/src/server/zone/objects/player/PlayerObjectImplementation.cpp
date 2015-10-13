@@ -1286,6 +1286,8 @@ void PlayerObjectImplementation::notifyOnline() {
 	//Login to jedi manager
 	JediManager::instance()->onPlayerLoggedIn(playerCreature);
 
+	notifyObservers(ObserverEventType::LOGGEDIN);
+
 	if (getForcePowerMax() > 0 && getForcePower() < getForcePowerMax())
 		activateForcePowerRegen();
 
@@ -1316,6 +1318,8 @@ void PlayerObjectImplementation::notifyOffline() {
 
 	//Logout from visibility manager
 	VisibilityManager::instance()->logout(playerCreature);
+
+	notifyObservers(ObserverEventType::LOGGEDOUT);
 
 	//Logout from jedi manager
 	JediManager::instance()->onPlayerLoggedOut(playerCreature);
@@ -1483,7 +1487,7 @@ void PlayerObjectImplementation::addIncapacitationTime() {
 	for (int i = incapacitationTimes.size() - 1; i >= 0; i--) {
 		uint32 incapTime = incapacitationTimes.get(i);
 
-		if ((now - incapTime) >= 900) {
+		if ((now - incapTime) >= 600) {
 			incapacitationTimes.removeElementAt(i);
 		}
 	}
