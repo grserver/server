@@ -45,34 +45,36 @@
 -----------------------------------
 
 --Blue frog / GM buff values
-performanceBuff = 1000
-medicalBuff = 1900
-performanceDuration = 7200 -- in seconds
-medicalDuration = 7200 -- in seconds
+performanceBuff = 2500
+medicalBuff = 3000
+performanceDuration = 72000 -- in seconds
+medicalDuration = 72000 -- in seconds
 
 --Sets the experience multiplier while grouped
 groupExpMultiplier = 1.2
 
 --Sets a global experience multiplier
-globalExpMultiplier = 1.0
+globalExpMultiplier = 50.0
 
 --Sets the base number of control devices of each type that a player can have in their datapad at once
 --For creature pets, A Creature Handler will have the base number + their stored pets skill mod as limit
-baseStoredCreaturePets = 2
-baseStoredFactionPets = 3
-baseStoredDroids = 5
-baseStoredVehicles = 3
-baseStoredShips = 3
+baseStoredCreaturePets = 5
+baseStoredFactionPets = 10
+baseStoredDroids = 10
+baseStoredVehicles = 10
+baseStoredShips = 5
 
 -----------------------------------
 --VETERAN REWARDS CONFIG
 -----------------------------------
-veteranRewardMilestones = {90, 180, 270, 360, 450, 540, 630, 720, 810, 900, 990, 1080} --days, must be sorted low to high
+veteranRewardMilestones = {0, 90, 180, 270, 360, 450, 540, 630, 720, 810, 900, 990, 1080} --days, must be sorted low to high
 
-veteranRewardAdditionalMilestones = 360 --frequency, in days, of additional milestones (beyond the established ones)
+veteranRewardAdditionalMilestones = 30 --frequency, in days, of additional milestones (beyond the established ones)
 
 veteranRewards = {
 
+		-- 0 Day Rewards
+		{templateFile = "object/tangible/terminal/terminal_character_builder.iff", milestone=0, oneTime=false, description="Character Builder"},
 		-- 90 Day Rewards
 		-- Disabled until harvester is functional {templateFile = "object/tangible/veteran_reward/harvester.iff", milestone=90, oneTime=true, description="@veteran_new:poweredharvester"},
 		{templateFile = "object/tangible/veteran_reward/data_terminal_s1.iff", milestone=90, oneTime=false, description="@veteran_new:dataterminal1"},

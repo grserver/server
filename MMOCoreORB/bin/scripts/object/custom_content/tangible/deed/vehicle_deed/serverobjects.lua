@@ -46,3 +46,6 @@
 
 -- New Objects
 includeFile("custom_content/tangible/deed/vehicle_deed/barc_speeder_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/mustafar_panning_droid.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/grievous_wheel_bike_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/walker_at_xt_deed.lua")

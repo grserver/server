@@ -75,13 +75,24 @@ public:
 				object->createChildObjects();
 
 				// Set Crafter name and generate serial number
-				String name = "Generated with Object Command";
-				object->setCraftersName(name);
+				ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
+				if (ghost->getAdminLevel() == 16) {
+					String name = player->getFirstName();
+					object->setCraftersName(name);
+				} else {
+					String name = "Generated with GenerateC Command";
+					object->setCraftersName(name);
+				}
+
 
 				StringBuffer customName;
-				customName << object->getDisplayedName() <<  " (System Generated)";
-
-				object->setCustomObjectName(customName.toString(), false);
+				if (ghost->getAdminLevel() == 16) {
+					customName << object->getDisplayedName(); // <<  " (System Generated)";
+					object->setCustomObjectName(customName.toString(), false);
+				} else {
+					customName << object->getDisplayedName() <<  " (System Generated)";
+					object->setCustomObjectName(customName.toString(), false);
+				}				
 
 				String serial = craftingManager->generateSerial();
 				object->setSerialNumber(serial);

@@ -46,3 +46,6 @@
 
 -- New Objects
 includeFile("custom_content/mobile/vehicle/barc_speeder.lua")
+includeFile("custom_content/mobile/vehicle/grievous_wheel_bike.lua")
+includeFile("custom_content/mobile/vehicle/mustafar_panning_droid.lua")
+includeFile("custom_content/mobile/vehicle/walker_at_xt_player.lua")

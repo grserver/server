@@ -48,9 +48,10 @@ public:
 
 		buff->addSecondaryBuffCRC(multBuff->getBuffCRC());
 
-		if (creature->hasBuff(STRING_HASHCODE("burstrun")) || creature->hasBuff(STRING_HASHCODE("retreat"))) {
+		if (creature->hasBuff(STRING_HASHCODE("burstrun")) || creature->hasBuff(STRING_HASHCODE("retreat")) || creature->hasBuff(STRING_HASHCODE("JEDI_FORCE_RUN_2"))) {
 			creature->removeBuff(STRING_HASHCODE("burstrun"));
 			creature->removeBuff(STRING_HASHCODE("retreat"));
+			creature->removeBuff(STRING_HASHCODE("JEDI_FORCE_RUN_2"));
 		}
 
 		return SUCCESS;
