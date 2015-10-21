@@ -1231,3 +1231,8 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 
 	return true;
 }
+
+
+Vector3 CreatureManagerImplementation::getRandomJediTrainer() {
+	return spawnAreaMap.getRandomJediTrainer();
+}

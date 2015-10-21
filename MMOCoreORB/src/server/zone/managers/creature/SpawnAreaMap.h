@@ -23,6 +23,8 @@ protected:
 
 	Vector<ManagedReference<SpawnArea*> > worldSpawnAreas;
 
+	Vector<Vector3> trainerObjects;
+
 	void readAreaObject(LuaObject& areaObj);
 	void loadStaticSpawns();
 
@@ -42,7 +44,7 @@ public:
 	}
 
 	SpawnAreaMap(const SpawnAreaMap& l) : VectorMap<uint32, ManagedReference<SpawnArea*> >(l) , Logger("SpawnAreaMap"),
-			zone(l.zone), noSpawnAreas(l.noSpawnAreas), worldSpawnAreas(l.worldSpawnAreas) {
+			zone(l.zone), noSpawnAreas(l.noSpawnAreas), worldSpawnAreas(l.worldSpawnAreas), trainerObjects(l.trainerObjects) {
 
 		lua = l.lua;
 	}
@@ -55,6 +57,8 @@ public:
 	}
 
 	void loadMap(Zone* z);
+
+	Vector3 getRandomJediTrainer();
 
 	Vector<ManagedReference<SpawnArea*> >* getWorldSpawnAreas() {
 		return &worldSpawnAreas;
