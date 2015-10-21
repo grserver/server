@@ -40,17 +40,17 @@ WORLDSPAWNAREA      = 0x0010
 NOBUILDZONEAREA     = 0x0100
 
 
-ghomrassen_regions = {
+taanab_regions = {
 
 	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,1,"taanab_world",2048},
 }
 
-ghomrassen_static_spawns = {
+taanab_static_spawns = {
 
 	--{"commoner_tatooine",60,-1.72179,0.6,-4.05766,360.011,4395396, "conversation", "", "stationary"},
 
 }
 
-ghomrassen_badges = {
+taanab_badges = {
 
 }
