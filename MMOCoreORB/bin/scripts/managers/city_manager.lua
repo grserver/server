@@ -70,7 +70,7 @@ NewCityGracePeriod = 1440
 OldCityGracePeriod = 4320
 
 --Whether or not to allow the use of the command, /cityWarn to give players a TEF while in the city limits.
-EnableCityWarn = false
+EnableCityWarn = true
 
 --The number of citizens required to achieve each city rank. (Outpost, Village, Township, City, Metropolis)
 CitizensPerRank = {2, 2, 2, 2, 2}
@@ -80,8 +80,8 @@ CitizensPerRank = {2, 2, 2, 2, 2}
 RadiusPerRank = {150, 200, 300, 400, 450}
 
 -- Maximum for each rank.  ex. rank 1 = DecorationsPerRank * 1, rank 5 = DecorationsPerRank * 5
-DecorationsPerRank = 10
-TrainersPerRank = 3
+DecorationsPerRank = 50
+TrainersPerRank = 7
 MissionTerminalsPerRank = 3
 
 -- Amount to discount city maintenance  float.  1 = 100%, .75 =75%, .5=50% etc
@@ -97,14 +97,14 @@ maintenanceDiscount = 1.0
 CitiesAllowed = {
 	{"corellia", {20, 20, 15, 10, 10}},
 	{"dantooine", {50, 50, 30, 20, 20}},
-	{"dathomir", {0, 0, 0, 0, 0}},
-	{"endor", {0, 0, 0, 0, 0}},
+	{"dathomir", {10, 10, 10, 10, 10}},
+	{"endor", {10, 10, 10, 10, 10}},
 	{"lok", {50, 50, 30, 20, 20}},
 	{"naboo", {20, 20, 15, 10, 10}},
 	{"rori", {50, 50, 30, 20, 20}},
 	{"talus", {50, 50, 30, 20, 20}},
 	{"tatooine", {20, 20, 15, 10, 10}},
-	{"yavin4", {0, 0, 0, 0, 0}}
+	{"yavin4", {10, 10, 10, 10, 10}}
 }
 
 

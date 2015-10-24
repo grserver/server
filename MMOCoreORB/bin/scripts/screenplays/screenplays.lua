@@ -4,6 +4,9 @@ require("themeParkLogic")
 require("corvetteTicketGiverLogic")
 require("corvetteTicketTakerLogic")
 
+--New Content
+includeFile("custom_content/screenplays.lua")
+
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
 includeFile("themepark/conversations/mission_giver_conv_handler.lua")
@@ -74,6 +77,8 @@ includeFile("village/convos/fs_village_convo7_conv_handler.lua")
 includeFile("village/convos/phase1/sarguillo_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/sivarra_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/med_droid_phase1_conv_handler.lua")
+includeFile("village/convos/phase1/whip_phase1_conv_handler.lua")
+includeFile("village/convos/phase1/fs_reflex1_prisoner_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
