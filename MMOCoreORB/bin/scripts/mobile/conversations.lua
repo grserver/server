@@ -2,6 +2,8 @@ includeFile("conversation.lua")
 
 -- ** THEMEPARKS **
 
+includeFile("custom_content/conversations.lua")
+
 -- Tutorial
 includeFile("conversations/tutorial/room2_greeter_conv.lua")
 includeFile("conversations/tutorial/nervous_guy_conv.lua")
