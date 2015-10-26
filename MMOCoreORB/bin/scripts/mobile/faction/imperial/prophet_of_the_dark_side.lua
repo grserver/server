@@ -1,7 +1,7 @@
 prophet_of_the_dark_side = Creature:new {
 	objectName = "@mob/creature_names:prophet_of_the_dark_side",
-	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 126,
 	chanceHit = 4,
@@ -26,10 +26,10 @@ prophet_of_the_dark_side = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/mobile/dressed_dark_jedi_human_male_01.iff",
-		"object/mobile/dressed_dark_jedi_human_female_01.iff"},
+		"object/mobile/tatooine_npc/hedon_istee.iff"},
+	outfit = "prophet_outfit",
 	lootGroups = {
-		{
+	    {
 			groups = {
 				{group = "holocron_dark", chance = 600000},
 				{group = "holocron_light", chance = 600000},
@@ -39,11 +39,12 @@ prophet_of_the_dark_side = Creature:new {
 				{group = "melee_weapons", chance = 1500000},
 				{group = "armor_attachments", chance = 1100000},
 				{group = "clothing_attachments", chance = 1100000},
-				{group = "carbines", chance = 1500000}
-			}
+				{group = "carbines", chance = 1500000}				
+			},
+			lootChance = 6000000
 		}
 	},
-	weapons = {"dark_jedi_weapons_gen2"},
+	weapons = {"mixed_force_weapons"},
 	attacks = merge(lightsabermaster,forcewielder)
 }
 
