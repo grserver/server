@@ -46,3 +46,14 @@
 
 -- New Objects
 includeFile("custom_content/mobile/vehicle/barc_speeder.lua")
+includeFile("custom_content/mobile/vehicle/barc_speeder_imperial.lua")
+includeFile("custom_content/mobile/vehicle/barc_speeder_rebel.lua")
+--includeFile("custom_content/mobile/vehicle/landspeeder_ab1.lua")
+includeFile("custom_content/mobile/vehicle/landspeeder_desert_skiff.lua")
+includeFile("custom_content/mobile/vehicle/landspeeder_lava_skiff.lua")
+--includeFile("custom_content/mobile/vehicle/landspeeder_organa.lua")
+includeFile("custom_content/mobile/vehicle/landspeeder_tantive4.lua")
+includeFile("custom_content/mobile/vehicle/landspeeder_usv5.lua")
+includeFile("custom_content/mobile/vehicle/pod_racer_one.lua")
+includeFile("custom_content/mobile/vehicle/pod_racer_two.lua")
+--includeFile("custom_content/mobile/vehicle/sith_speeder.lua")

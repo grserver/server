@@ -46,3 +46,16 @@
 
 -- New Objects
 includeFile("custom_content/tangible/deed/vehicle_deed/barc_speeder_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/barc_speeder_imperial_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/barc_speeder_rebel_deed.lua")
+--includeFile("custom_content/tangible/deed/vehicle_deed/landspeeder_ab1_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/landspeeder_desert_skiff_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/landspeeder_lava_skiff_deed.lua")
+--includeFile("custom_content/tangible/deed/vehicle_deed/landspeeder_organa_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/landspeeder_tantive4_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/landspeeder_usv5_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/landspeeder_v35_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/landspeeder_xp38_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/pod_racer_one_deed.lua")
+includeFile("custom_content/tangible/deed/vehicle_deed/pod_racer_two_deed.lua")
+--includeFile("custom_content/tangible/deed/vehicle_deed/sith_speeder_deed.lua")

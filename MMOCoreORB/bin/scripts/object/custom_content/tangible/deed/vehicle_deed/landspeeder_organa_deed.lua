@@ -41,21 +41,22 @@
 --this exception also makes it possible to release a modified version 
 
 
+object_tangible_deed_vehicle_deed_vehicle_deed_organa_speeder = object_tangible_deed_vehicle_deed_shared_vehicle_deed_organa_speeder:new {
 
---Children folder includes
+	templateType = VEHICLEDEED,	
 
--- Server Objects
-includeFile("custom_content/intangible/vehicle/barc_speeder_pcd.lua")
-includeFile("custom_content/intangible/vehicle/barc_speeder_imperial_pcd.lua")
-includeFile("custom_content/intangible/vehicle/barc_speeder_rebel_pcd.lua")
---includeFile("custom_content/intangible/vehicle/landspeeder_ab1_pcd.lua")
-includeFile("custom_content/intangible/vehicle/landspeeder_desert_skiff_pcd.lua")
-includeFile("custom_content/intangible/vehicle/landspeeder_lava_skiff_pcd.lua")
---includeFile("custom_content/intangible/vehicle/landspeeder_organa_pcd.lua")
-includeFile("custom_content/intangible/vehicle/landspeeder_tantive4_pcd.lua")
-includeFile("custom_content/intangible/vehicle/landspeeder_usv5_pcd.lua")
-includeFile("custom_content/intangible/vehicle/landspeeder_v35_pcd.lua")
-includeFile("custom_content/intangible/vehicle/landspeeder_xp38_pcd.lua")
-includeFile("custom_content/intangible/vehicle/pod_racer_one_pcd.lua")
-includeFile("custom_content/intangible/vehicle/pod_racer_two_pcd.lua")
---includeFile("custom_content/intangible/vehicle/sith_speeder_pcd.lua")
+	controlDeviceObjectTemplate = "object/intangible/vehicle/landspeeder_organa_pcd.iff",
+	generatedObjectTemplate = "object/mobile/vehicle/landspeeder_organa.iff",
+
+	numberExperimentalProperties = {1, 1, 1},
+	experimentalProperties = {"XX", "XX", "SR"},
+	experimentalWeights = {1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability"},
+	experimentalSubGroupTitles = {"null", "null", "hit_points"},
+	experimentalMin = {0, 0, 1500},
+	experimentalMax = {0, 0, 3000},
+	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 1},
+}
+
+ObjectTemplates:addTemplate(object_tangible_deed_vehicle_deed_vehicle_deed_organa_speeder, "object/tangible/deed/vehicle_deed/vehicle_deed_organa_speeder.iff")
