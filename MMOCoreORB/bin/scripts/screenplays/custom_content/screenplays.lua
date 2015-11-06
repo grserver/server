@@ -10,3 +10,6 @@ includeFile("custom_content/dungeon/generals_bunker.lua")
 
 --Race Tracks
 includeFile("custom_content/racetracks/mosrassen.lua")
+
+--Static Spawns
+--includeFile("custom_content/staticspawns/kaas.lua")
