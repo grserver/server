@@ -1,6 +1,6 @@
 sith_shadow_mercenary = Creature:new {
 	objectName = "@mob/creature_names:shadow_mercenary",
-	socialGroup = "sith_shadow",
+	socialGroup = "dark_jedi",
 	faction = "sith_shadow",
 	level = 69,
 	chanceHit = 0.6,

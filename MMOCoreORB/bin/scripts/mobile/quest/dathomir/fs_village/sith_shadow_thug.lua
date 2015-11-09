@@ -1,7 +1,7 @@
 sith_shadow_thug = Creature:new {
 	objectName = "@mob/creature_names:shadow_thug",
 	socialGroup = "sith_shadow",
-	faction = "sith_shadow",
+	faction = "dark_jedi",
 	level = 51,
 	chanceHit = 0.47,
 	damageMin = 395,
