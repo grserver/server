@@ -13,4 +13,4 @@ includeFile("custom_content/dungeon/generals_bunker.lua")
 includeFile("custom_content/racetracks/mosrassen.lua")
 
 --Static Spawns
---includeFile("custom_content/staticspawns/kaas.lua")
+includeFile("custom_content/staticspawns/kaas.lua")
