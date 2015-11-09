@@ -1,7 +1,7 @@
 sith_shadow_taskmaster = Creature:new {
 	objectName = "@mob/creature_names:shadow_nco",
-	socialGroup = "sith_shadow",
-	faction = "dark_jedi",
+	socialGroup = "dark_jedi",
+	faction = "",
 	level = 87,
 	chanceHit = 0.75,
 	damageMin = 620,
