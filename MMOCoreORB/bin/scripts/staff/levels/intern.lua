@@ -1,10 +1,10 @@
 intern = {
-	level = 1,
+	level = 10,
 	name = "intern",
-	tag = "GR-Intern",
+	tag = "GR-Admin-Intern",
 	skills = {
-		"admin_base",
-		"admin_intern_01",
+		"admin_internship",
+		
 	}
 }
 
