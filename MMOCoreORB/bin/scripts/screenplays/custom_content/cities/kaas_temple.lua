@@ -1,7 +1,7 @@
-kaasTempleScreenPlay = ScreenPlay:new {
+kaastempleScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "kaastemple",
+	screenplayName = "kaastemple"
 
 registerScreenPlay("kaastempleScreenPlay", true)
 
