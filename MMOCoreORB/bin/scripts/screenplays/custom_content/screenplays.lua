@@ -5,6 +5,7 @@
 --Cities
 includeFile("custom_content/cities/ghomrassen_mos_rassen.lua")
 includeFile("custom_content/cities/kaas_city_ruins.lua")
+includeFile("custom_content/cities/kaas_temple")
 
 --Dungeons
 includeFile("custom_content/dungeon/generals_bunker.lua")
