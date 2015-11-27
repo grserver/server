@@ -25,7 +25,7 @@ function GoToDathomir:onEnteredActiveArea(pCreatureObject)
 	end
 
 	QuestManager.completeQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
-	self:finish(pCreatureObject)
+	self:taskFinish(pCreatureObject)
 end
 
 -- Event handler for the onSuccessfulSpawn.
