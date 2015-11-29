@@ -20,8 +20,8 @@ function GeneralsBunkerScreenPlay:spawnSceneObjects()
 	--Buildings & Props
 	spawnSceneObject("lok", "object/static/structure/general/landing_pad_transport.iff", 3757, 12.1, -3037, 0, 0.99, 0, 0.16, 0 )
 	spawnSceneObject("lok", "object/tangible/event_perk/lambda_shuttle.iff", 3757, 12.1, -3037, 0, 0.81, 0, -0.58, 0 )
-	spawnSceneObject("lok", "object/static/installation/mockup_power_generator_fusion_style_1.iff", 3763, 12.1, -3083, 0, 0.99, 0, 0.16, 0 )
-	spawnSceneObject("lok", "object/static/installation/mockup_power_generator_fusion_style_1.iff", 3769, 12.1, -3084, 0, 0.99, 0, 0.16, 0 )
+	--spawnSceneObject("lok", "object/static/installation/mockup_power_generator_fusion_style_1.iff", 3763, 12.1, -3083, 0, 0.99, 0, 0.16, 0 )
+	--spawnSceneObject("lok", "object/static/installation/mockup_power_generator_fusion_style_1.iff", 3769, 12.1, -3084, 0, 0.99, 0, 0.16, 0 )
 	spawnSceneObject("lok", "object/static/structure/tatooine/antenna_tatt_style_1.iff", 3741, 11.9, -3084, 0, 0.99, 0, 0.16, 0 )
 	spawnSceneObject("lok", "object/building/military/military_outpost_guard_tower_1.iff", 3738, 11.9, -3107, 0, 0.81, 0, -0.58, 0 )
 	
