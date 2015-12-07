@@ -67,7 +67,6 @@ deathWatchStaticSpawns = {
 	{"death_watch_ghost", 300, 116, -64, -101, -156, 5996349},
 	{"death_watch_wraith", 300, 113, -64, -100.7, -36, 5996349},
 	{"death_watch_s_battle_droid", 300, 22.1, -64, -97, 110, 5996347},
-	{"death_watch_wraith", 300, 22.6, -64, -111.1, 128, 5996347},
 	{"death_watch_battle_droid", 300, 40.2, -64, -154.6, -71, 5996347},
 	{"death_watch_battle_droid", 300, 39.5, -64, -147.9, -116, 5996347},
 	{"death_watch_s_battle_droid", 300, 57, -64, -138.4, 50, 5996347},

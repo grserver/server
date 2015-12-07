@@ -130,4 +130,9 @@ endor_regions = {
 }
 
 endor_static_spawns = {
+    spawnMobile("endor", "boba_fett", 200, -4676.0, 12.7, 4335.5, -100, 0)
+	spawnMobile("endor", "rageon_vart", 200, -87.6, -20.0, -51.9, 1, 5996323)
+	spawnMobile("endor", "klin_nif", 200, -9.3, -32.0, -95.2, -89, 5996331)
+	spawnMobile("endor", "fenri_dalso", 200, 25.3, -64.0, -95.7, 164, 5996347)
+
 }
