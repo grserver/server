@@ -40,6 +40,7 @@ tusken_warlord = Creature:new {
 				{group = "color_crystals", chance = 500000},
 				{group = "crystals_good", chance = 500000}
 			}
+			lootChance = 4500000
 		}
 	},
 	weapons = {"tusken_weapons"},

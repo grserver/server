@@ -39,11 +39,12 @@ tusken_savage = Creature:new {
 				{group = "color_crystals", chance = 500000},
 				{group = "crystals_poor", chance = 500000}
 			}
+			lootChance = 4500000
 		}
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlermaster,carbineermaster)
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_savage, "tusken_savage")
