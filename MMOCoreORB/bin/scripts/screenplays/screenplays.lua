@@ -4,10 +4,10 @@ require("themeParkLogic")
 require("corvetteTicketGiverLogic")
 require("corvetteTicketTakerLogic")
 
-<<<<<<< HEAD
+
 --New Content
 includeFile("custom_content/screenplays.lua")
-=======
+
 -- SUI
 --require("sui.SuiSample")
 require("sui.SuiTemplate")
@@ -16,7 +16,7 @@ require("sui.SuiMessageBox")
 require("sui.SuiInputBox")
 require("sui.SuiQuestPopup")
 require("sui.SuiRadiationSensor")
->>>>>>> core3/unstable
+
 
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
