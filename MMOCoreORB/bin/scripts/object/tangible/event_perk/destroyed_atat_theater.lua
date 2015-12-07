@@ -51,13 +51,13 @@ object_tangible_event_perk_destroyed_atat_theater = object_tangible_poi_base_sha
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 
 	childObjects = {
-		{ templateFile = "object/static/structure/general/atat_debris_01.iff", x = -3.06, z = 0, y = -6.2, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/atat_debris_02.iff", x = -5.46, z = 0, y = 2.54, ox = 0.71441, oy = 0, oz = -0.69973, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/structure/general/atat_destroyed.iff", x = -0.03, z = 0, y = 0.02, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 0.72, z = 2.97, y = 7.28, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -1.31, z = 1.5, y = 0.62, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_poi_broken_electronics.iff", x = 1.71, z = 1.92, y = 0.1, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
-		{ templateFile = "object/static/particle/pt_sparks_small.iff", x = -2.45, z = 2.17, y = 11.37, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/atat_debris_01.iff", x = -3.06, z = 0, y = -6.2, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/atat_debris_02.iff", x = -5.46, z = 0, y = 2.54, ow = 0.71441, ox = 0, oy = -0.69973, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/structure/general/atat_destroyed.iff", x = -0.03, z = 0, y = 0.02, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = 0.72, z = 2.97, y = 7.28, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_lair_med_burn.iff", x = -1.31, z = 1.5, y = 0.62, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_poi_broken_electronics.iff", x = 1.71, z = 1.92, y = 0.1, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
+		{ templateFile = "object/static/particle/pt_sparks_small.iff", x = -2.45, z = 2.17, y = 11.37, ow = 1, ox = 0, oy = 0, oz = 0, cellid = -1, containmentType = -1 },
 	},
 }
 

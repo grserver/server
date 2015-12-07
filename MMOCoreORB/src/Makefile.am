@@ -103,6 +103,7 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/CustomIngredient.cpp \
 				autogen/server/zone/objects/tangible/eventperk/JukeboxObserver.cpp \
 				autogen/server/zone/objects/tangible/eventperk/Jukebox.cpp \
 				autogen/server/zone/objects/tangible/eventperk/FlagGame.cpp \
+				autogen/server/zone/objects/tangible/eventperk/LotteryDroid.cpp \
 				autogen/server/zone/objects/player/sessions/LootLotterySession.cpp \
 				autogen/server/zone/objects/intangible/TheaterObject.cpp \
 				autogen/server/zone/objects/building/PoiBuilding.cpp \
@@ -428,6 +429,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/customization/CustomizationIdManager.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
 		server/zone/managers/director/PersistentEventImplementation.cpp \
+		server/zone/managers/director/QuestVectorMapImplementation.cpp \
 		server/zone/objects/ship/SpaceStationObjectImplementation.cpp \
 		server/zone/objects/ship/FighterShipObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
@@ -603,6 +605,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/InstrumentImplementation.cpp \
 		server/zone/objects/tangible/eventperk/FlagGameImplementation.cpp \
+		server/zone/objects/tangible/eventperk/LotteryDroidImplementation.cpp \
 		server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp \
 		server/zone/objects/tangible/eventperk/JukeboxObserverImplementation.cpp \
 		server/zone/objects/tangible/components/droid/DroidPlaybackObserverImplementation.cpp \

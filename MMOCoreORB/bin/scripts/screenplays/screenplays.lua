@@ -4,8 +4,19 @@ require("themeParkLogic")
 require("corvetteTicketGiverLogic")
 require("corvetteTicketTakerLogic")
 
+<<<<<<< HEAD
 --New Content
 includeFile("custom_content/screenplays.lua")
+=======
+-- SUI
+--require("sui.SuiSample")
+require("sui.SuiTemplate")
+require("sui.SuiListBox")
+require("sui.SuiMessageBox")
+require("sui.SuiInputBox")
+require("sui.SuiQuestPopup")
+require("sui.SuiRadiationSensor")
+>>>>>>> core3/unstable
 
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
@@ -23,6 +34,9 @@ includeFile("themepark/jabba/themeParkJabba.lua")
 includeFile("themepark/valarian/themeParkValarian.lua")
 includeFile("themepark/marauder/themeParkMarauder.lua")
 
+-- Staff tools
+includeFile("tools/tools.lua")
+includeFile("tools/shuttle_dropoff.lua")
 
 -- GCW
 includeFile("gcw/newsnet.lua")
@@ -79,6 +93,11 @@ includeFile("village/convos/phase1/sivarra_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/med_droid_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/whip_phase1_conv_handler.lua")
 includeFile("village/convos/phase1/fs_reflex1_prisoner_conv_handler.lua")
+<<<<<<< HEAD
+=======
+includeFile("village/convos/phase2/whip_phase2_conv_handler.lua")
+includeFile("village/convos/phase2/dageerin_phase2_conv_handler.lua")
+>>>>>>> core3/unstable
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
