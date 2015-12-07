@@ -357,4 +357,5 @@ tatooine_static_spawns = {
 	{"rodian_clan_warchief",300,25.1612,2.6,16.6257,360.011,1153601, "conversation", "","stationary"},
 	{"smuggler",300,-17.046,2.6,17.2264,0,1153601, "conversation", "","stationary"},
 	{"trainer_imagedesigner",0,-20.9956,2.12878,73.874,90,1105854, "", "","stationary"},
+	{"sher_kar",200, 715.7,8.4,-6685.5,-96,"},
 }
