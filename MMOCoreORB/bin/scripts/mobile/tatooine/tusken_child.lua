@@ -35,7 +35,7 @@ tusken_child = Creature:new {
 				{group = "wearables_common", chance = 2000000},
 				{group = "bone_armor", chance = 750000},
 				{group = "chitin_armor", chance = 750000},
-			}
+			},
 			lootChance = 4500000
 		}
 	},

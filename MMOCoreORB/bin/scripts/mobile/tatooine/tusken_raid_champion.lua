@@ -38,7 +38,7 @@ tusken_raid_champion = Creature:new {
 				{group = "clothing_attachments", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "crystals_premium", chance = 500000}
-			}
+			},
 			lootChance = 4500000
 		}
 	},
