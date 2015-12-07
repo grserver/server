@@ -5,7 +5,7 @@
 --Cities
 includeFile("custom_content/cities/ghomrassen_mos_rassen.lua")
 includeFile("custom_content/cities/kaas_city_ruins.lua")
-includeFile("custom_content/cities/darklightcity")
+includeFile("custom_content/cities/darklightcity.lua")
 
 
 --Dungeons
