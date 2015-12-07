@@ -25,15 +25,26 @@ death_watch_black_sun_henchman = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	scale = 1.15,
 
 	templates = {"object/mobile/dressed_black_sun_henchman.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "death_watch_bunker_commoners", chance = 10000000}
+				{group = "death_watch_bunker_ingredient_alum_mineral", chance = 10000000},
 			},
-			lootChance = 1000000
+			lootChance = 4500000
+		},
+		{
+	        groups = {
+				{group = "clothing_attachments", chance = 10000000},			
+			},
+			lootChance = 2500000
+		},
+		{
+	        groups = {
+				{group = "bounty_hunter_armor", chance = 10000000},			
+			},
+			lootChance = 2500000
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

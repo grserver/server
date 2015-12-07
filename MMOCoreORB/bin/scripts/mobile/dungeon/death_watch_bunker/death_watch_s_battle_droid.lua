@@ -24,7 +24,6 @@ death_watch_s_battle_droid = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = NONE,
-	scale = 1.40,
 
 	templates = {
 		"object/mobile/death_watch_s_battle_droid.iff",
@@ -33,9 +32,21 @@ death_watch_s_battle_droid = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "death_watch_bunker_commoners", chance = 10000000}
+				{group = "death_watch_bunker_commoners", chance = 10000000},
 			},
-			lootChance = 500000
+			lootChance = 4500000
+		},
+		{
+	        groups = {
+				{group = "death_watch_bunker_ingredient_alum_mineral", chance = 10000000},			
+			},
+			lootChance = 3500000
+		},
+		{
+	        groups = {
+				{group = "armor_attachments", chance = 10000000},			
+			},
+			lootChance = 2500000
 		}
 	},
 	conversationTemplate = "",
