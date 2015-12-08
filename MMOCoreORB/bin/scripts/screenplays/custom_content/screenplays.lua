@@ -6,6 +6,11 @@
 includeFile("custom_content/cities/ghomrassen_mos_rassen.lua")
 includeFile("custom_content/cities/kaas_city_ruins.lua")
 includeFile("custom_content/cities/darklightcity.lua")
+includeFile("custom_content/cities/endor_village.lua")
+includeFile("custom_content/cities/kaas_Temple.lua")
+includeFile("custom_content/cities/battlefeild1.lua")
+includeFile("custom_content/cities/battlefeild1rebelnpcs1.lua")
+includeFile("custom_content/cities/battlefeild1rebelturrets1.lua")
 
 
 --Dungeons
