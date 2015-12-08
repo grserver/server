@@ -429,4 +429,8 @@ includeFile("custom_loot/items/weapons/wod_war_fan.lua")
 includeFile("custom_loot/items/weapons/wookiee_knuckler.lua")
 includeFile("custom_loot/items/weapons/wookiee_knuckler_wod.lua")
 includeFile("custom_loot/items/weapons/xantha_smasher.lua")
+includeFile("custom_loot/items/wearables/robe_s32.lua")
+includeFile("custom_loot/items/wearables/robe_s32_h1.lua")
+includeFile("custom_loot/items/wearables/robe_s33.lua")
+includeFile("custom_loot/items/wearables/robe_s32_h1.lua")
                        
