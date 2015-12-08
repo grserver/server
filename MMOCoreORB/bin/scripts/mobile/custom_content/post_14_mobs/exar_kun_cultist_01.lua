@@ -33,7 +33,7 @@ exar_kun_cultist_01 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/exar_kun_cultist_01.iff"},
+	templates = {"object/mobile/post_14_mobs/exar_kun_cultist_01.iff"},
 		
 	lootGroups = {},
 	--scale = 1.25,

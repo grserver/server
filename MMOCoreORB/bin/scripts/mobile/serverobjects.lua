@@ -25,7 +25,7 @@ includeFile("thug/serverobjects.lua")
 includeFile("townsperson/serverobjects.lua")
 includeFile("tutorial/serverobjects.lua")
 includeFile("yavin4/serverobjects.lua")
-includeFile("post_14_mobs/serverobjects.lua")
+
 
 includeFile("faction/serverobjects.lua")
 includeFile("dungeon/serverobjects.lua") 
