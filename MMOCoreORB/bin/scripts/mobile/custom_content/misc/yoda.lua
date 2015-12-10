@@ -4,16 +4,6 @@ yoda = Creature:new {
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",
-<<<<<<< HEAD
-	level = 300,
-	chanceHit = 92.5,
-	damageMin = 3100,
-	damageMax = 4200,
-	baseXp = 19884,
-	baseHAM = 100000,
-	baseHAMmax = 208000,
-	armor = 3,
-=======
 	level = 200,
 	chanceHit = 92.5,
 	damageMin = 2800,
@@ -22,8 +12,7 @@ yoda = Creature:new {
 	baseHAM = 96000,
 	baseHAMmax = 178000,
 	armor = 2,
->>>>>>> origin/master
-	resists = {130,145,155,155,145,30,30,30,-1},
+	resists = {80,80,80,80,80,30,30,30,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
