@@ -928,6 +928,12 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		player->addWounds(CreatureAttribute::MIND, 100, true, false);
 		player->addShockWounds(100, true);
 	}
+	
+	if (player->hasSkill("force_rank_dark_novice") || player->hasSkill("force_rank_light_novice")){
+		ghost->setFactionStatus(FactionStatus::OVERT);
+	}else{
+		ghost->setFactionStatus(FactionStatus::ONLEAVE);
+	}
 
 	if (ghost->getFactionStatus() != FactionStatus::ONLEAVE)
 		ghost->setFactionStatus(FactionStatus::ONLEAVE);
