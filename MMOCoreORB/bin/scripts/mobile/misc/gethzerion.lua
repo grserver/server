@@ -2,15 +2,15 @@ gethzerion = Creature:new {
 	objectName = "@mob/creature_names:gethzerion",
 	socialGroup = "nightsister",
 	faction = "nightsister",
-	level = 100,
-	chanceHit = 1,
-	damageMin = 645,
-	damageMax = 1000,
-	baseXp = 9429,
-	baseHAM = 24000,
-	baseHAMmax = 30000,
-	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,-1},
+	level = 200,
+	chanceHit = 92.5,
+	damageMin = 2800,
+	damageMax = 4580,
+	baseXp = 16884,
+	baseHAM = 96000,
+	baseHAMmax = 178000,
+	armor = 2,
+	resists = {80,80,80,80,80,30,30,30,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -20,17 +20,31 @@ gethzerion = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
-	creatureBitmask = PACK,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gethzerion.iff"},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "holocron_dark", chance = 600000},
+				{group = "holocron_light", chance = 600000},
+				{group = "crystals_premium", chance = 1900000},
+				{group = "pistols", chance = 1300000},
+				{group = "g_yoda_house_loot_deed", chance = 1300000},
+				{group = "armor_attachments", chance = 1100000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "carbines", chance = 1300000},
+				{group = "wearables_scarce", chance = 800000}				
+			},
+			lootChance = 8500000
+		}
+	},
+	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(tkamaster,swordsmanmaster,fencermaster,pikemanmaster,brawlermaster,forcepowermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gethzerion, "gethzerion")
