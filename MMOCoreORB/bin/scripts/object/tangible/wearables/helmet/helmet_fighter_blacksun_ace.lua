@@ -42,6 +42,11 @@
 
 
 object_tangible_wearables_helmet_helmet_fighter_blacksun_ace = object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace:new {
+
+    templateType = ARMOROBJECT,
+	
+	objectMenuComponent = {"cpp", "ArmorObjectMenuComponent"},
+	
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
 				"object/creature/player/human_male.iff",
