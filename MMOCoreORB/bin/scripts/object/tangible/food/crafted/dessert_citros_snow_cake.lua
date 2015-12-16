@@ -60,7 +60,7 @@ object_tangible_food_crafted_dessert_citros_snow_cake = object_tangible_food_cra
 	quantityMin = 5,
 	quantityMax = 7,
 
-	modifiers = { "attack_accuracy", 60 },
+	modifiers = { "attack_accuracy", 100 },
 
 	buffName = "food.attack_accuracy",
 	buffCRC = 0,

@@ -43,8 +43,9 @@
 
 object_tangible_food_crafted_dessert_pikatta_pie = object_tangible_food_crafted_shared_dessert_pikatta_pie:new {
 	templateType = CONSUMABLE,
+	useCount = 50,
 
-	duration = 45,
+	duration = 360,
 	filling = 19,
 	nutrition = 15,
 
@@ -59,7 +60,7 @@ object_tangible_food_crafted_dessert_pikatta_pie = object_tangible_food_crafted_
 	quantityMin = 5,
 	quantityMax = 7,
 
-	modifiers = { "dodge_attack", 0 },
+	modifiers = { "dodge_attack", 100 },
 
 	buffName = "food.dodge_attack",
 	buffCRC = 0,

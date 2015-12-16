@@ -43,8 +43,9 @@
 
 object_tangible_food_crafted_dish_thakitillo = object_tangible_food_crafted_shared_dish_thakitillo:new {
 	templateType = CONSUMABLE,
+	useCount = 50,
 
-	duration = 30,
+	duration = 360,
 	filling = 10,
 	nutrition = 10,
 
@@ -59,7 +60,7 @@ object_tangible_food_crafted_dish_thakitillo = object_tangible_food_crafted_shar
 	quantityMin = 1,
 	quantityMax = 3,
 
-	modifiers = { "knockdown_defense", 0 },
+	modifiers = { "knockdown_defense", 100 },
 
 	buffName = "food.dish_thakitillo",
 	buffCRC = 0xDC5D4FD7,
