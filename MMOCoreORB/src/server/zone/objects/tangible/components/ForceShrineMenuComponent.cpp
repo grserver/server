@@ -55,7 +55,7 @@ void ForceShrineMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, 
 }
 
 int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
-<<<<<<< HEAD
+
     /*if (selectedID != 213)
     return 0;
     
@@ -400,7 +400,7 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
     }
     return 0;
 }
-=======
+
 	if (selectedID != 213)
 		return 0;
 
@@ -556,4 +556,4 @@ void ForceShrineMenuComponent::findTrainerObject(CreatureObject* player, PlayerO
 	ghost->setTrainerCoordinates(coords);
 	ghost->setTrainerZoneName(zoneName); // For the Waypoint.
 }
->>>>>>> core3/unstable
+
