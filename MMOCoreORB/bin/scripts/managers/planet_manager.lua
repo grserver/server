@@ -88,7 +88,7 @@ corellia = {
 	--	{templateFile = "object/tangible/terminal/terminal_character_builder.iff", ox = 0, oy = 0.290803, oz = 0, ow = 0.956783, x = 3330.38, z = 308, y = 5517.14, parentid = 0},
 	--	{templateFile = "object/tangible/terminal/terminal_character_builder.iff", ox = 0, oy = -0.666281, oz = 0, ow = 0.745701, x = -136.437, z = 28, y = -4730.23, parentid = 0},
 	    {templateFile = "object/building/player/bespin_house.iff", ox = 0, oy = 0.290803, oz = 0, ow = 0.956783, x = -175.3, z = 28.0, y = -4725.2, parentid = 0},
-		{templateFile = "object/building/naboo/hotel_naboo_theed.iff", ox = 0, oy = 0.290803, oz = 0, ow = 0.956783, x = -175.3, z = 28.0, y = -4911.0, parentid = 0}
+		{templateFile = "object/building/corellia/association_hall_civilian_corellia.iff", ox = 0, oy = 0.290803, oz = 0, ow = 0.956783, x = -175.3, z = 28.0, y = -4911.0, parentid = 0}
 	}
 }
 
