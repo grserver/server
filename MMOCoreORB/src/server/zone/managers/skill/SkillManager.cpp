@@ -694,6 +694,13 @@ bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, Creature
 			return false;
 		}
 
+<<<<<<< HEAD
+=======
+	if (ghost->isPrivileged())
+		return true;
+
+	if (skillName.beginsWith("force_sensitive")) { // Check for Force Sensitive boxes.
+>>>>>>> core3/unstable
 		int index = skillName.indexOf("0");
 		if (index != -1) {
 			String skillNameFinal = skillName.subString(0, skillName.length() - 3);

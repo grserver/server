@@ -37,6 +37,7 @@ includeFile("themepark/marauder/themeParkMarauder.lua")
 -- Staff tools
 includeFile("tools/tools.lua")
 includeFile("tools/shuttle_dropoff.lua")
+includeFile("tools/firework_event.lua")
 
 -- GCW
 includeFile("gcw/newsnet.lua")
@@ -261,6 +262,7 @@ includeFile("caves/naboo_narglatch_cave.lua")
 includeFile("caves/naboo_pirate_bunker.lua")
 includeFile("caves/naboo_veermok_cave.lua")
 includeFile("caves/rori_borgle_bat_cave.lua")
+includeFile("caves/rori_black_sun_outpost_bunker.lua")
 includeFile("caves/rori_giant_bark_mite_cave.lua")
 includeFile("caves/rori_kobola_bunker.lua")
 includeFile("caves/rori_pygmy_torton_cave.lua")
