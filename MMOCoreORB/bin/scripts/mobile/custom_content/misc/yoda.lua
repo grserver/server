@@ -34,7 +34,7 @@ yoda = Creature:new {
 				{group = "holocron_dark", chance = 600000},
 				{group = "holocron_light", chance = 600000},
 				{group = "crystals_premium", chance = 1900000},
-				{group = "pistols", chance = 1300000},
+				{group = "crystal_named", chance = 1300000},
 				{group = "g_yoda_house_loot_deed", chance = 1300000},
 				{group = "armor_attachments", chance = 1100000},
 				{group = "clothing_attachments", chance = 1100000},
