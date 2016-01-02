@@ -20,6 +20,7 @@ includeFile("custom_loot/groups/crystals/crystal_sunriders_destiny.lua")
 includeFile("custom_loot/groups/crystals/crystal_ulics_redemption.lua")
 includeFile("custom_loot/groups/crystals/crystal_windus_guile.lua")
 
+
 includeFile("custom_loot/groups/player_house_deeds/g_atat_house_loot_deed.lua")
 includeFile("custom_loot/groups/player_house_deeds/g_bespin_house_loot_deed.lua")
 includeFile("custom_loot/groups/player_house_deeds/g_commando_house_loot_deed.lua")
@@ -287,3 +288,4 @@ includeFile("custom_loot/groups/weapons/ranged/g_som_rifle_dp23_generic.lua")
 includeFile("custom_loot/groups/weapons/ranged/g_som_rifle_mustafar_disruptor.lua")
 includeFile("custom_loot/groups/weapons/ranged/g_som_rifle_mustafar_disruptor_generic.lua")
 includeFile("custom_loot/groups/jedi_robes.lua")
+includeFile("custom_loot/groups/crystal_named.lua")
