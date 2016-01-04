@@ -40,7 +40,7 @@ baton_gaderiffi = {
                   {"potency", 60, 160},
                   {"uses", 9999, 99999}
 				  
-				  }
+				
 	
 	
 	
@@ -48,6 +48,8 @@ baton_gaderiffi = {
 	junkDealerTypeNeeded = JUNKWEAPONS,
 	junkMinValue = 125,
 	junkMaxValue = 545
+	
+	}
 
 }
 
