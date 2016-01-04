@@ -3,14 +3,14 @@ krayt_dragon_ancient = Creature:new {
 	socialGroup = "krayt",
 	faction = "",
 	level = 336,
-	chanceHit = 30.0,
-	damageMin = 2270,
-	damageMax = 4250,
+	chanceHit = 25.0,
+	damageMin = 1270,
+	damageMax = 2250,
 	baseXp = 28549,
 	baseHAM = 410000,
 	baseHAMmax = 501000,
-	armor = 3,
-	resists = {95,95,95,95,65,95,95,95,-1},
+	armor = 2,
+	resists = {95,95,95,95,25,95,95,95,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
 	hideType = "hide_bristley",
@@ -28,15 +28,45 @@ krayt_dragon_ancient = Creature:new {
 
 	templates = {"object/mobile/krayt_dragon.iff"},
 	lootGroups = {
+	   {
+			groups = {
+				{group = "pod_racer_one_deed_group", chance = 1000000},
+				{group = "pod_racer_two_deed_group", chance = 1000000},
+				{group = "landspeeder_desert_skiff_deed_group", chance = 1000000},
+				{group = "barc_speeder_imperial_deed_group", chance = 1000000},
+				{group = "barc_speeder_rebel_deed_group", chance = 1000000},
+				{group = "barc_speeder_deed_group", chance = 1000000},
+				{group = "g_jabbas_house_loot_deed", chance = 1000000},
+				{group = "speederbike_deed_group", chance = 1000000},
+				{group = "speederbike_flash_deed_group", chance = 1000000},
+				{group = "speederbike_swoop_deed_group", chance = 1000000}
+			},
+			lootChance = 10000000
+		},
+	    {
+			groups = {
+				{group = "pearls_flawless", chance =  500000},
+				
+			},
+			lootChance = 10000000
+		},
 		{
 	        groups = {
-				{group = "krayt_tissue_rare", chance = 2000000},
-				{group = "krayt_dragon_common", chance = 2500000},
-				{group = "pearls_flawless", chance = 1500000},
-				{group = "armor_all", chance = 2000000},
-				{group = "weapons_all", chance = 2000000},
+				{group = "clothing_attachments", chance = 10000000},			
 			},
-			lootChance = 7720000
+			lootChance = 10000000
+		},
+		{
+	        groups = {
+				{group = "armor_attachments", chance = 10000000},			
+			},
+			lootChance = 10000000
+		},
+		{
+	        groups = {
+				{group = "krayt_tissue_rare", chance = 10000000},			
+			},
+			lootChance = 10000000
 		}
 	},
 	weapons = {},
