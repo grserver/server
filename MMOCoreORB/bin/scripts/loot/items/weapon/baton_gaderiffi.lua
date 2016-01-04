@@ -39,17 +39,7 @@ baton_gaderiffi = {
                  {"duration", 400, 1400},
                   {"potency", 60, 160},
                   {"uses", 9999, 99999}
-				  
-				
-	
-	
-	
-	
-	junkDealerTypeNeeded = JUNKWEAPONS,
-	junkMinValue = 125,
-	junkMaxValue = 545
-	
-}
+	}
 
 }
 
