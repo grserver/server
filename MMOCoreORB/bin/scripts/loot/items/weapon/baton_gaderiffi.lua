@@ -6,13 +6,13 @@ baton_gaderiffi = {
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/melee/baton/baton_gaderiffi.iff",
 	craftingValues = {
-		{"mindamage",49,91,0},
-		{"maxdamage",98,182,0},
-		{"attackspeed",5.9,4,1},
+		{"mindamage",149,491,0},
+		{"maxdamage",198,582,0},
+		{"attackspeed",3.9,2,1},
 		{"woundchance",11,21,0},
-		{"hitpoints",750,1500,0},
-		{"zerorangemod",-15,5,0},
-		{"maxrangemod",-15,5,0},
+		{"hitpoints",750,9500,0},
+		{"zerorangemod",-10,15,0},
+		{"maxrangemod",-10,15,0},
 		{"midrange",3,3,0},
 		{"midrangemod",-15,5,0},
 		{"maxrange",7,7,0},
@@ -24,10 +24,30 @@ baton_gaderiffi = {
 	customizationValues = {},
 
 	-- randomDotChance: The chance of this weapon object dropping with a random dot on it. Higher number means less chance. Set to 0 to always have a random dot.
-	randomDotChance = 800,
+	randomDotChance = 120,
+	
+	  -- staticDotChance: The chance of this weapon object dropping with a static dot on it. Higher number means less chance. Set to 0 to always have a static dot.
+         staticDotChance = 400,
+  
+         -- staticDotType: 1 = Poison, 2 = Disease, 3 = Fire, 4 = Bleed
+         staticDotType = 4,
+ 
+         -- staticDotValues: Object map that can randomly or statically generate a dot (used for weapon objects.)
+          staticDotValues = {
+                {"attribute", 6, 6}, -- See CreatureAttributes.h in src for numbers.
+                 {"strength", 150, 600},
+                 {"duration", 400, 1400},
+                  {"potency", 60, 160},
+                  {"uses", 9999, 99999}
+				  
+				  }
+	
+	
+	
+	
 	junkDealerTypeNeeded = JUNKWEAPONS,
-	junkMinValue = 25,
-	junkMaxValue = 45
+	junkMinValue = 125,
+	junkMaxValue = 545
 
 }
 

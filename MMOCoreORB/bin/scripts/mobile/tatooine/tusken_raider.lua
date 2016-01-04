@@ -2,7 +2,7 @@ tusken_raider = Creature:new {
 	objectName = "@mob/creature_names:tusken_raider",
 	socialGroup = "tusken_raider",
 	faction = "tusken_raider",
-	level = 25,
+	level = 35,
 	chanceHit = 0.30,
 	damageMin = 180,
 	damageMax = 190,
@@ -29,20 +29,19 @@ tusken_raider = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-		
 				{group = "wearables_scarce", chance = 2500000},
 				{group = "holocron_dark", chance = 2500000},
 				{group = "color_crystals", chance = 2500000},
 				{group = "crystals_premium", chance = 2500000}
 			},
-			lootChance = 5000000
+			lootChance = 3000000
 			},
 			{
 			groups = {
 			{group = "armor_attachments", chance = 5000000},
 			{group = "clothing_attachments", chance = 5000000},
 			},
-			lootChance = 5000000
+			lootChance = 4000000
 		}
 	},
 	weapons = {"tusken_weapons"},

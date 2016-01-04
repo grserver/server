@@ -39,7 +39,7 @@ tusken_executioner = Creature:new {
 				{group = "landspeeder_av21_deed_group", chance = 25000},
 				{group = "speederbike_deed_group", chance = 1000000},
 				{group = "speederbike_flash_deed_group", chance = 1000000},
-				{group = "speederbike_swoop_deed_group", chance = 1000000},
+				{group = "speederbike_swoop_deed_group", chance = 2000000},
 			},
 			lootChance = 4000000
 		},
