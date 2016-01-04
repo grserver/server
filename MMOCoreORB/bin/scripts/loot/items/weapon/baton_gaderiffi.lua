@@ -49,7 +49,7 @@ baton_gaderiffi = {
 	junkMinValue = 125,
 	junkMaxValue = 545
 	
-	}
+}
 
 }
 
