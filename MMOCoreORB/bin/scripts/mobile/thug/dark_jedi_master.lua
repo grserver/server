@@ -32,8 +32,6 @@ dark_jedi_master = Creature:new {
 	lootGroups = {
 	   {
 			groups = {
-			
-			
 				{group = "pistols", chance = 1000000},
 				{group = "junk", chance = 1000000},
 				{group = "janta_common", chance = 1000000},
@@ -45,7 +43,7 @@ dark_jedi_master = Creature:new {
 				{group = "g_jedi_house_loot_deed", chance = 1000000},
 				{group = "g_yoda_house_loot_deed", chance = 1000000}
 			},
-			lootChance = 1500000
+			lootChance = 1000000
 		},
 	    {
 			groups = {

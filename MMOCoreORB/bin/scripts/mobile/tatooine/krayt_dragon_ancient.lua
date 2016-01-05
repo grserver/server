@@ -45,7 +45,7 @@ krayt_dragon_ancient = Creature:new {
 		},
 	    {
 			groups = {
-				{group = "pearls_flawless", chance =  500000},
+				{group = "pearls_flawless", chance =  10000000},
 				
 			},
 			lootChance = 10000000

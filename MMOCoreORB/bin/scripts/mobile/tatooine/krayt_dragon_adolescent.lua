@@ -28,10 +28,9 @@ krayt_dragon_adolescent = Creature:new {
 	templates = {"object/mobile/krayt_dragon_hue.iff"},
 	scale = 0.7;
 	lootGroups = {
-	   
-	    {
+	   {
 			groups = {
-				{group = "pearls_premium", chance =  500000},
+				{group = "pearls_premium", chance =  10000000},
 				
 			},
 			lootChance = 10000000
@@ -61,7 +60,7 @@ krayt_dragon_adolescent = Creature:new {
 	attacks = {
 		{"creatureareacombo",""},
 		{"creatureareaknockdown",""}
-	}
+	}	
 }
 
 CreatureTemplates:addCreatureTemplate(krayt_dragon_adolescent, "krayt_dragon_adolescent")
