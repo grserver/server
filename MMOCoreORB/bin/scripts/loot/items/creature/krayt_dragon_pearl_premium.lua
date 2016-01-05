@@ -6,8 +6,8 @@ krayt_dragon_pearl_premium = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/lightsaber/lightsaber_module_krayt_dragon_pearl.iff",
 	craftingValues = {
-		{"mindamage",40,50,0},
-		{"maxdamage",40,50,0},
+		{"mindamage",50,50,0},
+		{"maxdamage",50,50,0},
 		{"attackspeed",-1,-1,5},
 		{"woundchance",4,8,5},
 		{"hitpoints",800,1200,0},

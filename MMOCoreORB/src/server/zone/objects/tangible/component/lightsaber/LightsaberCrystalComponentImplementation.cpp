@@ -196,8 +196,8 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 	if (color == 31){
 		setQuality(values->getCurrentValue("quality"));
 		setAttackSpeed(Math::getPrecision(values->getCurrentValue("attackspeed"), 2));
-		setMinimumDamage(MIN(values->getCurrentValue("mindamage"), 50));
-		setMaximumDamage(MIN(values->getCurrentValue("maxdamage"), 50));
+		setMinimumDamage(MIN(values->getCurrentValue("mindamage"), 75));
+		setMaximumDamage(MIN(values->getCurrentValue("maxdamage"), 75));
 		setWoundChance(values->getCurrentValue("woundchance"));
 
 		// Following are incoming positive values in script (Due to loot modifier.)
