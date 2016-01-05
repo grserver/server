@@ -24,3 +24,5 @@ function YavinTempleScreenPlay:spawnMobiles()
     spawnMobile("yavin4", "dark_jedi_sentinel", 200, 0.0, 58.0, -52.6, -3, 3465362)
 	spawnMobile("yavin4", "light_jedi_sentinel", 200, 5.0, 55.0, -46.5, 0, 3465362)
 	spawnMobile("yavin4", "light_jedi_sentinel", 200, -5.1, 55.0, -46.1, 1, 3465362)
+	
+end
