@@ -2,11 +2,11 @@ tusken_raider = Creature:new {
 	objectName = "@mob/creature_names:tusken_raider",
 	socialGroup = "tusken_raider",
 	faction = "tusken_raider",
-	level = 19,
-	chanceHit = 0.33,
+	level = 35,
+	chanceHit = 0.30,
 	damageMin = 180,
 	damageMax = 190,
-	baseXp = 1609,
+	baseXp = 2600,
 	baseHAM = 4500,
 	baseHAMmax = 5500,
 	armor = 0,
@@ -29,17 +29,19 @@ tusken_raider = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "task_loot_medallion_dark_jedi", chance = 1500000},
-				{group = "pearls_flawless", chance = 3000000},
-				{group = "wearables_scarce", chance = 2000000},
-				{group = "g_bespin_house_loot_deed", chance = 750000},
-				{group = "holocron_dark", chance = 750000},
-				{group = "armor_attachments", chance = 500000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "color_crystals", chance = 500000},
-				{group = "crystals_premium", chance = 500000}
+				{group = "wearables_scarce", chance = 2500000},
+				{group = "holocron_dark", chance = 2500000},
+				{group = "color_crystals", chance = 2500000},
+				{group = "crystals_premium", chance = 2500000}
 			},
-			lootChance = 4500000
+			lootChance = 3000000
+			},
+			{
+			groups = {
+			{group = "armor_attachments", chance = 5000000},
+			{group = "clothing_attachments", chance = 5000000},
+			},
+			lootChance = 4000000
 		}
 	},
 	weapons = {"tusken_weapons"},

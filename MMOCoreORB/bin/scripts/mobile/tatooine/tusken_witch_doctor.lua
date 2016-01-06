@@ -30,9 +30,13 @@ tusken_witch_doctor = Creature:new {
 		{
 			groups = {
 				{group = "task_loot_medallion_dark_jedi", chance = 1500000},
-				{group = "pearls_flawless", chance = 3000000},
+				{group = "pearls_premium", chance = 3000000},
 				{group = "wearables_scarce", chance = 2000000},
+<<<<<<< HEAD
 				{group = "bounty_hunter_armor", chance = 750000},
+=======
+				{group = "rifles", chance = 750000},
+>>>>>>> 811bcec0da7a92f861b7bfdaacf8c44ffcb3a01b
 				{group = "holocron_dark", chance = 750000},
 				{group = "armor_attachments", chance = 500000},
 				{group = "clothing_attachments", chance = 500000},

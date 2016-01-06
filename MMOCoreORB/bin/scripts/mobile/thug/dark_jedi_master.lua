@@ -3,15 +3,15 @@ dark_jedi_master = Creature:new {
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "dark_jedi",
 	faction = "",
-	level = 291,
-	chanceHit = 27.25,
-	damageMin = 1800,
-	damageMax = 3310,
-	baseXp = 27849,
+	level = 300,
+	chanceHit = 20.25,
+	damageMin = 1200,
+	damageMax = 2300,
+	baseXp = 127849,
 	baseHAM = 321000,
 	baseHAMmax = 392000,
-	armor = 3,
-	resists = {90,90,90,90,90,90,90,90,-1},
+	armor = 1,
+	resists = {50,50,50,50,50,50,50,50,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -30,19 +30,39 @@ dark_jedi_master = Creature:new {
 		"object/mobile/dressed_dark_jedi_human_male_01.iff",
 		"object/mobile/dressed_dark_jedi_human_female_01.iff"},
 	lootGroups = {
-		{
+	   {
 			groups = {
-				{group = "holocron_dark", chance = 600000},
-				{group = "holocron_light", chance = 600000},
-				{group = "crystals_premium", chance = 600000},
-				{group = "rifles", chance = 1300000},
-				{group = "pistols", chance = 1300000},
-				{group = "melee_weapons", chance = 1300000},
-				{group = "armor_attachments", chance = 1100000},
-				{group = "clothing_attachments", chance = 1100000},
-				{group = "carbines", chance = 1300000},
-				{group = "dark_jedi_common", chance = 800000}
-			}
+				{group = "pistols", chance = 1000000},
+				{group = "junk", chance = 1000000},
+				{group = "janta_common", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "jedi_robes", chance = 1000000},
+				{group = "named_crystals", chance = 1000000},
+				{group = "pearls_premium", chance = 1000000},
+				{group = "g_sith_house_loot_deed", chance = 1000000},
+				{group = "g_jedi_house_loot_deed", chance = 1000000},
+				{group = "g_yoda_house_loot_deed", chance = 1000000}
+			},
+			lootChance = 1000000
+		},
+	    {
+			groups = {
+				{group = "holocron_dark", chance =  5000000},
+				{group = "holocron_light", chance  = 5000000}
+			},
+			lootChance = 10000000
+		},
+		{
+	        groups = {
+				{group = "clothing_attachments", chance = 10000000},			
+			},
+			lootChance = 10000000
+		},
+		{
+	        groups = {
+				{group = "armor_attachments", chance = 10000000},			
+			},
+			lootChance = 10000000
 		}
 	},
 	weapons = {"dark_jedi_weapons_gen4"},

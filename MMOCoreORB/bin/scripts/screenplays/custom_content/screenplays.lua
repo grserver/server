@@ -3,6 +3,8 @@
 --includeFile("screenplays/new.lua")
 
 --Cities
+includeFile("custom_content/cities/tusken_king.lua")
+includeFile("custom_content/cities/yavin_temple.lua")
 includeFile("custom_content/cities/ghomrassen_mos_rassen.lua")
 includeFile("custom_content/cities/kaas_city_ruins.lua")
 includeFile("custom_content/cities/darklightcity.lua")
