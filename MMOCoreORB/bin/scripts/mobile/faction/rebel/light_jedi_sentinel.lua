@@ -1,13 +1,8 @@
 light_jedi_sentinel = Creature:new {
 	objectName = "@mob/creature_names:light_jedi_sentinel",
-<<<<<<< HEAD
-	randomNameType = NAME_GENERIC_TAG,
-	socialGroup = "",
-=======
 	randomNameType = NAME_GENERIC,
 	randomNameTag = true,
-	socialGroup = "self",
->>>>>>> core3/unstable
+	socialGroup = "",
 	faction = "",
 	level = 300,
 	chanceHit = 30,
@@ -27,7 +22,7 @@ light_jedi_sentinel = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -51,7 +46,7 @@ light_jedi_sentinel = Creature:new {
 	},
 	weapons = {"light_jedi_weapons"},
 	conversationTemplate = "",
-	attacks = merge(lightsabermaster,forcepowermaster)
+	attacks = merge(lightsabermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(light_jedi_sentinel, "light_jedi_sentinel")
