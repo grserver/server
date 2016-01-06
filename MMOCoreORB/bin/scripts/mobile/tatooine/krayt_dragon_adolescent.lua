@@ -58,7 +58,6 @@ krayt_dragon_adolescent = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareacombo",""},
 		{"creatureareaknockdown",""}
 	}	
 }
