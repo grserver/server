@@ -1,5 +1,10 @@
 prophet_of_the_dark_side = Creature:new {
 	objectName = "@mob/creature_names:prophet_of_the_dark_side",
+<<<<<<< HEAD
+=======
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
+>>>>>>> core3/unstable
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",

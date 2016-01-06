@@ -47,6 +47,8 @@ public:
 	int getForcePowerMax(lua_State* L);
 	int setForcePower(lua_State* L);
 	int isJedi(lua_State* L);
+	int isJediLight(lua_State* L);
+	int isJediDark(lua_State* L);
 	int setJediState(lua_State* L);
 	int isOnline(lua_State* L);
 	int setActiveQuestsBit(lua_State* L);
@@ -68,6 +70,7 @@ public:
 	int activateQuest(lua_State* L);
 	int canActivateQuest(lua_State* L);
 	int getSuiBox(lua_State* L);
+	int addSuiBox(lua_State* L);
 
 private:
 	// The pointer to the 'real object' defined in object.cc

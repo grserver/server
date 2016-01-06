@@ -1,7 +1,13 @@
 dark_jedi_sentinel = Creature:new {
 	objectName = "@mob/creature_names:dark_jedi_sentinel",
+<<<<<<< HEAD
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "",
+=======
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
+	socialGroup = "self",
+>>>>>>> core3/unstable
 	faction = "",
 	level = 300,
 	chanceHit = 30,

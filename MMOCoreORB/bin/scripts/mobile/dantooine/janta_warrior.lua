@@ -1,9 +1,17 @@
 janta_warrior = Creature:new {
 	objectName = "@mob/creature_names:janta_warrior",
+<<<<<<< HEAD
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "",
 	faction = "",
 	level = 125,
+=======
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
+	socialGroup = "janta_tribe",
+	faction = "janta_tribe",
+	level = 70,
+>>>>>>> core3/unstable
 	chanceHit = 0.7,
 	damageMin = 495,
 	damageMax = 700,
