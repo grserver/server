@@ -36,7 +36,8 @@ janta_warrior = Creature:new {
 				{group = "junk", chance = 2500000},
 				{group = "janta_common", chance = 4500000},
 				{group = "loot_kit_parts", chance = 3000000}
-			}
+			},
+			lootChance = 9000000
 		}
 	},
 	weapons = {"primitive_weapons"},
