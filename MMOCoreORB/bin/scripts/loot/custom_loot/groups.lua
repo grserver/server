@@ -128,6 +128,7 @@ includeFile("custom_loot/groups/weapons/melee/g_wod_war_fan.lua")
 includeFile("custom_loot/groups/weapons/melee/g_wookiee_knuckler.lua") 
 includeFile("custom_loot/groups/weapons/melee/g_wookiee_knuckler_wod.lua") 
 includeFile("custom_loot/groups/weapons/melee/g_xantha_smasher.lua")
+includeFile("custom_loot/groups/weapons/melee/g_dot1_vk.lua")
 
 includeFile("custom_loot/groups/weapons/ranged/g_carbine_alliance_needler.lua")
 includeFile("custom_loot/groups/weapons/ranged/g_carbine_avatar_trando.lua")
