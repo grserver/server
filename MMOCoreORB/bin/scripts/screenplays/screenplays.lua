@@ -411,6 +411,9 @@ includeFile("treasure_map/TreasureMapMenuComponent.lua")
 --Race Tracks
 includeFile("racetracks/racetracks.lua")
 
+--Test
+includeFile("events/stresstest_20120128.lua")
+
 --Space
 includeFile("space/space_chassis_dealer_conv_handler.lua")
 
