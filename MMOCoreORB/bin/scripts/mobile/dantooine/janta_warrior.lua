@@ -1,17 +1,18 @@
 janta_warrior = Creature:new {
 	objectName = "@mob/creature_names:janta_warrior",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "",
 	faction = "",
-	level = 125,
+	level = 70,
 	chanceHit = 0.7,
 	damageMin = 495,
 	damageMax = 700,
-	baseXp = 9655,
+	baseXp = 6655,
 	baseHAM = 12000,
 	baseHAMmax = 15000,
 	armor = 2,
-	resists = {25,45,-1,45,45,65,45,-1,-1},
+	resists = {25,45,-1,45,45,100,45,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -35,7 +36,8 @@ janta_warrior = Creature:new {
 				{group = "junk", chance = 2500000},
 				{group = "janta_common", chance = 4500000},
 				{group = "loot_kit_parts", chance = 3000000}
-			}
+			},
+			lootChance = 9000000
 		}
 	},
 	weapons = {"primitive_weapons"},

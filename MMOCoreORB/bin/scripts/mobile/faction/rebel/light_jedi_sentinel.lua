@@ -1,6 +1,7 @@
 light_jedi_sentinel = Creature:new {
 	objectName = "@mob/creature_names:light_jedi_sentinel",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "",
 	faction = "",
 	level = 300,
@@ -22,7 +23,11 @@ light_jedi_sentinel = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
+<<<<<<< HEAD
 	creatureBitmask = KILLER,
+=======
+	creatureBitmask = PACK + HERD + KILLER,
+>>>>>>> 3121c2fac98874d7453c1cfdd48ab8ec61074a83
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

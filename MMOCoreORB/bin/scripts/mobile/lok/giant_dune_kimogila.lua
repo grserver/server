@@ -39,7 +39,7 @@ giant_dune_kimogila = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareacombo",""},
+		{"creatureareaattack",""},
 		{"creatureareadisease",""}
 	}
 }

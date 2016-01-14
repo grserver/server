@@ -31,7 +31,7 @@ giant_cavern_spider_recluse = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareacombo",""},
+		{"creatureareaattack",""},
 		{"strongpoison",""}
 	}
 }

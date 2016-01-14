@@ -41,6 +41,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getForcePowerMax", &LuaPlayerObject::getForcePowerMax },
 		{ "setForcePower", &LuaPlayerObject::setForcePower },
 		{ "isJedi", &LuaPlayerObject::isJedi },
+		{ "isJediLight", &LuaPlayerObject::isJediLight },
+		{ "isJediDark", &LuaPlayerObject::isJediDark },
 		{ "setJediState", &LuaPlayerObject::setJediState },
 		{ "isOnline", &LuaPlayerObject::isOnline },
 		{ "setActiveQuestsBit", &LuaPlayerObject::setActiveQuestsBit },
@@ -62,6 +64,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "activateQuest", &LuaPlayerObject::activateQuest },
 		{ "canActivateQuest", &LuaPlayerObject::canActivateQuest },
 		{ "getSuiBox", &LuaPlayerObject::getSuiBox },
+		{ "addSuiBox", &LuaPlayerObject::addSuiBox },
 		{ 0, 0 }
 };
 
@@ -337,6 +340,18 @@ int LuaPlayerObject::isJedi(lua_State* L) {
 	return 1;
 }
 
+int LuaPlayerObject::isJediLight(lua_State* L) {
+	lua_pushboolean(L, realObject->isJediLight());
+
+	return 1;
+}
+
+int LuaPlayerObject::isJediDark(lua_State* L) {
+	lua_pushboolean(L, realObject->isJediDark());
+
+	return 1;
+}
+
 int LuaPlayerObject::setJediState(lua_State* L) {
 	int jediState = lua_tointeger(L, -1);
 
@@ -535,4 +550,15 @@ int LuaPlayerObject::getSuiBox(lua_State* L) {
 	}
 
 	return 1;
+}
+
+int LuaPlayerObject::addSuiBox(lua_State* L) {
+	Reference<SuiBox*> box = (SuiBox*) lua_touserdata(L, -1);
+
+	if (box == NULL)
+		return 0;
+
+	realObject->addSuiBox(box);
+
+	return 0;
 }

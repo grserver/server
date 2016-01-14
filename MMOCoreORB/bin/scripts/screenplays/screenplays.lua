@@ -9,13 +9,22 @@ require("corvetteTicketTakerLogic")
 includeFile("custom_content/screenplays.lua")
 
 -- SUI
---require("sui.SuiSample")
-require("sui.SuiTemplate")
+--require("sui.custom.SuiSample")
+require("sui.SuiCalibrationGame1")
+require("sui.SuiCalibrationGame2")
+require("sui.SuiCalibrationGame3")
+require("sui.SuiCalibrationGame4")
+require("sui.SuiInputBox")
 require("sui.SuiListBox")
 require("sui.SuiMessageBox")
-require("sui.SuiInputBox")
 require("sui.SuiQuestPopup")
-require("sui.SuiRadiationSensor")
+require("sui.SuiTemplate")
+require("sui.custom.SuiAmpPuzzle")
+require("sui.custom.SuiArrayPuzzle")
+require("sui.custom.SuiProcessorPuzzle")
+require("sui.custom.SuiRadiationSensor")
+require("sui.custom.SuiReceiverPuzzle")
+
 
 
 -- Theme parks
@@ -401,6 +410,9 @@ includeFile("treasure_map/TreasureMapMenuComponent.lua")
 
 --Race Tracks
 includeFile("racetracks/racetracks.lua")
+
+--Test
+--includeFile("events/stresstest_20120128.lua")
 
 --Space
 includeFile("space/space_chassis_dealer_conv_handler.lua")

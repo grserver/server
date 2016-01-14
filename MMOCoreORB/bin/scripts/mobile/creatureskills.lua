@@ -13,7 +13,7 @@ marksmanmid = { {"overchargeshot1",""},{"pointblanksingle1",""},{"pointblankarea
 
 --creature level 16 to 20
 marksmanmaster = { {"overchargeshot2",""},{"pointblanksingle1",""},{"pointblankarea1",""},{"diveshot",""},{"kipupshot",""},{"rollshot",""},{"bodyshot2",""},{"healthshot1",""},{"legshot2",""},{"fullautosingle1",""},{"actionshot1",""},{"headshot2",""},{"mindshot1",""},{"warningshot",""},{"suppressionfire1",""} }
-brawlermaster = { {"intimidate2",""},{"unarmedlunge2",""},{"unarmedhit1",""},{"unarmedstun1",""},{"unarmedblind1",""},{"unarmedspinattack1",""},{"melee1hspinattack1",""},{"melee1hlunge2",""},{"melee1hdizzyhit1",""},{"melee1hhit1",""},{"melee1hbodyhit1",""},{"melee2hhit1",""},{"melee2hlunge2",""},{"melee2hheadhit1",""},{"melee2hsweep1",""},{"melee2hspinattack1",""},{"polearmlunge2",""},{"polearmhit1",""},{"polearmleghit1",""},{"polearmstun1",""},{"polearmspinattack1",""} }
+brawlermaster = { {"intimidate1",""},{"unarmedlunge2",""},{"unarmedhit1",""},{"unarmedstun1",""},{"unarmedblind1",""},{"unarmedspinattack1",""},{"melee1hspinattack1",""},{"melee1hlunge2",""},{"melee1hdizzyhit1",""},{"melee1hhit1",""},{"melee1hbodyhit1",""},{"melee2hhit1",""},{"melee2hlunge2",""},{"melee2hheadhit1",""},{"melee2hsweep1",""},{"melee2hspinattack1",""},{"polearmlunge2",""},{"polearmhit1",""},{"polearmleghit1",""},{"polearmstun1",""},{"polearmspinattack1",""} }
 
 --creature level 21 to 25 use base profession master with these depending on weapons in thier weapons groups
 bountyhunternovice = { {"firelightningsingle1",""},{"bleedingshot",""},{"underhandshot",""} }

@@ -3,13 +3,13 @@ krayt_dragon_ancient = Creature:new {
 	socialGroup = "krayt",
 	faction = "",
 	level = 336,
-	chanceHit = 25.0,
-	damageMin = 1270,
-	damageMax = 2250,
+	chanceHit = 30.0,
+	damageMin = 2250,
+	damageMax = 4000,
 	baseXp = 28549,
-	baseHAM = 410000,
-	baseHAMmax = 501000,
-	armor = 2,
+	baseHAM = 560000,
+	baseHAMmax = 651000,
+	armor = 3,
 	resists = {95,95,95,95,25,95,95,95,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
@@ -72,8 +72,8 @@ krayt_dragon_ancient = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareacombo","stateAccuracyBonus=100"},
-		{"creatureareaknockdown","stateAccuracyBonus=100"}
+		{"creatureareaknockdown","stateAccuracyBonus=100"},
+		{"creatureareaattack","stateAccuracyBonus=100"},
 	}
 }
 

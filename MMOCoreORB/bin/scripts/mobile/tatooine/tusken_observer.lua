@@ -32,7 +32,7 @@ tusken_observer = Creature:new {
 				{group = "task_loot_medallion_dark_jedi", chance = 1500000},
 				{group = "pearls_premium", chance = 3000000},
 				{group = "wearables_scarce", chance = 2000000},
-				{group = "g_bespin_house_loot_deed", chance = 750000},
+				{group = "bounty_hunter_armor", chance = 750000},
 				{group = "holocron_dark", chance = 750000},
 				{group = "armor_attachments", chance = 500000},
 				{group = "clothing_attachments", chance = 500000},
