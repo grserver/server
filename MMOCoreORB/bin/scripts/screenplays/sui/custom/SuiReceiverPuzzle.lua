@@ -1,11 +1,11 @@
 local ObjectManager = require("managers.object.object_manager")
 
 SuiReceiverPuzzle = {}
-function SuiReceiverPuzzle:openPuzzle(pCreatureObject, pArray)
+function SuiReceiverPuzzle:openPuzzle(pCreatureObject, pPuzzle)
 	local sui = SuiCalibrationGame3.new("SuiReceiverPuzzle", "defaultCallback")
 	local playerID = SceneObject(pCreatureObject):getObjectID()
 
-	sui.setTargetNetworkId(0)
+	sui.setTargetNetworkId(SceneObject(pPuzzle):getObjectID())
 	sui.setForceCloseDistance(0)
 
 	local goal = { 0, 0, 0 }
@@ -75,6 +75,20 @@ function SuiReceiverPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 		return
 	end
 
+	local puzzleID = suiPageData:getTargetNetworkId()
+	local pPuzzle = getSceneObject(puzzleID)
+
+	if (pPuzzle == nil) then
+		printf("Error in SuiReceiverPuzzle:defaultCallback, pPuzzle nil.\n")
+		return
+	end
+
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+
+	if pInventory == nil or SceneObject(pPuzzle):getParentID() ~= SceneObject(pInventory):getObjectID() then
+		return
+	end
+
 	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
 		playerObject:addSuiBox(pSui)
 	end)
@@ -133,7 +147,7 @@ function SuiReceiverPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 		suiPageData:setProperty("btnOk", "Visible", "false")
 
 		if (wonPuzzle) then
-			writeData(playerID .. ":receiverPuzzle:status", 1)
+			LuaFsCraftingComponentObject(pPuzzle):setStatus(1)
 			suiPageData:setProperty("description.desc", "Text", "@quest/force_sensitive/fs_crafting:sui_calibration_success")
 
 			for i = 1, 3, 1 do
@@ -151,7 +165,7 @@ function SuiReceiverPuzzle:defaultCallback(pPlayer, pSui, eventIndex, ...)
 			end
 
 		else
-			writeData(playerID .. ":receiverPuzzle:status", -1)
+			LuaFsCraftingComponentObject(pPuzzle):setStatus(-1)
 			suiPageData:setProperty("description.desc", "Text", "@quest/force_sensitive/fs_crafting:sui_calibration_failure")
 			suiPageData:setProperty("description.attempts", "Text", "@quest/force_sensitive/fs_crafting:sui_attempts_remaining" .. " " .. integrity .. "%")
 		end

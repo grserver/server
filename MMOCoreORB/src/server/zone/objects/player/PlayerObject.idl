@@ -732,7 +732,9 @@ class PlayerObject extends IntangibleObject {
 	public void clearCompletedQuestsBit(int bitIndex, boolean notifyClient = true) {
 		setCompletedQuestsBit(bitIndex, (byte)0, notifyClient);
 	}
-	
+
+	public native void completeQuest(int questID);
+
 	@dereferenced
 	@local
 	@dirty
@@ -947,14 +949,8 @@ class PlayerObject extends IntangibleObject {
 
 	public native void doForceRegen();
 	
-	public void setForcePowerRegen(int val) {
-		forcePowerRegen = val;
-	}
-	
-	@read
-	public int getForcePowerRegen() {
-		return forcePowerRegen;
-	}
+	@dirty
+	public native int getForcePowerRegen();
 
 	@read
 	public unsigned long getSavedParentID() {
