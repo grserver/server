@@ -23,12 +23,8 @@ class VisibilityManager : public Singleton<VisibilityManager>, public Logger, pu
 	 * available on the bounty hunter mission terminal as a player bounty.
 	 */
 	enum {
-<<<<<<< HEAD
-		TERMINALVISIBILITYLIMIT = 2
-=======
 		TERMINALVISIBILITYLIMIT = 500,
 		MAXVISIBILITY = 1000
->>>>>>> core3/unstable
 	};
 
 

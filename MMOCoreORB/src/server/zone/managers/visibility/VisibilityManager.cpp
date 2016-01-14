@@ -86,14 +86,6 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 				ManagedReference<CreatureObject*> c = cast<CreatureObject*>(obj);
 				if (c->isNonPlayerCreatureObject() || c->isPlayerCreature()) {
 					if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
-<<<<<<< HEAD
-						visibilityIncrease += 4.0;
-					} else {
-						if (creature->getFaction() == c->getFaction()) {
-							visibilityIncrease += 4.0;
-						} else {
-							visibilityIncrease += 4.0;
-=======
 						visibilityIncrease += 0.5;
 						//info(c->getCreatureName().toString() + " generating a 0.5 visibility modifier", true);
 					} else {
@@ -103,7 +95,6 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 						} else {
 							visibilityIncrease += 1;
 							//info( c->getCreatureName().toString() + " generating a 1.0 visibility modifier", true);
->>>>>>> core3/unstable
 						}
 					}
 				}
