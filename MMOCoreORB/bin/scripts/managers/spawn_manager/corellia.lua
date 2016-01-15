@@ -240,4 +240,7 @@ corellia_static_spawns = {
 	{"r5",60,-5400.32,21,-2614.17,236.816,0, "calm", "R5-S7", "stationary"},
 	{"r5",60,-4954.81,21,-2379.55,166.051,0, "calm", "R5-C7", "stationary"},
 	{"ulaire_roye",60,-5048.68,21,-2291.24,122.799,0, "neutral", "", "stationary"},
+	{"imperial_recruiter",60,-145.9,28.0,-4691.1,179,0 "conversation", "", "stationary"},
+	{"rebel_recruiter",60,-138.2,28.0,-4690.4,177,0 "conversation", "", "stationary"},
+	
 }
