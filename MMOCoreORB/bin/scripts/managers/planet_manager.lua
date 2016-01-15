@@ -89,7 +89,8 @@ corellia = {
 	--	{templateFile = "object/tangible/terminal/terminal_character_builder.iff", ox = 0, oy = -0.666281, oz = 0, ow = 0.745701, x = -136.437, z = 28, y = -4730.23, parentid = 0},
 	--  {templateFile = "object/ship/escape_pod.iff", ox = 0, oy = 0.718456, oz = 0, ow = 0.695572, x = -200.062, z = 28, y = -4724.86, parentid = 0},
 		{templateFile = "object/building/corellia/capitol_corellia.iff", ox = 0, oy = 0.0233105, oz = 0, ow = 0.999728, x = -172.21, z = 28.0, y = -4887.45, parentid = 0},
-		{templateFile = "object/building/yavin/dark_enclave.iff", ox = 0, oy = 0.999265, oz = 0, ow = 0.0383315, x = -142.333, z = 28, y = -4686.55, parentid = 0}
+		{templateFile = "object/building/yavin/dark_enclave.iff", ox = 0, oy = 0.999265, oz = 0, ow = 0.0383315, x = -142.333, z = 28, y = -4686.55, parentid = 0},
+		{templateFile = "object/tangible/jedi/force_shrine_stone.iff", ox = 0, oy = 0.0219882, oz = 0, ow = 0.999758, x = -143.064, z = 28, y = -4678.45, parentid = 0}
 	}
 }
 
