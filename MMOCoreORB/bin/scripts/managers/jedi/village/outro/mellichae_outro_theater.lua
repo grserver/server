@@ -2,6 +2,7 @@ local GoToTheater = require("quest.tasks.go_to_theater")
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
+local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 require("utils.helpers")
 
 
@@ -48,7 +49,7 @@ MellichaeOutroTheater = GoToTheater:new {
 		{ template = "sith_shadow_thug", minimumDistance = 32, maximumDistance = 64, referencePoint = 0 },
 		{ template = "sith_shadow_thug", minimumDistance = 32, maximumDistance = 64, referencePoint = 0 }
 	},
-	despawnTime = 2 * 60* 60* 1000, -- 2 hours
+	despawnTime =  60* 60* 1000, -- 1 hour
 	activeAreaRadius = 64
 }
 
@@ -89,7 +90,7 @@ function MellichaeOutroTheater:onBossKilled(pCreature, pKiller, nothing)
 		for i=1,groupSize do
 			local pMember = CreatureObject(pKiller):getGroupMember(i)
 			if (pMember ~= nil) then
-				if (CreatureObject(pMember):hasActiveQuest(QuestManager.quests.FS_THEATER_FINAL)) then
+				if QuestManager.hasActiveQuest(pMember, QuestManager.quests.FS_THEATER_FINAL) then
 					pOwner = pMember
 				end
 			end
@@ -97,11 +98,11 @@ function MellichaeOutroTheater:onBossKilled(pCreature, pKiller, nothing)
 	end
 
 
-	if (SpawnMobiles.isFromSpawn(pOwner, MellichaeOutroTheater.taskName, pCreature)) then
+	if (SpawnMobiles.isFromSpawn(pOwner, self.taskName, pCreature)) then
 		self:addLoot(pCreature)
 		QuestManager.completeQuest(pOwner, QuestManager.quests.FS_THEATER_FINAL)
 		CreatureObject(pOwner):sendSystemMessage("@quest/force_sensitive/exit:final_complete") --	Congratulations, you have completed the Force sensitive quests! You are now qualified to begin the Jedi Padawan Trials.
-		CreatureObject(pOwner):setScreenPlayState(16, "VillageScreenPlay") -- Killed him.
+		VillageJediManagerCommon.setJediProgressionScreenPlayState(pOwner, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) -- Killed him.
 		deleteData(SceneObject(pCreature) .. ":totalNum:Shrines:Red")
 		deleteData(SceneObject(pCreature) .. ":totalNum:Shrines:Green")
 	end
@@ -134,20 +135,22 @@ function MellichaeOutroTheater:onSuccessfulSpawn(pCreatureObject, spawnedSithSha
 		return
 	end
 
+	VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE)
+
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onBossKilled", spawnedSithShadowsList[1])
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pCreatureObject)
 	createObserver(DAMAGERECEIVED, self.taskName, "onDamageReceived", spawnedSithShadowsList[1])
 	createObserver(DAMAGERECEIVED, self.taskName, "onDamageReceived", spawnedSithShadowsList[2])
 
-	writeData(SceneObject(spawnedSithShadowsList[1]):getObjectID() .. ":mell:encouter:belongs:to", SceneObject(pCreatureObject):getObjectID())
+	writeData(SceneObject(spawnedSithShadowsList[1]):getObjectID() .. ":mell:encounter:belongs:to", SceneObject(pCreatureObject):getObjectID())
 	writeData(SceneObject(spawnedSithShadowsList[2]):getObjectID() .. ":mell:encounter:belongs:to", SceneObject(pCreatureObject):getObjectID())
 
 	for i=1,2 do
-		MellichaeOutroTheater:spawnScenePowerShrines(pCreatureObject, spawnedSithShadowsList[1], "red")
+		MellichaeOutroTheater:spawnScenePowerShrines(pCreatureObject, spawnedSithShadowsList[1], "red", i)
 		writeData(SceneObject(pCreatureObject):getObjectID() .. ":totalNum:Shrines:Red", i)
 
-		MellichaeOutroTheater:spawnScenePowerShrines(pCreatureObject, spawnedSithShadowsList[1], "green")
+		MellichaeOutroTheater:spawnScenePowerShrines(pCreatureObject, spawnedSithShadowsList[1], "green", i)
 		writeData(SceneObject(pCreatureObject):getObjectID() .. ":totalNum:Shrines:Green", i)
 	end
 
@@ -160,7 +163,7 @@ function MellichaeOutroTheater:onPlayerKilled(pCreatureObject, pKiller, nothing)
 	end
 
 	Logger:log("Player was killed.", LT_INFO)
-	if SpawnMobiles.isFromSpawn(pCreatureObject, MellichaeOutroTheater.taskName, pKiller) then
+	if SpawnMobiles.isFromSpawn(pCreatureObject, self.taskName, pKiller) then
 		CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/exit:final_fail") -- You have failed the Mellichae encounter, you will be given the oppertunity to attempt it again in the near future.
 		OldManEncounter:start(pCreatureObject)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_THEATER_FINAL)
@@ -179,7 +182,7 @@ function MellichaeOutroTheater:onPowerShrineDestroyed(pSceneObject, pKiller, not
 	end
 
 	local ownerID = readData(SceneObject(pSceneObject):getObjectID() .. ":isShrineOwned:By")
-	deleteData(SceneObject(pSceneObject):getObjectID() .. ":isShrineOwned:By")
+
 
 	if (SceneObject(pSceneObject):getTemplateObjectPath() == "object/tangible/jedi/power_shrine_red.iff") then
 		Logger:log("1 Red Shrine was destroyed.", LT_INFO)
@@ -189,6 +192,7 @@ function MellichaeOutroTheater:onPowerShrineDestroyed(pSceneObject, pKiller, not
 			writeData(ownerID .. ":totalNum:Shrines:Red", numOfShrines - 1)
 		end
 		SceneObject(pSceneObject):destroyObjectFromWorld()
+		deleteData(SceneObject(pSceneObject):getObjectID() .. ":isShrineOwned:By")
 		return 1
 
 	elseif (SceneObject(pSceneObject):getTemplateObjectPath() == "object/tangible/jedi/power_shrine.iff") then
@@ -196,9 +200,10 @@ function MellichaeOutroTheater:onPowerShrineDestroyed(pSceneObject, pKiller, not
 		local numOfShrines = readData(ownerID .. ":totalNum:Shrines:Green")
 
 		if (numOfShrines ~= nil) then
-			writeData(ownerID .. ":totalNum:Shrines:Red", numOfShrines - 1)
+			writeData(ownerID .. ":totalNum:Shrines:Green", numOfShrines - 1)
 		end
 		SceneObject(pSceneObject):destroyObjectFromWorld()
+		deleteData(SceneObject(pSceneObject):getObjectID() .. ":isShrineOwned:By")
 		return 1
 
 	end
@@ -229,9 +234,9 @@ function MellichaeOutroTheater:onDamageReceived(pObject, pAttacker, damage)
 		local numOfShrines = readData(creoOwnerId .. ":totalNum:Shrines:Red")
 
 		if (numOfShrines ~= nil and numOfShrines > 0) then
-			CreatureObject(pObject):healDamage(damage, 1)
-			CreatureObject(pObject):healDamage(damage, 2)
+			CreatureObject(pObject):healDamage(damage, 0)
 			CreatureObject(pObject):healDamage(damage, 3)
+			CreatureObject(pObject):healDamage(damage, 6)
 			CreatureObject(pObject):playEffect("clienteffect/healing_healdamage.cef", "")
 			return 0
 		elseif (numOfShrines == nil or numOfShrines <= 0) then
@@ -244,8 +249,40 @@ function MellichaeOutroTheater:onDamageReceived(pObject, pAttacker, damage)
 	end
 end
 
+-- This is called from the base module to clean up anything extra...
+function MellichaeOutroTheater:onTheaterDespawn(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
+	local pShrine = nil
+
+	for i=1,2 do
+		local shrineIDRed = readData(SceneObject(pCreatureObject):getObjectID() .. ":powershrine:".. "red" .. ":" .. tostring(i))
+		local pShrineR = getSceneObject(shrineIDRed)
+
+		if (pShrineR ~= nil) then
+			SceneObject(pShrineR):destroyObjectFromWorld()
+			SceneObject(pShrineR):destroyObjectFromDatabase()
+			deleteData(SceneObject(pCreatureObject):getObjectID() .. ":powershrine:".. "red" .. ":" .. tostring(i))
+			deleteData(shrineIDRed .. ":isShrineOwned:By")
+		end
+		
+		local shrineIDGreen = readData(SceneObject(pCreatureObject):getObjectID() .. ":powershrine:".. "green" .. ":" .. tostring(i))
+		local pShrineG = getSceneObject(shrineIDGreen)
+
+		if (pShrineG ~= nil) then
+			SceneObject(pShrineG):destroyObjectFromWorld()
+			SceneObject(pShrineG):destroyObjectFromDatabase()
+			deleteData(SceneObject(pCreatureObject):getObjectID() .. ":powershrine:".. "green" .. ":" .. tostring(i))
+			deleteData(shrineIDGreen .. ":isShrineOwned:By")
+		end
+
+	end
+end
+
 -- For spawning the extra shrine scene objects.
-function MellichaeOutroTheater:spawnScenePowerShrines(pCreatureObject, pMellichae, color)
+function MellichaeOutroTheater:spawnScenePowerShrines(pCreatureObject, pMellichae, color, i)
 	if (pMellichae == nil or pCreatureObject == nil) then
 		return
 	end
@@ -261,11 +298,13 @@ function MellichaeOutroTheater:spawnScenePowerShrines(pCreatureObject, pMellicha
 		createObserver(OBJECTDESTRUCTION, self.taskName, "onPowerShrineDestroyed", pShrine)
 		createObserver(DAMAGERECEIVED, self.taskName, "onDamageReceived", pShrine)
 		writeData(SceneObject(pShrine):getObjectID() .. ":isShrineOwned:By", SceneObject(pCreatureObject):getObjectID())
+		writeData(SceneObject(pCreatureObject):getObjectID() .. ":powershrines:" .. color .. ":" .. tostring(i), SceneObject(pShrine):getObjectID())
 	elseif (color == "green") then
 		local pShrine = spawnSceneObject(planet, "object/tangible/jedi/power_shrine.iff", boundaryCrystalsLoc[1], boundaryCrystalsLoc[2], boundaryCrystalsLoc[3], 0, 0)
 		TangibleObject(pShrine):setMaxCondition(40000)
 		createObserver(OBJECTDESTRUCTION, self.taskName, "onPowerShrineDestroyed", pShrine)
 		writeData(SceneObject(pShrine):getObjectID() .. ":isShrineOwned:By", SceneObject(pCreatureObject):getObjectID())
+		writeData(SceneObject(pCreatureObject):getObjectID() .. ":powershrine:".. color .. ":" .. tostring(i), SceneObject(pShrine):getObjectID())
 	end
 
 end

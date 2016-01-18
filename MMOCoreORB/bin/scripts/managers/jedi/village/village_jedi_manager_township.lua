@@ -15,7 +15,7 @@ VillageJediManagerTownship = ScreenPlay:new {
 
 VILLAGE_TOTAL_NUMBER_OF_PHASES = 2 -- Temporarily set to 2 for testing until other phases begin development
 
-local VILLAGE_PHASE_CHANGE_TIME = 24 * 60 * 60 * 1000 -- Testing value.
+local VILLAGE_PHASE_CHANGE_TIME = 48 * 60 * 60 * 1000 -- Testing value.
 --local VILLAGE_PHASE_CHANGE_TIME = 5 * 60 * 1000
 --local VILLAGE_PHASE_CHANGE_TIME = 3 * 7 * 24 * 60 * 60 * 1000 -- Three Weeks.
 
@@ -96,7 +96,7 @@ function VillageJediManagerTownship:spawnMobiles(currentPhase, spawnStaticMobs)
 	if (spawnStaticMobs == true) then
 		local mobileTable = villageMobileSpawns[0]
 
-		for i = 1, table.getn(mobileTable), 1 do
+		for i = 1, #mobileTable, 1 do
 			local mobile = mobileTable[i]
 			local pMobile = spawnMobile("dathomir", mobile[1], 0, mobile[2], mobile[3], mobile[4], mobile[5], 0)
 			if (pMobile ~= nil) then
@@ -114,7 +114,7 @@ function VillageJediManagerTownship:spawnMobiles(currentPhase, spawnStaticMobs)
 
 	local mobileTable = villageMobileSpawns[currentPhase]
 
-	for i = 1, table.getn(mobileTable), 1 do
+	for i = 1, #mobileTable, 1 do
 		local mobile = mobileTable[i]
 		local pMobile = spawnMobile("dathomir", mobile[1], 0, mobile[2], mobile[3], mobile[4], mobile[5], 0)
 
@@ -136,7 +136,7 @@ end
 -- Despawn and cleanup current phase mobiles.
 function VillageJediManagerTownship:despawnMobiles(currentPhase)
 	local mobileTable = villageMobileSpawns[currentPhase]
-	for i = 1, table.getn(mobileTable), 1 do
+	for i = 1, #mobileTable, 1 do
 		local objectID = readData("village:npc:object:" .. i)
 		local pMobile = getSceneObject(objectID)
 
@@ -156,7 +156,7 @@ function VillageJediManagerTownship:spawnSceneObjects(currentPhase, spawnStaticO
 	end
 
 	local objectTable = villageObjectSpawns[currentPhase]
-	for i = 1, table.getn(objectTable), 1 do
+	for i = 1, #objectTable, 1 do
 		local sceneObject = objectTable[i]
 		local pObject = spawnSceneObject("dathomir", sceneObject[1], sceneObject[2], sceneObject[3], sceneObject[4], 0, sceneObject[5])
 
@@ -170,7 +170,7 @@ end
 -- Despawn and cleanup current phase scene objects.
 function VillageJediManagerTownship:despawnSceneObjects(currentPhase)
 	local objectTable = villageObjectSpawns[currentPhase]
-	for i = 1, table.getn(objectTable), 1 do
+	for i = 1, #objectTable, 1 do
 		local objectID = readData("village:scene:object:" .. i)
 		local pObject = getSceneObject(objectID)
 
@@ -217,6 +217,9 @@ function VillageJediManagerTownship:doOnlinePhaseChangeFails(pCreature, currentP
 		FsPatrol:doPhaseChangeFail(pCreature)
 
 		FsMedicPuzzle:doPhaseChange(pCreature)
+		
+		local FsCrafting1 = require("managers.jedi.village.phase1.fs_crafting1")
+		FsCrafting1:doPhaseChangeFail(pCreature)
 	elseif (currentPhase == 2) then
 		local FsReflex2 = require("managers.jedi.village.phase2.fs_reflex2")
 		FsReflex2:doPhaseChangeFail(pCreature)
