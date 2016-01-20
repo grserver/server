@@ -357,21 +357,20 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void clearCombatState(boolean clearDefenders = true);
 
-	@preLocked
 	public native void addMountedCombatSlow();
 
-	@preLocked
-	public native void removeMountedCombatSlow();
+	public native void removeMountedCombatSlow(boolean showEndMessage = true);
 
 	/**
 	 * Sets a new posture
 	 * @pre { this object is locked }
 	 * @post {this object is locked, this object has the new posture set }
 	 * @param newPosture posture to set
-	 * @param notifyClient if set true the client will be updated with the changes
+	 * @param immedate if set true the client will immediately play the posture animation, should not be used in combat
+	 * 
 	 */
 	@preLocked
-	public native abstract void setPosture(int newPosture, boolean notifyClient = true);
+	public native abstract void setPosture(int newPosture, boolean immedate = true);
 
 	/**
 	 * checks locomotion and sets a new one if appropriate
@@ -667,7 +666,7 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	@arg1preLocked
 	public native void removeBuff(Buff buff);
-
+	
 	@preLocked
 	public native boolean removeStateBuff(unsigned long state);
 
@@ -677,6 +676,16 @@ class CreatureObject extends TangibleObject {
 	 */
 	@preLocked
 	public native void clearBuffs(boolean updateclient);
+	
+	/**
+	 * Renews the buff and all secondary buffs associated with it.
+	 * @param buffCRC The buff to renew from the list
+	 * @param duration The duration to renew the buff at
+	 * @param sendToClient Send buff information to the client - Necessary to update timers
+	 */
+	@preLocked
+	public native void renewBuff(unsigned int buffCRC, int duration, boolean sendToClient = false);
+
 
 	public native void updateVehiclePosition(boolean sendPackets);
 

@@ -229,6 +229,7 @@ SceneObject* CreatureManagerImplementation::spawnDynamicSpawn(unsigned int lairT
 
 	zone->transferObject(theater, -1, false);
 
+	theater->createChildObjects();
 	dynamicObserver->spawnInitialMobiles(theater);
 
 	return theater;
@@ -588,7 +589,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	if (destructedObject->isDead())
 		return 1;
 
-	destructedObject->setPosture(CreaturePosture::DEAD, true);
+	destructedObject->setPosture(CreaturePosture::DEAD, false);
 
 	destructedObject->updateTimeOfDeath();
 
