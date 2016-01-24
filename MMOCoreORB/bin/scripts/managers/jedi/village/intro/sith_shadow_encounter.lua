@@ -52,7 +52,7 @@ function SithShadowEncounter:addWaypointDatapadAsLoot(pSithShadow)
 		return
 	end
 
-	createLoot(pInventory, "sith_shadow_encounter_datapad", 0, true)
+	createLoot(pInventory, "task_reward_huff_quest_krayt_dragon_skull", 0, true)
 end
 
 -- Event handler for the LOOTCREATURE event on one of the sith shadows.
