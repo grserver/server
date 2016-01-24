@@ -341,8 +341,8 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 			ClientCreateCharacterCallback*>(data);
 	ZoneClientSession* client = data->getClient();
 
-	if (client->getCharacterCount(zoneServer.get()->getGalaxyID()) >= 3) {
-		ErrorMessage* errMsg = new ErrorMessage("Create Error", "You are limited to 3 characters per galaxy.", 0x0);
+	if (client->getCharacterCount(zoneServer.get()->getGalaxyID()) >= 10) {
+		ErrorMessage* errMsg = new ErrorMessage("Create Error", "You are limited to 10 characters per galaxy.", 0x0);
 		client->sendMessage(errMsg);
 
 		return false;
