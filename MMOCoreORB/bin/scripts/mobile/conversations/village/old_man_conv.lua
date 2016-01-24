@@ -52,7 +52,7 @@ oldManIntroConvoTemplate:addScreen(you_sense_as_well);
 
 here_is_the_crystal = ConvoScreen:new {
 	id = "here_is_the_crystal",
-	leftDialog = "@conversation/fs_intro_oldman_initial:s_3aab754", -- Very good.  Here is the crystal. May the Force be with you.
+	leftDialog = "@conversation/fs_intro_oldman_initial:s_3aab754", -- Very good.  Here is the crystal Next you must kill the sith shadow and take the skull to an admin.  May the Force be with you.
 	stopConversation = "true",
 	options = {}
 }

@@ -170,7 +170,7 @@ function Glowing:isGlowing(pCreatureObject)
 	if self:countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
 		--giveItem(pInventory, "object/tangible/loot/quest/force_sensitive/force_crystal.iff", -1)
-		player:sendSystemMessage("Congratulations on becoming GLOWY! Seek out an Admin for Force sensitive then  Go to any force shrine to continue your progress towards Jedi.")
+		player:sendSystemMessage("Congratulations on becoming GLOWY! Seek out the old man & sith shadow loot.")
 	end
 end
 
