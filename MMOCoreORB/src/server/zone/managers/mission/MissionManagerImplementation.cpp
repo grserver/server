@@ -91,6 +91,12 @@ void MissionManagerImplementation::loadLuaSettings() {
 			enableFactionalEntertainerMissions = true;
 		}
 
+		value = lua->getGlobalString("enable_same_account_bounty_missions");
+
+		if (value.toLowerCase() == "true") {
+			enableSameAccountBountyMissions = true;
+		}
+
 		delete lua;
 	}
 	catch (Exception& e) {
@@ -708,21 +714,21 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setMissionDescription("mission/mission_destroy_neutral" +  messageDifficulty + missionType, "m" + String::valueOf(randTexts) + "d");
 
 	switch (faction) {
-		case MissionObject::FACTIONIMPERIAL:
-			mission->setRewardFactionPointsImperial(factionPointsReward * 2);
-			mission->setRewardFactionPointsRebel(-factionPointsReward);
-			generateRandomFactionalDestroyMissionDescription(player, mission, "imperial");
-			break;
-		case MissionObject::FACTIONREBEL:
-			mission->setRewardFactionPointsImperial(-factionPointsReward);
-			mission->setRewardFactionPointsRebel(factionPointsReward * 2);
-			generateRandomFactionalDestroyMissionDescription(player, mission, "rebel");
-			break;
-		default:
-			mission->setRewardFactionPointsImperial(0);
-			mission->setRewardFactionPointsRebel(0);
-			break;
-		}
+	case MissionObject::FACTIONIMPERIAL:
+		mission->setRewardFactionPointsImperial(factionPointsReward * 2);
+		mission->setRewardFactionPointsRebel(-factionPointsReward);
+		generateRandomFactionalDestroyMissionDescription(player, mission, "imperial");
+		break;
+	case MissionObject::FACTIONREBEL:
+		mission->setRewardFactionPointsImperial(-factionPointsReward);
+		mission->setRewardFactionPointsRebel(factionPointsReward * 2);
+		generateRandomFactionalDestroyMissionDescription(player, mission, "rebel");
+		break;
+	default:
+		mission->setRewardFactionPointsImperial(0);
+		mission->setRewardFactionPointsRebel(0);
+		break;
+	}
 
 	mission->setTypeCRC(MissionObject::DESTROY);
 }
@@ -1773,9 +1779,15 @@ void MissionManagerImplementation::addPlayerToBountyList(uint64 targetId, int re
 	Locker listLocker(&playerBountyListMutex);
 
 	if (playerBountyList.contains(targetId)) {
-		playerBountyList.get(targetId)->setCanHaveNewMissions(true);
+		if (!playerBountyList.get(targetId)->getCanHaveNewMissions()) {
+			playerBountyList.get(targetId)->setCanHaveNewMissions(true);
+
+			info("Re-adding player " + String::valueOf(targetId) + " to bounty hunter list.", true);
+		}
 	} else {
 		playerBountyList.put(targetId, new BountyTargetListElement(targetId, reward));
+
+		info("Adding player " + String::valueOf(targetId) + " to bounty hunter list.", true);
 	}
 }
 
@@ -1783,12 +1795,17 @@ void MissionManagerImplementation::removePlayerFromBountyList(uint64 targetId) {
 	Locker listLocker(&playerBountyListMutex);
 
 	if (playerBountyList.contains(targetId)) {
-		if (playerBountyList.get(targetId)->numberOfActiveMissions() > 0) {
+
+		BountyTargetListElement* target = playerBountyList.get(targetId);
+
+		if (target->numberOfActiveMissions() > 0 && target->getCanHaveNewMissions()) {
 			playerBountyList.get(targetId)->setCanHaveNewMissions(false);
+			info("Removing player " + String::valueOf(targetId) + " from bounty hunter list with pending missions.", true);
+
 		} else {
-			BountyTargetListElement* target = playerBountyList.get(targetId);
 			playerBountyList.remove(playerBountyList.find(targetId));
 			delete target;
+			info("Removing player " + String::valueOf(targetId) + " from bounty hunter list.", true);
 		}
 	}
 }
@@ -1831,12 +1848,26 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(Cre
 		return NULL;
 	}
 
-	bool found = false;
 	int retries = 20;
 
-	while (!found && retries-- > 0) {
+	while (retries-- > 0) {
 		int index = System::random(playerBountyList.size() - 1);
 		BountyTargetListElement* randomTarget = playerBountyList.get(index);
+
+		if (enableSameAccountBountyMissions != true) {
+			ManagedReference<CreatureObject*> creo = server->getObject(randomTarget->getTargetId()).castTo<CreatureObject*>();
+
+			if (creo != NULL) {
+				ZoneClientSession* targetClient = creo->getClient();
+				ZoneClientSession* playerClient = player->getClient();
+
+				if (targetClient != NULL && playerClient != NULL) {
+					if (targetClient->getAccountID() == playerClient->getAccountID()) {
+						continue;
+					}
+				}
+			}
+		}
 
 		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6 &&
 				randomTarget->getTargetId() != player->getObjectID()) {
@@ -1846,6 +1877,22 @@ BountyTargetListElement* MissionManagerImplementation::getRandomPlayerBounty(Cre
 
 	for (int i = 0; i < playerBountyList.size(); i++) {
 		BountyTargetListElement* randomTarget = playerBountyList.get(i);
+
+
+		if (enableSameAccountBountyMissions != true) {
+			ManagedReference<CreatureObject*> creo = server->getObject(randomTarget->getTargetId()).castTo<CreatureObject*>();
+
+			if (creo != NULL) {
+				ZoneClientSession* targetClient = creo->getClient();
+				ZoneClientSession* playerClient = player->getClient();
+
+				if (targetClient != NULL && playerClient != NULL) {
+					if (targetClient->getAccountID() == playerClient->getAccountID()) {
+						continue;
+					}
+				}
+			}
+		}
 
 		if (randomTarget->getCanHaveNewMissions() && randomTarget->numberOfActiveMissions() < 6 &&
 				randomTarget->getTargetId() != player->getObjectID()) {
@@ -1924,7 +1971,7 @@ void MissionManagerImplementation::despawnMissionNpc(NpcSpawnPoint* npc) {
 	//Lock mission spawn points.
 	if (npc == NULL)
 		return;
-		
+
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
 	npc->despawnNpc();
 }
