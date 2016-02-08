@@ -1,6 +1,7 @@
 untrained_wielder_of_the_dark_side = Creature:new {
 	objectName = "@mob/creature_names:untrained_wielder_of_the_dark_side",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "kun",
 	faction = "",
 	level = 65,
@@ -45,7 +46,7 @@ untrained_wielder_of_the_dark_side = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster,brawlermaster)
+	attacks = merge(pikemanmaster,brawlermaster,fencermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(untrained_wielder_of_the_dark_side, "untrained_wielder_of_the_dark_side")

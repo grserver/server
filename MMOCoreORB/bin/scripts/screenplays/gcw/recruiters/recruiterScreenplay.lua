@@ -307,7 +307,9 @@ function recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
 	suiManager:sendListBox(pNpc, pPlayer, "@faction_recruiter:faction_purchase", "@faction_recruiter:select_item_purchase", 2, "@cancel", "", "@ok", "recruiterScreenplay", "handleSuiPurchase", options)
 end
 
-function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, cancelPressed, arg0)
+function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, eventIndex, arg0)
+	local cancelPressed = (eventIndex == 1)
+
 	if (pCreature == nil or cancelPressed) then
 		deleteStringData(CreatureObject(pCreature):getObjectID() .. ":faction_purchase")
 		return
@@ -415,7 +417,7 @@ end
 
 function recruiterScreenplay:toTitleCase(str)
 	local buf = {}
-	for word in string.gfind(str, "%S+") do
+	for word in string.gmatch(str, "%S+") do
 		local first, rest = string.sub(word, 1, 1), string.sub(word, 2)
 		table.insert(buf, string.upper(first) .. string.lower(rest))
 	end

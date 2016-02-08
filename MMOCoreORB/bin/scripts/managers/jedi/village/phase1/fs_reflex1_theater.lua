@@ -2,6 +2,7 @@ local GoToTheater = require("quest.tasks.go_to_theater")
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
+local VillageJediManagerTownship = require("managers.jedi.village.village_jedi_manager_township")
 
 require("utils.helpers")
 
@@ -11,7 +12,12 @@ FsReflex1Theater = GoToTheater:new {
 	-- GoToTheater properties
 	minimumDistance = 64,
 	maximumDistance = 128,
-	theater = "object/static/structure/naboo/poi_nboo_tent_small.iff",
+	theater = {
+		{ template = "object/static/structure/military/military_wall_med_imperial_style_01.iff", xDiff = 0.5, zDiff = -0.11, yDiff = 2.12, heading = -14.32 },
+		{ template = "object/static/structure/military/military_column_med_imperial_style_01.iff", xDiff = -3.84, zDiff = -0.11, yDiff = 1.098, heading = -14.32 },
+		{ template = "object/static/structure/military/military_column_med_imperial_style_01.iff", xDiff = 4.95, zDiff = -0.1, yDiff = 3.24, heading = -14.32 },
+		{ template = "object/static/structure/naboo/poi_nboo_tent_small.iff", xDiff = -1.61, zDiff = 0.32, yDiff = -6.46, heading = 14.32 }
+	},
 	waypointDescription = "@quest/quest_journal/fs_quests_reflex1:s_02",
 	mobileList = {
 		{ template = "fs_reflex1_prisoner", minimumDistance = 2, maximumDistance = 4, referencePoint = 0 },
@@ -61,6 +67,22 @@ function FsReflex1Theater:onPlayerKilled(pCreatureObject, pKiller, nothing)
 	Logger:log("Player was killed.", LT_INFO)
 	self:finish(pCreatureObject)
 	FsReflex1:failQuest(pCreatureObject)
+
+	return 1
+end
+
+function FsReflex1Theater:onLoggedIn(pCreatureObject)
+	if (not self:hasTaskStarted(pCreatureObject)) then
+		return 1
+	end
+
+	if (VillageJediManagerTownship:getCurrentPhase() ~= 1) then
+		FsReflex1:doPhaseChangeFail(pCreatureObject)
+	else
+		CreatureObject(pCreatureObject):sendSystemMessage("@quest/force_sensitive/fs_reflex:msg_phase_01_quest_fail_logout");
+		self:finish(pCreatureObject)
+		FsReflex1:failQuest(pCreatureObject)
+	end
 
 	return 1
 end

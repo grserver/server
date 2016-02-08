@@ -1,6 +1,7 @@
 nightsister_outcast = Creature:new {
 	objectName = "@mob/creature_names:nightsister_outcast",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "nightsister",
 	faction = "nightsister",
 	level = 81,
@@ -11,7 +12,7 @@ nightsister_outcast = Creature:new {
 	baseHAM = 12000,
 	baseHAMmax = 15000,
 	armor = 1,
-	resists = {30,30,30,100,100,100,100,100,-1},
+	resists = {30,30,30,60,60,60,60,60,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -40,13 +41,13 @@ nightsister_outcast = Creature:new {
 				{group = "pistols", chance = 1000000},
 				{group = "carbines", chance = 1000000},
 				{group = "wearables_common", chance = 500000},
-				{group = "wearables_uncommon", chance = 500000}
+				{group = "tailor_components", chance = 500000}
 			}
 		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster,brawlermaster)
+	attacks = merge(fencermid,swordsmanmid,tkamid,pikemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_outcast, "nightsister_outcast")

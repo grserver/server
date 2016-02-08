@@ -117,6 +117,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getCurrentSpeed", &LuaCreatureObject::getCurrentSpeed },
 		{ "isInvisible", &LuaTangibleObject::isInvisible },
 		{ "isInCombat", &LuaCreatureObject::isInCombat },
+		{ "healDamage", &LuaCreatureObject::healDamage },
+		{ "getGroupID", &LuaCreatureObject::getGroupID },
 		{ 0, 0 }
 };
 
@@ -794,7 +796,7 @@ int LuaCreatureObject::isDancing(lua_State* L) {
 int LuaCreatureObject::isPlayingMusic(lua_State* L) {
 	bool retVal = realObject->isPlayingMusic();
 
-	lua_pushboolean(L, retVal);
+	lua_pushboolean(L,  retVal);
 
 	return 1;
 }
@@ -860,11 +862,12 @@ int LuaCreatureObject::isCombatDroidPet(lua_State* L) {
 }
 
 int LuaCreatureObject::awardExperience(lua_State* L) {
-	String experienceType = lua_tostring(L, -2);
-	int experienceAmount = lua_tointeger(L, -1);
+	String experienceType = lua_tostring(L, -3);
+	int experienceAmount = lua_tointeger(L, -2);
+	bool sendSysMessage = lua_toboolean(L, -1);
 
 	PlayerManager* playerManager = realObject->getZoneServer()->getPlayerManager();
-	playerManager->awardExperience(realObject, experienceType, experienceAmount, false);
+	playerManager->awardExperience(realObject, experienceType, experienceAmount, sendSysMessage);
 
 	return 0;
 }
@@ -891,6 +894,22 @@ int LuaCreatureObject::isInCombat(lua_State* L) {
 	bool retVal = realObject->isInCombat();
 
 	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaCreatureObject::healDamage(lua_State* L) {
+	int damageHealed = lua_tointeger(L, -2);
+	int pool = lua_tointeger(L, -1);
+
+	realObject->healDamage(realObject, pool, damageHealed, true, true);
+
+	return 0;
+}
+
+int LuaCreatureObject::getGroupID(lua_State* L) {
+
+	lua_pushnumber(L, realObject->getGroupID());
 
 	return 1;
 }

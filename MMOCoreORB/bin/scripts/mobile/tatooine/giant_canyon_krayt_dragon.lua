@@ -3,20 +3,20 @@ giant_canyon_krayt_dragon = Creature:new {
 	socialGroup = "krayt",
 	faction = "",
 	level = 300,
-	chanceHit = 30.0,
+	chanceHit = 20.0,
 	damageMin = 1645,
-	damageMax = 3000,
+	damageMax = 2000,
 	baseXp = 28549,
 	baseHAM = 385000,
 	baseHAMmax = 471000,
-	armor = 3,
-	resists = {170,170,170,170,130,170,170,170,-1},
+	armor = 2,
+	resists = {70,70,70,70,30,70,70,70,-1},
 	meatType = "meat_carnivore",
-	meatAmount = 1000,
+	meatAmount = 10000,
 	hideType = "hide_bristley",
-	hideAmount = 870,
+	hideAmount = 8270,
 	boneType = "bone_mammal",
-	boneAmount = 805,
+	boneAmount = 12805,
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 20,
@@ -27,18 +27,33 @@ giant_canyon_krayt_dragon = Creature:new {
 
 	templates = {"object/mobile/canyon_krayt_dragon.iff"},
 	scale = 1.2;
-
-	lootGroups = {
+lootGroups = {
+	   
+	    {
+			groups = {
+				{group = "pearls_premium", chance =  500000},
+				
+			},
+			lootChance = 10000000
+		},
 		{
 	        groups = {
-				{group = "krayt_dragon_common", chance = 2000000},
-				{group = "krayt_tissue_uncommon", chance = 2000000},
-				{group = "pearls_premium", chance = 1500000},
-				{group = "armor_all", chance = 1500000},
-				{group = "weapons_all", chance = 1500000},
-				{group = "wearables_all", chance = 1500000},
+				{group = "clothing_attachments", chance = 10000000},			
 			},
-			lootChance = 7000000
+			lootChance = 5000000
+		},
+		{
+	        groups = {
+				{group = "armor_attachments", chance = 10000000},			
+			},
+			lootChance = 5000000
+		},
+		{
+	        groups = {
+				{group = "krayt_tissue_rare", chance = 5000000},
+				{group = "krayt_tissue_common", chance = 5000000},				
+			},
+			lootChance = 2000000
 		}
 	},
 	weapons = {},

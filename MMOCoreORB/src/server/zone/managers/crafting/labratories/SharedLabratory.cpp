@@ -4,6 +4,7 @@
 
 #include "SharedLabratory.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/objects/tangible/misc/CustomIngredient.h"
 
 SharedLabratory::SharedLabratory() : Logger("SharedLabratory"){
 }
@@ -82,6 +83,33 @@ float SharedLabratory::getWeightedValue(ManufactureSchematic* manufactureSchemat
 		Reference<IngredientSlot* > ingredientslot = manufactureSchematic->getSlot(i);
 		Reference<DraftSlot* > draftslot = manufactureSchematic->getDraftSchematic()->getDraftSlot(i);
 
+		if (ingredientslot->isComponentSlot()) {
+			ComponentSlot* compSlot = cast<ComponentSlot*>(ingredientslot.get());
+
+			if (compSlot == NULL)
+				continue;
+
+			ManagedReference<TangibleObject*> tano = compSlot->getPrototype();
+
+			if (tano == NULL || !tano->isCustomIngredient())
+				continue;
+
+			ManagedReference<CustomIngredient*> component = cast<CustomIngredient*>( tano.get());
+
+			if (component == NULL)
+				continue;
+
+			n = draftslot->getQuantity();
+			stat = component->getValueOf(type);
+
+			if (stat != 0) {
+				nsum += n;
+				weightedAverage += (stat * n);
+			}
+
+			continue;
+		}
+
 		/// If resource slot, continue
 		if(!ingredientslot->isResourceSlot())
 			continue;
@@ -118,8 +146,12 @@ int SharedLabratory::calculateAssemblySuccess(CreatureObject* player,DraftSchema
 	/// City bonus should be 10
 	float cityBonus = player->getSkillMod("private_spec_assembly");
 
-	float assemblyPoints = ((float)player->getSkillMod(draftSchematic->getAssemblySkill())) / 10.0f;
+	int assemblySkill = player->getSkillMod(draftSchematic->getAssemblySkill());
+	assemblySkill += player->getSkillMod("force_assembly");
+
+	float assemblyPoints = ((float)assemblySkill) / 10.0f;
 	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill()) - 100 + cityBonus) / 7;
+	failMitigate += player->getSkillMod("force_failure_reduction");
 
 	if(failMitigate < 0)
 		failMitigate = 0;
@@ -130,7 +162,6 @@ int SharedLabratory::calculateAssemblySuccess(CreatureObject* player,DraftSchema
 	float toolModifier = 1.0f + (effectiveness / 100.0f);
 
 	//Pyollian Cake
-
 	float craftbonus = 0;
 	if (player->hasBuff(BuffCRC::FOOD_CRAFT_BONUS)) {
 		Buff* buff = player->getBuff(BuffCRC::FOOD_CRAFT_BONUS);

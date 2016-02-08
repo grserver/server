@@ -6,9 +6,9 @@ geo_sonic_blaster = {
 	customObjectName = "",
 	directObjectTemplate = "object/weapon/ranged/pistol/pistol_geonosian_sonic_blaster_loot.iff",
 	craftingValues = {
-		{"mindamage",11,100,0},
-		{"maxdamage",63,224,0},
-		{"attackspeed",5.3,3.4,0},
+		{"mindamage",120,320,0},
+		{"maxdamage",320,500,0},
+		{"attackspeed",4.3,1.4,0},
 		{"woundchance",4.2,8.6,0},
 		{"hitpoints",750,750,0},
 		{"attackhealthcost",20,11,0},
@@ -19,7 +19,7 @@ geo_sonic_blaster = {
 	customizationValues = {},
 
 	-- randomDotChance: The chance of this weapon object dropping with a random dot on it. Higher number means less chance. Set to 0 to always have a random dot.
-	randomDotChance = 800,
+	randomDotChance = 100,
 	junkDealerTypeNeeded = JUNKWEAPONS,
 	junkMinValue = 30,
 	junkMaxValue = 55

@@ -1,15 +1,17 @@
 local ObjectManager = require("managers.object.object_manager")
 local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
+local MellichaeOutroTheater = require("managers.jedi.village.outro.mellichae_outro_theater")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
+local Logger = require("utils.logger")
 
 Glowing = Object:new {}
 
-TOTALNUMBEROFBADGESREQUIRED = 16
+TOTALNUMBEROFBADGESREQUIRED = 12
 NUMBEROFJEDIBADGESREQUIRED = 3
 NUMBEROFDIFFICULTBADGESREQUIRED = 2
 NUMBEROFEASYBADGESREQUIRED = 5
 NUMBEROFPROFESSIONBADGESREQUIRED = 1
-NUMBEROFCONTENTBADGESREQUIRED = 2
+NUMBEROFCONTENTBADGESREQUIRED = 1
 
 JEDIBADGES = {
 	EXP_TAT_BENS_HUT,
@@ -136,7 +138,7 @@ PROFESSIONBADGES = {
 function Glowing:countBadgesInListToUpperLimit(pCreatureObject, list, upperLimit)
 	local numberOfBadges = 0
 	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
-		for i = 1, table.getn(list), 1 do
+		for i = 1, #list, 1 do
 			if playerObject:hasBadge(list[i]) then
 				numberOfBadges = numberOfBadges + 1
 				if numberOfBadges >= upperLimit then
@@ -163,7 +165,13 @@ end
 -- Check if the player is glowing or not.
 -- @param pCreatureObject pointer to the creature object of the player.
 function Glowing:isGlowing(pCreatureObject)
-	return VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
+	local player = LuaCreatureObject(pCreatureObject)
+	local pInventory = player:getSlottedObject("inventory")
+	if self:countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
+		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
+		--giveItem(pInventory, "object/tangible/loot/quest/force_sensitive/force_crystal.iff", -1)
+		player:sendSystemMessage("Congratulations on becoming GLOWY! Seek out the old man & sith shadow loot.")
+	end
 end
 
 -- Event handler for the BADGEAWARDED event.
@@ -187,6 +195,7 @@ end
 -- Register observer on the player for observing badge awards.
 -- @param pCreatureObject pointer to the creature object of the player to register observers on.
 function Glowing:registerObservers(pCreatureObject)
+	dropObserver(BADGEAWARDED, "Glowing", "badgeAwardedEventHandler", pCreatureObject)
 	createObserver(BADGEAWARDED, "Glowing", "badgeAwardedEventHandler", pCreatureObject)
 end
 
@@ -195,6 +204,16 @@ end
 function Glowing:onPlayerLoggedIn(pCreatureObject)
 	if not self:isGlowing(pCreatureObject) then
 		self:registerObservers(pCreatureObject)
+	end
+	
+	if VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)
+		and not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE) then
+		if VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_ACCEPTED_MELLICHAE) then
+			MellichaeOutroTheater:finish(pCreatureObject)
+			MellichaeOutroTheater:start(pCreatureObject)
+		else
+			OldManEncounter:start(pCreatureObject)
+		end
 	end
 end
 

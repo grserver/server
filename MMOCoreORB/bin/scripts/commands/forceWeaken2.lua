@@ -44,9 +44,10 @@
 ForceWeaken2Command = {
 	name = "forceweaken2",
 
-	damage = 0,
+	damageMultiplier = 0,
 	speed = 4.0,
 	forceCost = 400,
+	visMod = 25,
 	accuracySkillMod = "forceweaken_accuracy",
 	attackType = FORCEATTACK,
 

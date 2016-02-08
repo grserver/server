@@ -42,7 +42,7 @@ ancient_bull_rancor = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareableeding",""},
-		{"creatureareacombo",""}
+		{"creatureareaattack",""}
 	}
 }
 

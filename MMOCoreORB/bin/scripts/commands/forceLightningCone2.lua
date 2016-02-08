@@ -42,14 +42,16 @@
 --true = 1, false = 0
 
 ForceLightningCone2Command = {
-        name = "forcelightningcone2",
+	name = "forcelightningcone2",
 
-	damage = 1600,
+    minDamage = 1200,
+    maxDamage = 1600,
 	speed = 4.0,
 	forceCost = 250,
 	accuracySkillMod = "forcelightning_accuracy";
 	coneAngle = 60,
 	coneAction = true,
+	visMod = 25,
 
 	stateEffects = {
 	  StateEffect(
@@ -70,6 +72,7 @@ ForceLightningCone2Command = {
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
 	attackType = FORCEATTACK,
+	damageType = ELECTRICITY_DAMAGE,
 
 	range = 32
 }

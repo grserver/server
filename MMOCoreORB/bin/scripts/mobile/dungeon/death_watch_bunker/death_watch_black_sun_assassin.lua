@@ -1,6 +1,7 @@
 death_watch_black_sun_assassin = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_blksun_assassin",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 107,
@@ -11,7 +12,7 @@ death_watch_black_sun_assassin = Creature:new {
 	baseHAM = 40000,
 	baseHAMmax = 40000,
 	armor = 2,
-	resists = {55,55,70,45,75,80,55,45,-1},
+	resists = {70,70,70,70,70,70,70,70,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -25,7 +26,6 @@ death_watch_black_sun_assassin = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	scale = 1.15,
 
 	templates = {"object/mobile/dressed_black_sun_assassin.iff"},
 	lootGroups = {
@@ -33,7 +33,19 @@ death_watch_black_sun_assassin = Creature:new {
 			groups = {
 				{group = "death_watch_bunker_commoners", chance = 10000000},
 			},
-			lootChance = 1000000
+			lootChance = 4500000
+		},
+		{
+	        groups = {
+				{group = "bounty_hunter_armor", chance = 10000000},			
+			},
+			lootChance = 4500000
+		},
+		{
+	        groups = {
+				{group = "armor_attachments", chance = 10000000},			
+			},
+			lootChance = 2500000
 		}
 	},
 	weapons = {"battle_droid_weapons"},

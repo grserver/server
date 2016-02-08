@@ -130,7 +130,9 @@ public:
 			return;
 
 		int posture = object->getPosture();
-		if (!object->hasDizzyEvent() && (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE
+
+		//TODO: This should be derived from the locomotion table
+		if (!object->hasDizzyEvent() && (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::CROUCHED
 				|| posture == CreaturePosture::DRIVINGVEHICLE || posture == CreaturePosture::RIDINGCREATURE || posture == CreaturePosture::SKILLANIMATING) ) {
 
 			updatePosition(object);
@@ -240,7 +242,7 @@ public:
 		ValidatedPosition pos;
 		pos.update(object);
 
-		if (!ghost->isPrivileged()) {
+		if (!ghost->hasGodMode()) {
 			SceneObject* inventory = object->getSlottedObject("inventory");
 
 			if (inventory != NULL && inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {

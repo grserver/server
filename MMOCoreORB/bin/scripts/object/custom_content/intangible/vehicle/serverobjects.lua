@@ -46,3 +46,16 @@
 
 -- Server Objects
 includeFile("custom_content/intangible/vehicle/barc_speeder_pcd.lua")
+includeFile("custom_content/intangible/vehicle/barc_speeder_imperial_pcd.lua")
+includeFile("custom_content/intangible/vehicle/barc_speeder_rebel_pcd.lua")
+--includeFile("custom_content/intangible/vehicle/landspeeder_ab1_pcd.lua")
+includeFile("custom_content/intangible/vehicle/landspeeder_desert_skiff_pcd.lua")
+includeFile("custom_content/intangible/vehicle/landspeeder_lava_skiff_pcd.lua")
+--includeFile("custom_content/intangible/vehicle/landspeeder_organa_pcd.lua")
+includeFile("custom_content/intangible/vehicle/landspeeder_tantive4_pcd.lua")
+includeFile("custom_content/intangible/vehicle/landspeeder_usv5_pcd.lua")
+includeFile("custom_content/intangible/vehicle/landspeeder_v35_pcd.lua")
+includeFile("custom_content/intangible/vehicle/landspeeder_xp38_pcd.lua")
+includeFile("custom_content/intangible/vehicle/pod_racer_one_pcd.lua")
+includeFile("custom_content/intangible/vehicle/pod_racer_two_pcd.lua")
+--includeFile("custom_content/intangible/vehicle/sith_speeder_pcd.lua")

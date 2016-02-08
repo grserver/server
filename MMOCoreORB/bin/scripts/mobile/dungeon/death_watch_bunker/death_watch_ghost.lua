@@ -1,6 +1,7 @@
 death_watch_ghost = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_dthwatch_grey",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 152,
@@ -8,8 +9,8 @@ death_watch_ghost = Creature:new {
 	damageMin = 895,
 	damageMax = 1500,
 	baseXp = 14314,
-	baseHAM = 110000,
-	baseHAMmax = 110000,
+	baseHAM = 56000,
+	baseHAMmax = 68000,
 	armor = 2,
 	resists = {65,65,70,60,35,35,100,50,-1},
 	meatType = "",
@@ -25,18 +26,29 @@ death_watch_ghost = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	scale = 1.15,
 
 	templates = {"object/mobile/dressed_death_watch_grey.iff"},
 	lootGroups = {
 		{
 			groups = {
 				{group = "death_watch_bunker_commoners",   chance = 6300000},
-				{group = "death_watch_bunker_lieutenants", chance = 3500000},
-				{group = "death_watch_bunker_ingredient_protective",  chance = 100000},
+				{group = "death_watch_bunker_lieutenants", chance = 100000},
+				{group = "death_watch_bunker_ingredient_protective",  chance = 3500000},
 				{group = "death_watch_bunker_ingredient_binary",  chance = 100000}
 			},
-			lootChance = 1500000
+			lootChance = 4500000
+		},
+		{
+	        groups = {
+				{group = "clothing_attachments", chance = 10000000},			
+			},
+			lootChance = 2500000
+		},
+		{
+	        groups = {
+				{group = "armor_attachments", chance = 10000000},			
+			},
+			lootChance = 2500000
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

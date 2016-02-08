@@ -18,7 +18,9 @@ class CreatureAttackData {
 protected:
 	const CombatQueueCommand* baseCommand;
 
-	float damage;
+	float minDamage;
+	float maxDamage;
+	int damageType;
 	float damageMultiplier;
 	float healthDamageMultiplier;
 	float actionDamageMultiplier;
@@ -33,10 +35,13 @@ protected:
 	float forceCostMultiplier;
 
     int range;
+    int coneRange;
     int coneAngle;
     int areaRange;
 
     uint32 animationCRC;
+
+    uint64 targetID;
 
     VectorMap<uint8, StateEffect>* stateEffects;
     VectorMap<uint64, DotEffect>* dotEffects;
@@ -49,7 +54,7 @@ protected:
 	int stateAccuracyBonus;
 
 public:
-    CreatureAttackData(const UnicodeString & dataString, const CombatQueueCommand *base);
+    CreatureAttackData(const UnicodeString & dataString, const CombatQueueCommand *base, uint64 target);
     CreatureAttackData(const CreatureAttackData& data);
     virtual ~CreatureAttackData() {}
 
@@ -87,8 +92,16 @@ public:
     	return baseCommand;
     }
 
-    float getDamage() const {
-    	return damage;
+    float getMinDamage() const {
+    	return minDamage;
+    }
+
+    float getMaxDamage() const {
+    	return maxDamage;
+    }
+
+    int getDamageType() const {
+    	return damageType;
     }
 
     int getAccuracyBonus() const {
@@ -131,6 +144,10 @@ public:
 		return poolsToDamage;
 	}
 
+	int getConeRange() const {
+		return coneRange;
+	}
+
 	int getRange() const {
 		return range;
 	}
@@ -163,6 +180,10 @@ public:
 		return trails;
 	}
 
+	uint64 getPrimaryTarget() const {
+		return targetID;
+	}
+
 	void setTrails(uint8 trails) {
 		this->trails = trails;
 	}
@@ -186,6 +207,10 @@ public:
 	void setStateAccuracyBonus(int stateAccuracyBonus) {
 		this->stateAccuracyBonus = stateAccuracyBonus;
 	}
+
+	bool changesDefenderPosture() const;
+
+	bool changesAttackerPosture() const;
 };
 
 #endif /* CREATUREATTACKDATA_H_ */

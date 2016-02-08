@@ -43,8 +43,9 @@
 
 object_tangible_food_crafted_dessert_air_cake = object_tangible_food_crafted_shared_dessert_air_cake:new {
 	templateType = CONSUMABLE,
+	useCount = 50,
 
-	duration = 10,
+	duration = 360,
 	filling = 10,
 	nutrition = 10,
 
@@ -59,7 +60,7 @@ object_tangible_food_crafted_dessert_air_cake = object_tangible_food_crafted_sha
 	quantityMin = 6,
 	quantityMax = 10,
 
-	modifiers = { "dodge_attack", 0 },
+	modifiers = { "dodge_attack", 100 },
 
 	buffName = "food.dodge_attack",
 	buffCRC = 0,

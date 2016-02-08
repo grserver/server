@@ -226,6 +226,9 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 	}
 
 	int woundsToApply = (int)(secondaryStrength * (1.f + victim->getShockWounds() / 100.0f));
+	int maxWoundsToApply = victim->getBaseHAM(attribute) - 1 - victim->getWounds(attribute);
+
+	woundsToApply = MIN(woundsToApply, maxWoundsToApply);
 
 	Reference<CreatureObject*> attackerRef = attacker;
 	Reference<CreatureObject*> victimRef = victim;
@@ -243,7 +246,7 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 				// applied twice
 				if (attribute_p % 3 == 0)
 					victimRef_p->inflictDamage(attackerRef_p, attribute_p, woundsToApply_p, true);
-	
+
 				victimRef_p->addWounds(attribute_p, woundsToApply_p, true, false);
 			}
 
@@ -304,6 +307,10 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim, CreatureObject* att
 	// absorption reduces the strength of a dot by the given %.
 	// make sure that the CM dots modify the strength
 	int damage = (int)(strength * (1.f - absorptionMod / 100.f) * (1.f + victim->getShockWounds() / 100.0f));
+	int maxDamage = victim->getBaseHAM(attribute) - 1 - victim->getWounds(attribute);
+
+	damage = MIN(damage, maxDamage);
+
 	uint8 attribute = this->attribute;
 	uint32 strength = this->strength;
 	Reference<CreatureObject*> attackerRef = attacker;
@@ -361,7 +368,7 @@ uint32 DamageOverTime::doForceChokeTick(CreatureObject* victim, CreatureObject* 
 
 float DamageOverTime::reduceTick(float reduction) {
 	//System::out << "reducing tick with reduction " << reduction << endl;
-	if (reduction < 0.f) // this ensures we can't increse a dot strength
+	if (reduction < 0.f) // this ensures we can't increase a dot strength
 		return reduction;
 
 	if (reduction >= strength) {
@@ -374,4 +381,12 @@ float DamageOverTime::reduceTick(float reduction) {
 	}
 
 	return 0.f;
+}
+
+void DamageOverTime::multiplyDuration(float multiplier) {
+	Time newTime;
+	uint64 timeToAdd = (expires.getMiliTime() - newTime.getMiliTime()) * multiplier;
+	newTime.addMiliTime(timeToAdd);
+	expires = newTime;
+
 }

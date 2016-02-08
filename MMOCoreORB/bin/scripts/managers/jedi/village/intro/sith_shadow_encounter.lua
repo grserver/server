@@ -16,18 +16,17 @@ SithShadowEncounter = Encounter:new {
 	-- Encounter properties
 	--minimumTimeUntilEncounter = 12 * 60 * 60 * 1000, -- 12 hours
 	--maximumTimeUntilEncounter = 24 * 60 * 60 * 1000, -- 24 hours
-	minimumTimeUntilEncounter = 1 * 60 * 1000, -- 12 hours
-	maximumTimeUntilEncounter = 1 * 60 * 1000, -- 24 hours
-	--encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
+	minimumTimeUntilEncounter = 5 * 60 * 1000, -- 12 hours
+	maximumTimeUntilEncounter = 10 * 60 * 1000, -- 24 hours
 	encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
 	spawnObjectList = {
-		{ template = "sith_shadow", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = true, setNotAttackable = false },
-		{ template = "sith_shadow", minimumDistance = 4, maximumDistance = 8, referencePoint = 1, followPlayer = true, setNotAttackable = false }
+		{ template = "sith_shadow_outlaw_mission", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = true, setNotAttackable = false, runOnDespawn = false },
+		{ template = "sith_shadow_outlaw_mission", minimumDistance = 4, maximumDistance = 8, referencePoint = 1, followPlayer = true, setNotAttackable = false, runOnDespawn = false }
 	},
 	onEncounterSpawned = nil,
 	isEncounterFinished = nil,
-	onEncounterClosingIn = nil,
-	onEncounterAtPlayer = nil
+	onEncounterInRange = nil,
+	inRangeValue = 26,
 }
 
 -- Check if the sith shadow is the first one spawned for the player.
@@ -53,7 +52,7 @@ function SithShadowEncounter:addWaypointDatapadAsLoot(pSithShadow)
 		return
 	end
 
-	createLoot(pInventory, "sith_shadow_encounter_datapad", 0, true)
+	createLoot(pInventory, "task_reward_huff_quest_krayt_dragon_skull", 0, true)
 end
 
 -- Event handler for the LOOTCREATURE event on one of the sith shadows.
@@ -122,11 +121,11 @@ function SithShadowEncounter:onEncounterSpawned(pCreatureObject, spawnedObjects)
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.TwO_MILITARY)
 end
 
--- Handling of the encounter closing in event.
+-- Handling of the encounter in range event.
 -- Send a spatial chat from the first sith shadow.
 -- @param pCreatureObject pointer to the creature object of the player who has this encounter.
 -- @param spawnedObjects list of pointers to the spawned sith shadows.
-function SithShadowEncounter:onEncounterClosingIn(pCreatureObject, spawnedObjects)
+function SithShadowEncounter:onEncounterInRange(pCreatureObject, spawnedObjects)
 	if (pCreatureObject == nil or spawnedObjects == nil or spawnedObjects[1] == nil) then
 		return
 	end
@@ -152,7 +151,7 @@ function SithShadowEncounter:isEncounterFinished(pCreatureObject)
 		return false
 	end
 
-	return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD)
+	return not OldManEncounter:hasForceCrystal(pCreatureObject) or QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD)
 end
 
 -- Handling of the activation of the looted datapad.

@@ -1,6 +1,7 @@
 death_watch_bloodguard = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_dthwatch_red",
-	randomNameType = NAME_GENERIC_TAG,
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 121,
@@ -25,7 +26,6 @@ death_watch_bloodguard = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-	scale = 1.15,
 
 	templates = {"object/mobile/dressed_death_watch_red.iff"},
 	lootGroups = {
@@ -34,7 +34,19 @@ death_watch_bloodguard = Creature:new {
 				{group = "death_watch_bunker_commoners", chance = 6000000},
 				{group = "death_watch_bunker_lieutenants", chance = 4000000}
 			},
-			lootChance = 1000000
+			lootChance = 4500000
+		},
+		{
+	        groups = {
+				{group = "bounty_hunter_armor", chance = 10000000},			
+			},
+			lootChance = 4500000
+		},
+		{
+	        groups = {
+				{group = "armor_attachments", chance = 10000000},			
+			},
+			lootChance = 2500000
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

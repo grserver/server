@@ -39,6 +39,9 @@ class TangibleObject extends SceneObject {
 	protected unsigned int faction;
 
 	protected boolean invisible;
+
+	@dereferenced
+	protected VectorMap<string, string> luaStringData;
 	
 	@dereferenced
 	protected CustomizationVariables customizationVariables;
@@ -55,6 +58,8 @@ class TangibleObject extends SceneObject {
 	
 	@dereferenced
 	protected AutoDeltaSet<int> visibleComponents;
+	
+	protected boolean isCraftedEnhancedItem;
 	
 	protected unsigned int pvpStatusBitmask;
 	
@@ -94,6 +99,8 @@ class TangibleObject extends SceneObject {
 		invisible = false;
 
 		antiDecayKitObject = null;
+
+		luaStringData.setNoDuplicateInsertPlan();
 	}
 	
 	public void initializeMembers() {
@@ -113,6 +120,7 @@ class TangibleObject extends SceneObject {
 		
 		sliceable = false;
 		sliced = false;
+		isCraftedEnhancedItem = false;
 		
 		threatMap = null;
 		junkDealerNeeded = 0;
@@ -374,11 +382,11 @@ class TangibleObject extends SceneObject {
 	 */
 	@preLocked
 	@arg1preLocked
-	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true, boolean isCombatAction = false);
 	
 	@preLocked
 	@arg1preLocked
-	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
+	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true, boolean isCombatAction = false);
 	
 	/**
 	 * Heals damage
@@ -433,7 +441,7 @@ class TangibleObject extends SceneObject {
 	@local
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
-	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition, boolean isCombatAction);
 	
 	@preLocked
 	public native void dropFromDefenderLists(TangibleObject destructor);
@@ -531,6 +539,11 @@ class TangibleObject extends SceneObject {
 	@dirty
 	public int getLevel() {
 		return level;
+	}
+	
+	@dirty 
+	public boolean getIsCraftedEnhancedItem() {
+		return isCraftedEnhancedItem;
 	}
 	
 	@dirty
@@ -644,6 +657,7 @@ class TangibleObject extends SceneObject {
 		customizationVariables.parseFromClientString(vars);
 	}
 	
+	public native void setIsCraftedEnhancedItem(boolean value);
 	public native void setPvpStatusBitmask(unsigned int bitmask, boolean notifyClient = true);
 
 	public native void setPvpStatusBit(unsigned int pvpStatus, boolean notifyClient = true);
@@ -827,6 +841,26 @@ class TangibleObject extends SceneObject {
 	@preLocked
 	public void setInvisible(boolean invis) {
 		invisible = invis;
+	}
+
+	@dirty
+	public abstract boolean isCustomIngredient() {
+		return false;
+	}
+
+	@preLocked
+	public void setLuaStringData(final string key, final string data) {
+		luaStringData.put(key, data);
+	}
+	
+	@preLocked
+	public void deleteLuaStringData(final string key) {
+		luaStringData.drop(key);
+	}
+
+	@dirty
+	public string getLuaStringData(final string key) {
+		return luaStringData.get(key);
 	}
 }
 

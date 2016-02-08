@@ -28,7 +28,22 @@ palpatine_hologram = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/ep3/palpatine_hologram.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "holocron_dark", chance = 600000},
+				{group = "holocron_light", chance = 600000},
+				{group = "crystals_premium", chance = 1900000},
+				{group = "crystal_named", chance =  1300000},
+				{group = "g_yoda_house_loot_deed", chance = 1300000},
+				{group = "armor_attachments", chance = 1100000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "carbines", chance = 1300000},
+				{group = "wearables_scarce", chance = 800000}				
+			},
+			lootChance = 8500000
+		}
+	},
 	weapons = {"dark_jedi_weapons_gen4"},
 	conversationTemplate = "",
 	attacks = merge(lightsabermaster,forcepowermaster)

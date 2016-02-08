@@ -43,13 +43,17 @@
 
 SaberPolearmSpinAttack2Command = {
         name = "saberpolearmspinattack2",
-        
-    damageMultiplier = 1.25,
+
+	damageMultiplier = 1.25,
 	speedMultiplier = 2.0,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
 	forceCostMultiplier = 1.75,
 	areaAction = true,
 	areaRange = 16,
-	
+	visMod = 25,
+
 	stateEffects = {
 	  StateEffect( 
 		POSTUREDOWN_EFFECT, 
@@ -65,9 +69,9 @@ SaberPolearmSpinAttack2Command = {
 	animationCRC = hashCode("showoff_1_light"),
 
 	combatSpam = "saberpolearmspinattack2",
-	
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
-	
+
 	weaponType = POLEARMJEDIWEAPON,
 
 	range = -1

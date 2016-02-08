@@ -8,7 +8,8 @@
 #include "CreatureAttackData.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 
-CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, const CombatQueueCommand* base) {
+CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, const CombatQueueCommand* base, uint64 target) {
+	targetID = target;
 	baseCommand = base;
 	fillFromBase();
 
@@ -33,12 +34,15 @@ CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, const Co
 
 CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 	baseCommand = data.baseCommand;
+	targetID = data.targetID;
 
 	damageMultiplier = data.damageMultiplier;
 	healthDamageMultiplier = data.healthDamageMultiplier;
 	actionDamageMultiplier = data.actionDamageMultiplier;
 	mindDamageMultiplier = data.mindDamageMultiplier;
-	damage = data.damage;
+	minDamage = data.minDamage;
+	maxDamage = data.maxDamage;
+	damageType = data.damageType;
 	accuracyBonus = data.accuracyBonus;
 	speedMultiplier = data.speedMultiplier;
 	poolsToDamage = data.poolsToDamage;
@@ -53,6 +57,7 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 
 	range = data.range;
 	coneAngle = data.coneAngle;
+	coneRange = data.coneRange;
 	areaRange = data.areaRange;
 
 	animationCRC = data.animationCRC;
@@ -67,7 +72,9 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 
 void CreatureAttackData::fillFromBase() {
 	damageMultiplier = baseCommand->getDamageMultiplier();
-	damage = baseCommand->getDamage();
+	minDamage = baseCommand->getMinDamage();
+	maxDamage = baseCommand->getMaxDamage();
+	damageType = baseCommand->getDamageType();
 	accuracyBonus = baseCommand->getAccuracyBonus();
 	speedMultiplier = baseCommand->getSpeedMultiplier();
 	healthCostMultiplier = baseCommand->getHealthCostMultiplier();
@@ -78,6 +85,7 @@ void CreatureAttackData::fillFromBase() {
 	stateEffects = baseCommand->getStateEffects();
 	dotEffects = baseCommand->getDotEffects();
 	coneAngle = baseCommand->getConeAngle();
+	coneRange = baseCommand->getConeRange();
 	range = baseCommand->getRange();
 	areaRange = baseCommand->getAreaRange();
 	animationCRC = baseCommand->getAnimationCRC();
@@ -95,8 +103,14 @@ void CreatureAttackData::fillFromBase() {
 void CreatureAttackData::setVariable(const String& var, const String& val) {
 	uint32 crc = var.hashCode();
 	switch(crc) {
-	case 0x9E64852D: // STRING_HASHCODE("damage"):
-		damage = Float::valueOf(val);
+	case 0x480C4BA4: // STRING_HASHCODE("minDamage"):
+		minDamage = Float::valueOf(val);
+		break;
+	case 0xDDC00C87: // STRING_HASHCODE("maxDamage"):
+		maxDamage = Float::valueOf(val);
+		break;
+	case 0x6980E997: // STRING_HASHCODE("damageType"):
+		damageType = Integer::valueOf(val);
 		break;
 	case 0xA82FB287: // STRING_HASHCODE("damageMultiplier"):
 		damageMultiplier = Float::valueOf(val);
@@ -166,4 +180,35 @@ String CreatureAttackData::getCommandName() const {
 
 uint32 CreatureAttackData::getCommandCRC() const {
 	return baseCommand->getNameCRC();
+}
+
+bool CreatureAttackData::changesDefenderPosture() const {
+	if(stateEffects == NULL)
+		return false;
+
+	for(int i=0; i<stateEffects->size(); i++) {
+		switch(stateEffects->get(i).getEffectType()) {
+		case CommandEffect::KNOCKDOWN:
+		case CommandEffect::POSTUREUP:
+		case CommandEffect::POSTUREDOWN:
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool CreatureAttackData::changesAttackerPosture() const {
+	if(stateEffects == NULL)
+		return false;
+
+	for(int i=0; i<stateEffects->size(); i++) {
+		switch(stateEffects->get(i).getEffectType()) {
+		case CommandEffect::ATTACKER_FORCE_STAND:
+		case CommandEffect::ATTACKER_FORCE_CROUCH:
+		case CommandEffect::ATTACKER_FORCE_PRONE:
+			return true;
+		}
+	}
+	return false;
 }

@@ -77,7 +77,7 @@ end
 
 function HeroOfTatooineScreenPlay:spawnAltruismObjects()
 	self:despawnAltruismObjects()
-	
+
 	local pCrate = spawnSceneObject("tatooine", "object/tangible/item/quest/hero_of_tatooine/explosives_crate.iff", 76.87,-46.24,-136.9, 5995575, .985, 0, .1714, 0)
 
 	if (pCrate ~= nil) then
@@ -107,13 +107,13 @@ function HeroOfTatooineScreenPlay:spawnAltruismObjects()
 	local pDaughter = spawnMobile("tatooine", "hero_of_tat_farmers_child", 0, 192.1, -66.8, -105.9, -70, 5995573)
 	CreatureObject(pDaughter):setPvpStatusBitmask(0)
 	writeData("hero_of_tat:farmerChildId", SceneObject(pDaughter):getObjectID())
-	
+
 	createEvent(30 * 60 * 1000, "HeroOfTatooineScreenPlay", "validateAltruismCave", nil)
 end
 
 function HeroOfTatooineScreenPlay:validateAltruismCave()
 	local count = self:getCavePlayerWithQuestCount()
-	
+
 	if (count == 0) then
 		self:despawnAltruismObjects()
 	else
@@ -184,10 +184,10 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 		return 0
 	end
 
-	local newLoc = getRandomNumber(1, table.getn(self.courageSpawns))
+	local newLoc = getRandomNumber(1, #self.courageSpawns)
 
 	if (newLoc == mobLoc) then
-		if (newLoc == table.getn(self.courageSpawns)) then
+		if (newLoc == #self.courageSpawns) then
 			newLoc = newLoc - 1
 		else
 			newLoc = newLoc + 1
@@ -200,6 +200,7 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 	local pBoar = spawnMobile("tatooine", "wild_bladeback_boar", 0, self.courageSpawns[newLoc][1], z, self.courageSpawns[newLoc][2], getRandomNumber(360) - 180, 0)
 
 	if (pBoar ~= nil) then
+		AiAgent(pBoar):setNoAiAggro()
 		createObserver(OBJECTDESTRUCTION, "HeroOfTatooineScreenPlay", "notifyDefeatedBoar", pBoar)
 		writeData("hero_of_tat:courage_mob_id", SceneObject(pBoar):getObjectID())
 	else
@@ -295,10 +296,10 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 		return 0
 	end
 
-	local newLoc = getRandomNumber(1, table.getn(self.altruismSpawns))
+	local newLoc = getRandomNumber(1, #self.altruismSpawns)
 
 	if (newLoc == mobLoc) then
-		if (newLoc == table.getn(self.altruismSpawns)) then
+		if (newLoc == #self.altruismSpawns) then
 			newLoc = newLoc - 1
 		else
 			newLoc = newLoc + 1
@@ -338,10 +339,10 @@ function HeroOfTatooineScreenPlay:doIntellectSpawn()
 
 	self:destroyIntellectMobs()
 
-	local newLoc = getRandomNumber(1, table.getn(self.intellectSpawns))
+	local newLoc = getRandomNumber(1, #self.intellectSpawns)
 
 	if (newLoc == mobLoc) then
-		if (newLoc == table.getn(self.intellectSpawns)) then
+		if (newLoc == #self.intellectSpawns) then
 			newLoc = newLoc - 1
 		else
 			newLoc = newLoc + 1
@@ -390,7 +391,9 @@ function HeroOfTatooineScreenPlay:sendImplicateSui(pPlayer, pNpc)
 	suiManager:sendListBox(pNpc, pPlayer, "@quest/hero_of_tatooine/intellect_liar:sui_title", "@quest/hero_of_tatooine/intellect_liar:sui_prompt", 2, "@quest/hero_of_tatooine/intellect_liar:sui_btn_cancel", "", "@quest/hero_of_tatooine/intellect_liar:sui_btn_ok", "HeroOfTatooineScreenPlay", "handleSuiImplication", liarTable)
 end
 
-function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, cancelPressed, arg0)
+function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, eventIndex, arg0)
+	local cancelPressed = (eventIndex == 1)
+
 	if (pPlayer == nil) then
 		return
 	end
@@ -538,7 +541,7 @@ function HeroOfTatooineScreenPlay:onExitedAltruismCave(pCave, pCreature)
 	end
 
 	local count = self:getCavePlayerWithQuestCount()
-	
+
 	if (count == 0) then
 		self:despawnAltruismObjects()
 	end
@@ -791,10 +794,10 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 		return
 	end
 
-	local newLoc = getRandomNumber(1, table.getn(self.honorSpawns))
+	local newLoc = getRandomNumber(1, #self.honorSpawns)
 
 	if (newLoc == mobLoc) then
-		if (newLoc == table.getn(self.honorSpawns)) then
+		if (newLoc == #self.honorSpawns) then
 			newLoc = newLoc - 1
 		else
 			newLoc = newLoc + 1
@@ -813,6 +816,7 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 		return
 	end
 
+	AiAgent(pLeader):setNoAiAggro()
 	writeData("hero_of_tat:honor_leader_id", SceneObject(pLeader):getObjectID())
 
 	x = self.honorSpawns[newLoc][1] - 10 + getRandomNumber(20)
@@ -820,6 +824,7 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 	z = getTerrainHeight(pHermit, x, y)
 	pPirate1 = spawnMobile("tatooine", "pirate", 0, x, z, y, getRandomNumber(360) - 180, 0)
 	if (pPirate1 ~= nil) then
+		AiAgent(pPirate1):setNoAiAggro()
 		writeData("hero_of_tat:honor_pirate_1_id", SceneObject(pPirate1):getObjectID())
 	end
 
@@ -828,6 +833,7 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 	z = getTerrainHeight(pHermit, x, y)
 	pPirate2 = spawnMobile("tatooine", "pirate", 0, x, z, y, getRandomNumber(360) - 180, 0)
 	if (pPirate2 ~= nil) then
+		AiAgent(pPirate2):setNoAiAggro()
 		writeData("hero_of_tat:honor_pirate_2_id", SceneObject(pPirate2):getObjectID())
 	end
 

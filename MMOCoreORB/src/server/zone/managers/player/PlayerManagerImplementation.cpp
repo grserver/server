@@ -630,7 +630,7 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 	return recoveryTime;
 }
 
-int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition) {
+int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition, bool isCombatAction) {
 	if (destructor == NULL) {
 		assert(0 && "destructor should always be != NULL.");
 	}
@@ -662,11 +662,11 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	}
 
 	if ((destructor->isKiller() && isDefender) || ghost->getIncapacitationCounter() >= 3) {
-		killPlayer(destructor, playerCreature, 0);
+		killPlayer(destructor, playerCreature, 0, isCombatAction);
 	} else {
-		playerCreature->setCurrentSpeed(0);
-		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
-		playerCreature->updateLocomotion();
+
+
+		playerCreature->setPosture(CreaturePosture::INCAPACITATED, !isCombatAction, !isCombatAction);
 
 		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
 		playerCreature->setCountdownTimer(incapTime, true);
@@ -692,7 +692,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	return 0;
 }
 
-void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath) {
+void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath, bool isCombatAction) {
 	StringIdChatParameter stringId;
 
 	if (attacker->isPlayerCreature()) {
@@ -708,9 +708,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	player->clearDots();
 
-	player->setCurrentSpeed(0);
-	player->setPosture(CreaturePosture::DEAD, true);
-	player->updateLocomotion();
+	player->setPosture(CreaturePosture::DEAD, !isCombatAction, !isCombatAction);
 
 	sendActivateCloneRequest(player, typeofdeath);
 
@@ -927,13 +925,19 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		player->addWounds(CreatureAttribute::ACTION, 100, true, false);
 		player->addWounds(CreatureAttribute::MIND, 100, true, false);
 		player->addShockWounds(100, true);
-	}
+	}	
 
-	if (ghost->getFactionStatus() != FactionStatus::ONLEAVE)
+    if (ghost->getFactionStatus() != FactionStatus::ONLEAVE)
 		ghost->setFactionStatus(FactionStatus::ONLEAVE);
 
 	if (ghost->hasPvpTef())
 		ghost->schedulePvpTefRemovalTask(true);
+		
+	if (player->hasSkill("force_rank_dark_novice") || player->hasSkill("force_rank_light_novice")){
+		ghost->setFactionStatus(FactionStatus::OVERT);
+	}else{
+		ghost->setFactionStatus(FactionStatus::ONLEAVE);
+	}
 
 	// Decay
 	if (typeofdeath == 0) {
@@ -973,7 +977,7 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		int xpLoss = (int)(jediXpCap * -0.05);
 		int curExp = ghost->getExperience("jedi_general");
 
-		int negXpCap = -10000000; // Cap on negative jedi experience
+		int negXpCap = -200000; // Cap on negative jedi experience
 
 		if ((curExp + xpLoss) < negXpCap)
 			xpLoss = negXpCap - curExp;
@@ -1015,7 +1019,8 @@ void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player
 
 
 
-void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap, Vector<ManagedReference<CreatureObject*> >* spawnedCreatures) {
+void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap,
+		SynchronizedVector<ManagedReference<CreatureObject*> >* spawnedCreatures) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 
 	VectorMap<ManagedReference<CreatureObject*>, int> slExperience;
@@ -2859,6 +2864,11 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 	int cashCredits = ai->getCashCredits();
 
 	if (cashCredits > 0) {
+		int luck = player->getSkillMod("force_luck");
+
+		if (luck > 0)
+			cashCredits += (cashCredits * luck) / 20;
+
 		player->addCashCredits(cashCredits, true);
 		ai->setCashCredits(0);
 
@@ -3493,8 +3503,12 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 		if (player->getSkillModList() == NULL)
 			return;
 
+		Locker smodsGuard(player->getSkillModMutex());
+
 		SkillModGroup* smodGroup = player->getSkillModList()->getSkillModGroup(SkillModManager::BUFF);
 		smodGroup->removeAll();
+
+		smodsGuard.release();
 
 		BuffList* buffs = player->getBuffList();
 
@@ -4891,6 +4905,57 @@ void PlayerManagerImplementation::sendAdminJediList(CreatureObject* player) {
 	Locker locker(player);
 
 	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::ADMIN_JEDILIST);
+
+	player->getPlayerObject()->addSuiBox(listBox);
+	player->sendMessage(listBox->generateMessage());
+}
+
+// FRS List
+void PlayerManagerImplementation::sendAdminFRSList(CreatureObject* player) {
+	Reference<ObjectManager*> objectManager = player->getZoneServer()->getObjectManager();
+
+	HashTable<String, uint64> names = nameMap->getNames();
+	HashTableIterator<String, uint64> iter = names.iterator();
+
+	VectorMap<UnicodeString, int> players;
+	uint32 a = STRING_HASHCODE("SceneObject.slottedObjects");
+	uint32 b = STRING_HASHCODE("SceneObject.customName");
+	uint32 c = STRING_HASHCODE("PlayerObject.jediState");
+
+	while (iter.hasNext()) {
+		uint64 creoId = iter.next();
+		VectorMap<String, uint64> slottedObjects;
+		UnicodeString playerName;
+		int state = -1;
+
+		objectManager->getPersistentObjectsSerializedVariable<VectorMap<String, uint64> >(a, &slottedObjects, creoId);
+		objectManager->getPersistentObjectsSerializedVariable<UnicodeString>(b, &playerName, creoId);
+
+		uint64 ghostId = slottedObjects.get("ghost");
+
+		if (ghostId == 0) {
+			continue;
+		}
+
+		objectManager->getPersistentObjectsSerializedVariable<int>(c, &state, ghostId);
+
+		if (state >= 4) {
+			players.put(playerName, state);
+		}
+	}
+
+	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::ADMIN_FRSLIST);
+	listBox->setPromptTitle("Force Ranking System List");
+	listBox->setPromptText("This is a list of all characters within the Force Ranking System (Name - State).");
+	listBox->setCancelButton(true, "@cancel");
+
+	for (int i = 0; i < players.size(); i++) {
+		listBox->addMenuItem(players.elementAt(i).getKey().toString() + " - " + String::valueOf(players.get(i)));
+	}
+
+	Locker locker(player);
+
+	player->getPlayerObject()->closeSuiWindowType(SuiWindowType::ADMIN_FRSLIST);
 
 	player->getPlayerObject()->addSuiBox(listBox);
 	player->sendMessage(listBox->generateMessage());

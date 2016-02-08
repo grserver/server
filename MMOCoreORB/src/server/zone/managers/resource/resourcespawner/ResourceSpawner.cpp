@@ -492,7 +492,7 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 		return NULL;
 	}
 
-	String name = makeResourceName(resourceEntry->isOrganic());
+	String name = makeResourceName(resourceEntry->getRandomNameClass());
 
 	ResourceSpawn* newSpawn =
 			dynamic_cast<ResourceSpawn*> (objectManager->createObject(
@@ -583,11 +583,11 @@ void ResourceSpawner::despawn(ResourceSpawn* spawn) {
 	spawn->setSpawnPool(ResourcePool::NOPOOL, "");
 }
 
-String ResourceSpawner::makeResourceName(bool isOrganic) {
+String ResourceSpawner::makeResourceName(const String& randomNameClass) {
 	String randname;
 
 	while (true) {
-		randname = nameManager->makeResourceName(isOrganic);
+		randname = nameManager->generateResourceName(randomNameClass);
 
 		if (!resourceMap->contains(randname.toLowerCase()) && resourceTree->getEntry(randname) == NULL)
 			break;
@@ -772,7 +772,7 @@ void ResourceSpawner::sendResourceListForSurvey(CreatureObject* player,
 		if (!resourceSpawn->inShift())
 			continue;
 
-		if (resourceSpawn->getSurveyToolType() == toolType) {
+		if (resourceSpawn->getSurveyToolType() == toolType || (toolType == SurveyTool::INORGANIC && resourceSpawn->isType("inorganic"))) {
 			matchingResources.add(resourceSpawn);
 			message->addResource(resourceSpawn->getName(),
 					resourceSpawn->getType(), resourceSpawn->_getObjectID());
@@ -836,8 +836,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	for (int i = 0; i < points; i++) {
 		for (int j = 0; j < points; j++) {
 
-			float density = resourceMap->getDensityAt(resname, zoneName, posX,
-					posY);
+			float density = resourceMap->getDensityAt(resname, zoneName, posX, posY);
 
 			if (density > maxDensity) {
 				maxDensity = density;
@@ -1046,6 +1045,7 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player, const float dens
 		playerManager->awardExperience(player, "resource_harvesting_inorganic", xp, true);
 
 	addResourceToPlayerInventory(player, resourceSpawn, unitsExtracted);
+	player->notifyObservers(ObserverEventType::SAMPLE, resourceSpawn, density * 100);
 
 	if (resourceSpawn->isType("radioactive")) {
 		int wound = int((sampleRate / 30) - System::random(7));

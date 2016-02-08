@@ -62,6 +62,8 @@
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/objects/tangible/eventperk/FlagGame.h"
 #include "server/zone/objects/tangible/eventperk/Jukebox.h"
+#include "server/zone/objects/tangible/eventperk/LotteryDroid.h"
+#include "server/zone/objects/tangible/eventperk/ScavengerChest.h"
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/tangible/component/armor/ArmorComponent.h"
 #include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
@@ -110,6 +112,8 @@
 #include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
+#include "server/zone/objects/tangible/misc/CustomIngredient.h"
+#include "server/zone/objects/tangible/misc/FsCraftingComponentObject.h"
 
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/area/CampSiteActiveArea.h"

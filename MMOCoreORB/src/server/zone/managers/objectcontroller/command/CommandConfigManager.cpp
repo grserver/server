@@ -463,6 +463,9 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("MINDDEGRADE_EFFECT", CommandEffect::MINDDEGRADE);
 	setGlobalInt("REMOVE_COVER_EFFECT", CommandEffect::REMOVECOVER);
 	setGlobalInt("FORCECHOKE", CommandEffect::FORCECHOKE);
+	setGlobalInt("ATTACKER_FORCE_STANDING", CommandEffect::ATTACKER_FORCE_STAND);
+	setGlobalInt("ATTACKER_FORCE_CROUCH", CommandEffect::ATTACKER_FORCE_CROUCH);
+	setGlobalInt("ATTACKER_FORCE_PRONE", CommandEffect::ATTACKER_FORCE_PRONE);
 
 	// trails
 	setGlobalInt("NOTRAIL", CombatManager::NOTRAIL);
@@ -477,6 +480,21 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("WEAPONATTACK", CombatManager::WEAPONATTACK);
 	setGlobalInt("FORCEATTACK", CombatManager::FORCEATTACK);
 
+	// damage types
+	setGlobalInt("KINETIC_DAMAGE", WeaponObject::KINETIC);
+	setGlobalInt("ENERGY_DAMAGE", WeaponObject::ENERGY);
+	setGlobalInt("BLAST_DAMAGE", WeaponObject::BLAST);
+	setGlobalInt("STUN_DAMAGE", WeaponObject::STUN);
+	setGlobalInt("LIGHTSABER_DAMAGE", WeaponObject::LIGHTSABER);
+	setGlobalInt("HEAT_DAMAGE", WeaponObject::HEAT);
+	setGlobalInt("COLD_DAMAGE", WeaponObject::COLD);
+	setGlobalInt("ACID_DAMAGE", WeaponObject::ACID);
+	setGlobalInt("ELECTRICITY_DAMAGE", WeaponObject::ELECTRICITY);
+    
+	// JediQueueCommand buff types
+	setGlobalInt("BASE_BUFF", JediQueueCommand::BASE_BUFF);
+	setGlobalInt("SINGLE_USE_BUFF", JediQueueCommand::SINGLE_USE_BUFF);
+    
 	// force heal targets
 	setGlobalInt("FORCE_HEAL_TARGET_SELF", ForceHealQueueCommand::TARGET_SELF);
 	setGlobalInt("FORCE_HEAL_TARGET_OTHER", ForceHealQueueCommand::TARGET_OTHER);
@@ -558,8 +576,12 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setAccuracyBonus(Lua::getIntParameter(L));
 		else if (varName == "speedMultiplier")
 			combatCommand->setSpeedMultiplier(Lua::getFloatParameter(L));
-		else if (varName == "damage")
-			combatCommand->setDamage(Lua::getFloatParameter(L));
+		else if (varName == "minDamage")
+			combatCommand->setMinDamage(Lua::getFloatParameter(L));
+		else if (varName == "maxDamage")
+			combatCommand->setMaxDamage(Lua::getFloatParameter(L));
+		else if (varName == "damageType")
+			combatCommand->setDamageType(Lua::getIntParameter(L));
 		else if (varName == "speed")
 			combatCommand->setSpeed(Lua::getFloatParameter(L));
 		else if (varName == "poolsToDamage")
@@ -576,6 +598,10 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setForceCostMultiplier(Lua::getFloatParameter(L));
 		else if (varName == "forceCost")
 			combatCommand->setForceCost(Lua::getFloatParameter(L));
+		else if (varName == "visMod")
+			combatCommand->setVisMod(Lua::getIntParameter(L));
+		else if (varName == "coneRange")
+			combatCommand->setConeRange(Lua::getIntParameter(L));
 		else if (varName == "range")
 			combatCommand->setRange(Lua::getIntParameter(L));
 		else if (varName == "accuracySkillMod")
@@ -637,6 +663,10 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 		JediQueueCommand* jediCommand = cast<JediQueueCommand*>(slashCommand);
 		if (varName == "forceCost")
 			jediCommand->setForceCost(Lua::getIntParameter(L));
+		else if(varName == "buffClass")
+			jediCommand->setBuffClass(Lua::getIntParameter(L));
+		else if(varName == "visMod")
+			jediCommand->setVisMod(Lua::getIntParameter(L));
 		else if (varName == "duration")
 			jediCommand->setDuration(Lua::getIntParameter(L));
 		else if (varName == "animationCRC")

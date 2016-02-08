@@ -97,11 +97,15 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
+core3_IDLS =	autogen/server/zone/objects/tangible/misc/FsCraftingComponentObject.cpp \
+				autogen/server/zone/objects/tangible/misc/CustomIngredient.cpp \
+				autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
 				autogen/server/zone/objects/tangible/misc/FsPuzzlePack.cpp \
 				autogen/server/zone/objects/tangible/eventperk/JukeboxObserver.cpp \
 				autogen/server/zone/objects/tangible/eventperk/Jukebox.cpp \
 				autogen/server/zone/objects/tangible/eventperk/FlagGame.cpp \
+				autogen/server/zone/objects/tangible/eventperk/LotteryDroid.cpp \
+				autogen/server/zone/objects/tangible/eventperk/ScavengerChest.cpp \
 				autogen/server/zone/objects/player/sessions/LootLotterySession.cpp \
 				autogen/server/zone/objects/intangible/TheaterObject.cpp \
 				autogen/server/zone/objects/building/PoiBuilding.cpp \
@@ -113,6 +117,7 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
 				autogen/server/zone/objects/tangible/tool/antidecay/AntiDecayKit.cpp \
 				autogen/server/zone/objects/tangible/deed/eventperk/EventPerkDeed.cpp \
 				autogen/server/zone/managers/director/QuestStatus.cpp \
+				autogen/server/zone/managers/director/QuestVectorMap.cpp \
 				autogen/server/zone/objects/tangible/LairObject.cpp \
 				autogen/server/zone/managers/creature/DynamicSpawnObserver.cpp \
 				autogen/server/zone/managers/creature/SpawnObserver.cpp \
@@ -204,8 +209,10 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
 				autogen/server/zone/objects/creature/buffs/SquadLeaderBuffObserver.cpp \
 				autogen/server/zone/objects/creature/buffs/PrivateBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/PrivateSkillMultiplierBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/PlayerVehicleBuff.cpp \
 				autogen/server/zone/objects/player/PlayerObject.cpp \
 				autogen/server/zone/objects/player/sui/SuiBox.cpp \
+				autogen/server/zone/objects/player/sui/SuiBoxPage.cpp \
 				autogen/server/zone/objects/player/sui/keypadbox/SuiKeypadBox.cpp \
 				autogen/server/zone/objects/player/sui/fireworkdelaybox/SuiFireworkDelayBox.cpp \
 				autogen/server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
@@ -350,6 +357,8 @@ core3_IDLS =	autogen/server/zone/objects/tangible/misc/PlantObject.cpp \
 				
 core3_SOURCES =	$(core3_IDLS) \
 		$(core3_TESTS) \
+		server/zone/objects/player/sui/LuaSuiPageData.cpp \
+		server/zone/objects/player/sui/SuiPageData.cpp \
 		server/zone/managers/vendor/VendorManager.cpp \
 		server/zone/managers/jedi/JediManager.cpp \
 		server/zone/managers/ship/ShipManager.cpp \
@@ -369,6 +378,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/ElevatorMenuComponent.cpp \
 		server/zone/objects/tangible/components/ElevatorUpMenuComponent.cpp \
 		server/zone/objects/tangible/components/ElevatorDownMenuComponent.cpp \
+		server/zone/objects/tangible/misc/CustomIngredientImplementation.cpp \
+		server/zone/objects/tangible/misc/FsCraftingComponentObjectImplementation.cpp \
 		server/zone/managers/player/PermissionLevelList.cpp \
 		server/zone/objects/creature/CreatureAttribute.cpp \
 		server/zone/objects/creature/components/TrainerMenuComponent.cpp \
@@ -422,6 +433,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/customization/CustomizationIdManager.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
 		server/zone/managers/director/PersistentEventImplementation.cpp \
+		server/zone/managers/director/QuestVectorMapImplementation.cpp \
 		server/zone/objects/ship/SpaceStationObjectImplementation.cpp \
 		server/zone/objects/ship/FighterShipObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
@@ -433,7 +445,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/components/PlaceDecorationComponent.cpp \
 		server/zone/objects/player/components/PlayerContainerComponent.cpp \
 		server/zone/objects/tangible/components/LootContainerComponent.cpp \
+		server/zone/objects/tangible/components/PersonnelPerkZoneComponent.cpp \
 		server/zone/objects/tangible/components/PlaceableLootContainerComponent.cpp \
+		server/zone/objects/tangible/components/ScavengerChestContainerComponent.cpp \
 		server/zone/objects/scene/components/ContainerComponent.cpp \
 		server/zone/objects/scene/components/DataObjectComponentReference.cpp \
 		server/zone/objects/scene/components/DataObjectComponent.cpp \
@@ -597,6 +611,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/InstrumentImplementation.cpp \
 		server/zone/objects/tangible/eventperk/FlagGameImplementation.cpp \
+		server/zone/objects/tangible/eventperk/LotteryDroidImplementation.cpp \
 		server/zone/objects/tangible/eventperk/JukeboxImplementation.cpp \
 		server/zone/objects/tangible/eventperk/JukeboxObserverImplementation.cpp \
 		server/zone/objects/tangible/components/droid/DroidPlaybackObserverImplementation.cpp \
@@ -657,6 +672,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/damageovertime/DamageOverTime.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp \
 		server/zone/objects/creature/buffs/BuffImplementation.cpp \
+		server/zone/objects/creature/buffs/PlayerVehicleBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/SpiceBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PerformanceBuffImplementation.cpp \
@@ -759,6 +775,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/DestroyStructureSessionImplementation.cpp \
 		server/zone/objects/player/sessions/LootLotterySessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
+		server/zone/objects/player/sui/SuiBoxPageImplementation.cpp \
 		server/zone/objects/player/sui/keypadbox/SuiKeypadBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \

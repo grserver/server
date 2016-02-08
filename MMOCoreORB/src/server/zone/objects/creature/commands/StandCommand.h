@@ -25,12 +25,18 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		//StringTokenizer args(arguments.toString());
+		if (creature->hasAttackDelay())
+			return GENERALERROR;
 
 		if (creature->isDizzied() && System::random(100) < 85) {
 			creature->queueDizzyFallEvent();
 		} else {
-			creature->setPosture(CreaturePosture::UPRIGHT);
+			if(creature->isInCombat() && creature->isAiAgent()) {
+				creature->setPosture(CreaturePosture::UPRIGHT, false, true);
+				creature->doCombatAnimation(STRING_HASHCODE("change_posture"));
+			} else {
+				creature->setPosture(CreaturePosture::UPRIGHT);
+			}
 		}
 
 		return SUCCESS;

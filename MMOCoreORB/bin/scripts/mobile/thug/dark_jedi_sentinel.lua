@@ -1,17 +1,18 @@
 dark_jedi_sentinel = Creature:new {
 	objectName = "@mob/creature_names:dark_jedi_sentinel",
-	randomNameType = NAME_GENERIC_TAG,
-	socialGroup = "self",
+	randomNameType = NAME_GENERIC,
+	randomNameTag = true,
+	socialGroup = "",
 	faction = "",
-	level = 1,
+	level = 300,
 	chanceHit = 30,
 	damageMin = 2645,
-	damageMax = 5000,
-	baseXp = 45,
+	damageMax = 3600,
+	baseXp = 127849,
 	baseHAM = 1106000,
 	baseHAMmax = 1352000,
-	armor = 3,
-	resists = {95,95,95,95,95,95,95,95,-1},
+	armor = 2,
+	resists = {50,50,50,50,50,50,50,50,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -21,7 +22,8 @@ dark_jedi_sentinel = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = KILLER,
 	creatureBitmask = PACK + HERD + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -29,10 +31,19 @@ dark_jedi_sentinel = Creature:new {
 	templates = {
 		"object/mobile/dressed_dark_jedi_human_male_01.iff",
 		"object/mobile/dressed_dark_jedi_human_female_01.iff"},
-	lootGroups = {},
+		
+	lootGroups = {
+		{
+			groups = {
+				{group = "jedi_robes", chance = 5000000},
+				{group = "crystal_named", chance = 5000000}
+			},
+			lootChance = 10000000
+		}
+	},
 	weapons = {"dark_jedi_weapons_gen4"},
 	conversationTemplate = "",
-	attacks = merge(lightsabermaster,forcepowermaster)
+	attacks = merge(lightsabermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(dark_jedi_sentinel, "dark_jedi_sentinel")

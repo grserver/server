@@ -22,6 +22,14 @@ String JediManager::getJediManagerName() {
 	return ret;
 }
 
+int JediManager::getJediProgressionType() {
+	ReadLocker locker(this);
+
+	int ret = jediProgressionType;
+
+	return ret;
+}
+
 void JediManager::setJediManagerName(String name) {
 	Locker writeLock(this);
 
@@ -104,4 +112,13 @@ void JediManager::useItem(SceneObject* item, const int itemType, CreatureObject*
 	*luaUseItem << creature;
 
 	luaUseItem->callFunction();
+}
+
+void JediManager::onFSTreeCompleted(CreatureObject* creature, String branch) {
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	Reference<LuaFunction*> luaStartTask = lua->createFunction(getJediManagerName(), "onFSTreeCompleted", 0);
+	*luaStartTask << creature;
+	*luaStartTask << branch;
+
+	luaStartTask->callFunction();
 }

@@ -16,6 +16,7 @@
 #include "server/zone/managers/vendor/VendorManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/room/ChatRoom.h"
+#include "server/chat/PersistentMessage.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneClientSession.h"
@@ -102,7 +103,6 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	forcePower = getForcePower();
 	forcePowerMax = getForcePowerMax();
-	forcePowerRegen = getForcePowerRegen();
 
 	trainerZoneName = getTrainerZoneName();
 
@@ -464,7 +464,17 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 	} else if (factionStatus == FactionStatus::OVERT) {
 
 		if(!(pvpStatusBitmask & CreatureFlag::OVERT)) {
-			creature->addCooldown("declare_overt_cooldown",GCWManagerImplementation::overtCooldown*1000);
+			int cooldown = 300;
+
+			Zone* creoZone = creature->getZone();
+			if (creoZone != NULL) {
+				GCWManager* gcwMan = creoZone->getGCWManager();
+
+				if (gcwMan != NULL)
+					cooldown = gcwMan->getOvertCooldown();
+			}
+
+			creature->addCooldown("declare_overt_cooldown", cooldown * 1000);
 			pvpStatusBitmask |= CreatureFlag::OVERT;
 		}
 
@@ -1286,7 +1296,7 @@ void PlayerObjectImplementation::notifyOnline() {
 	//Login to jedi manager
 	JediManager::instance()->onPlayerLoggedIn(playerCreature);
 
-	notifyObservers(ObserverEventType::LOGGEDIN);
+	playerCreature->notifyObservers(ObserverEventType::LOGGEDIN);
 
 	if (getForcePowerMax() > 0 && getForcePower() < getForcePowerMax())
 		activateForcePowerRegen();
@@ -1319,7 +1329,7 @@ void PlayerObjectImplementation::notifyOffline() {
 	//Logout from visibility manager
 	VisibilityManager::instance()->logout(playerCreature);
 
-	notifyObservers(ObserverEventType::LOGGEDOUT);
+	playerCreature->notifyObservers(ObserverEventType::LOGGEDOUT);
 
 	//Logout from jedi manager
 	JediManager::instance()->onPlayerLoggedOut(playerCreature);
@@ -1603,7 +1613,75 @@ void PlayerObjectImplementation::doRecovery(int latency) {
 		}
 	}
 
+	checkForNewSpawns();
+
 	activateRecovery();
+}
+
+void PlayerObjectImplementation::checkForNewSpawns() {
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (creature->isInvisible()) {
+		return;
+	}
+
+	ManagedReference<SceneObject*> parent = creature->getParent();
+
+	if (parent != NULL && parent->isCellObject()) {
+		return;
+	}
+
+	if (creature->getCityRegion() != NULL) {
+		return;
+	}
+
+	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(creature->getActiveAreas());
+	Vector<SpawnArea*> spawnAreas;
+	int totalWeighting = 0;
+
+	for (int i = 0; i < areas.size(); ++i) {
+		ManagedReference<ActiveArea*> area = areas.get(i);
+
+		if (area->isNoSpawnArea()) {
+			return;
+		}
+
+		SpawnArea* spawnArea = area.castTo<SpawnArea*>();
+
+		if (spawnArea == NULL) {
+			continue;
+		}
+
+		if (!(spawnArea->getTier() & SpawnAreaMap::SPAWNAREA)) {
+			continue;
+		}
+
+		spawnAreas.add(spawnArea);
+		totalWeighting += spawnArea->getTotalWeighting();
+	}
+
+	int choice = System::random(totalWeighting - 1);
+	int counter = 0;
+	ManagedReference<SpawnArea*> finalArea = NULL;
+
+	for (int i = 0; i < spawnAreas.size(); i++) {
+		SpawnArea* area = spawnAreas.get(i);
+
+		counter += area->getTotalWeighting();
+
+		if (choice < counter) {
+			finalArea = area;
+			break;
+		}
+	}
+
+	if (finalArea == NULL) {
+		return;
+	}
+
+	EXECUTE_TASK_2(finalArea, creature, {
+			finalArea_p->tryToSpawn(creature_p);
+	});
 }
 
 void PlayerObjectImplementation::activateRecovery() {
@@ -1617,16 +1695,36 @@ void PlayerObjectImplementation::activateRecovery() {
 }
 
 void PlayerObjectImplementation::activateForcePowerRegen() {
-	if (forcePowerRegen == 0) {
+
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (creature == NULL) {
 		return;
 	}
+
+
+	float regen = (float)creature->getSkillMod("jedi_force_power_regen");
+
+	if(regen == 0.0f)
+		return;
 
 	if (forceRegenerationEvent == NULL) {
 		forceRegenerationEvent = new ForceRegenerationEvent(_this.getReferenceUnsafeStaticCast());
 	}
 
 	if (!forceRegenerationEvent->isScheduled()) {
-		float timer = ((float) getForcePowerRegen()) / 5.f;
+
+		int regenMultiplier = creature->getSkillMod("private_force_regen_multiplier");
+		int regenDivisor = creature->getSkillMod("private_force_regen_divisor");
+
+		if (regenMultiplier != 0)
+			regen *= regenMultiplier;
+
+		if (regenDivisor != 0)
+			regen /= regenDivisor;
+
+		float timer = regen / 5.f;
+
 		float scheduledTime = 10 / timer;
 		uint64 miliTime = static_cast<uint64>(scheduledTime * 1000.f);
 		forceRegenerationEvent->schedule(miliTime);
@@ -1751,6 +1849,16 @@ void PlayerObjectImplementation::maximizeExperience() {
 	}
 }
 
+int PlayerObjectImplementation::getForcePowerRegen() {
+
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (creature == NULL) {
+		return 0;
+	}
+
+	return creature->getSkillMod("jedi_force_power_regen");
+}
 void PlayerObjectImplementation::activateMissions() {
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
@@ -2053,6 +2161,10 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 
 	removeAllFriends();
 
+	deleteAllPersistentMessages();
+
+	deleteAllWaypoints();
+
 	for (int i = 0; i < currentEventPerks.size(); ++i) {
 		uint64 oid = currentEventPerks.get(i);
 
@@ -2119,6 +2231,30 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 				RemoveSpouseTask* task = new RemoveSpouseTask(spouse);
 				task->execute();
 			}
+		}
+	}
+}
+
+void PlayerObjectImplementation::deleteAllPersistentMessages() {
+	for (int i = persistentMessages.size() - 1; i >= 0; --i) {
+		uint64 messageObjectID = persistentMessages.get(i);
+
+		Reference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(messageObjectID).castTo<PersistentMessage*>();
+
+		if (mail != NULL) {
+			ObjectManager::instance()->destroyObjectFromDatabase(messageObjectID);
+		}
+
+		dropPersistentMessage(messageObjectID);
+	}
+}
+
+void PlayerObjectImplementation::deleteAllWaypoints() {
+	for (int i = 0; i < waypointList.size(); ++i) {
+		WaypointObject* waypoint = waypointList.getValueAt(i);
+
+		if (waypoint != NULL && waypoint->isPersistent()) {
+			waypoint->destroyObjectFromDatabase(true);
 		}
 	}
 }
@@ -2237,7 +2373,6 @@ void PlayerObjectImplementation::activateQuest(int questID) {
 		creature->sendSystemMessage("@quest/quests:quest_journal_updated");
 }
 
-
 void PlayerObjectImplementation::setActiveQuestsBit(int bitIndex, byte value, bool notifyClient) {
 	activeQuests.setBit(bitIndex, value);
 
@@ -2250,6 +2385,32 @@ void PlayerObjectImplementation::setActiveQuestsBit(int bitIndex, byte value, bo
 	delta->close();
 
 	sendMessage(delta);
+}
+
+void PlayerObjectImplementation::completeQuest(int questID) {
+	if (!hasActiveQuestBitSet(questID))
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(getParent().get().get());
+
+	if (creature == NULL)
+		return;
+
+	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
+
+	if (playerManager == NULL)
+		return;
+
+	ManagedReference<QuestInfo*> questInfo = playerManager->getQuestInfo(questID);
+
+	if (questInfo == NULL)
+		return;
+
+	clearActiveQuestsBit(questID);
+	setCompletedQuestsBit(questID, 1);
+
+	if (questInfo->shouldSendSystemMessage())
+		creature->sendSystemMessage("@quest/quests:task_complete");
 }
 
 void PlayerObjectImplementation::setCompletedQuestsBit(int bitIndex, byte value, bool notifyClient) {

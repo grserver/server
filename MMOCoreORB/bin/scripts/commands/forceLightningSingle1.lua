@@ -42,11 +42,14 @@
 --true = 1, false = 0
 
 ForceLightningSingle1Command = {
-        name = "forcelightningsingle1",
+	name = "forcelightningsingle1",
 
-	damage = 1250,
+	minDamage = 950,
+	maxDamage = 1250,
 	speed = 4.0,
 	forceCost = 75,
+	visMod = 25,
+	
 	accuracySkillMod = "forcelightning_accuracy";
 
 	animationCRC = hashCode("force_lightning_1_particle_level_1_light"),
@@ -56,6 +59,7 @@ ForceLightningSingle1Command = {
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
 	attackType = FORCEATTACK,
+	damageType = ELECTRICITY_DAMAGE,
 
 	range = 32
 }

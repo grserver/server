@@ -17,7 +17,8 @@ public:
 	}
 
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, uint32 eventIndex, Vector<UnicodeString>* args) {
+		bool cancelPressed = (eventIndex == 1);
 
 		if (!suiBox->isMessageBox() || player == NULL || cancelPressed)
 			return;
@@ -93,8 +94,10 @@ public:
 			SkillManager* skillManager = SkillManager::instance();
 			Ability* grantAbility = skillManager->getAbility(grantName);
 
-			if (grantAbility == NULL)
-				grantAbility = new Ability(grantName);
+			if (grantAbility == NULL) {
+				player->error("Unable to learn ability: " + grantName);
+				return;
+			}
 
 			ghost->addAbility(grantAbility, true);
 			ghost->addExperience(xpType, -xpAmount, true);

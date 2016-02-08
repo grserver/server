@@ -7,10 +7,10 @@ death_watch_s_battle_droid = Creature:new {
 	damageMin = 1200,
 	damageMax = 2300,
 	baseXp = 19000,
-	baseHAM = 230000,
-	baseHAMmax = 230000,
+	baseHAM = 56000,
+	baseHAMmax = 68000,
 	armor = 2,
-	resists = {85,95,100,60,100,25,40,85,-1},--kinetic,energy,blast,heat,cold,electric,acid,stun,ls
+	resists = {70,70,70,70,70,70,70,70,-1},--kinetic,energy,blast,heat,cold,electric,acid,stun,ls
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -24,7 +24,6 @@ death_watch_s_battle_droid = Creature:new {
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = NONE,
-	scale = 1.40,
 
 	templates = {
 		"object/mobile/death_watch_s_battle_droid.iff",
@@ -33,9 +32,21 @@ death_watch_s_battle_droid = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "death_watch_bunker_commoners", chance = 10000000}
+				{group = "death_watch_bunker_commoners", chance = 10000000},
 			},
-			lootChance = 500000
+			lootChance = 4500000
+		},
+		{
+	        groups = {
+				{group = "death_watch_bunker_ingredient_alum_mineral", chance = 10000000},			
+			},
+			lootChance = 5500000
+		},
+		{
+	        groups = {
+				{group = "armor_attachments", chance = 10000000},			
+			},
+			lootChance = 2500000
 		}
 	},
 	conversationTemplate = "",

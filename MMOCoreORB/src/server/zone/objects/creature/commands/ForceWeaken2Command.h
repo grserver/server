@@ -54,11 +54,13 @@ public:
 				buff->setAttributeModifier(CreatureAttribute::MIND, -600);
 
 				creatureTarget->addBuff(buff);
+
+				CombatManager::instance()->broadcastCombatSpam(creature, creatureTarget, NULL, 0, "cbt_spam", combatSpam + "_hit", 1);
 			}
 
 		}
 
-		return SUCCESS;
+		return res;
 	}
 
 };

@@ -615,7 +615,6 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("COLD", WeaponObject::COLD);
 	luaTemplatesInstance->setGlobalInt("ACID", WeaponObject::ACID);
 	luaTemplatesInstance->setGlobalInt("LIGHTSABER", WeaponObject::LIGHTSABER);
-	luaTemplatesInstance->setGlobalInt("FORCE", WeaponObject::FORCE);
 
 	luaTemplatesInstance->setGlobalInt("NONE", WeaponObject::NONE);
 	luaTemplatesInstance->setGlobalInt("LIGHT", WeaponObject::LIGHT);
@@ -774,8 +773,9 @@ void TemplateManager::registerGlobals() {
 
 	luaTemplatesInstance->setGlobalInt("STATIC", EventPerkDeedTemplate::STATIC);
 	luaTemplatesInstance->setGlobalInt("THEATER", EventPerkDeedTemplate::THEATER);
-	luaTemplatesInstance->setGlobalInt("PERSONNEL", EventPerkDeedTemplate::PERSONNEL);
+	luaTemplatesInstance->setGlobalInt("RECRUITER", EventPerkDeedTemplate::RECRUITER);
 	luaTemplatesInstance->setGlobalInt("GAME", EventPerkDeedTemplate::GAME);
+	luaTemplatesInstance->setGlobalInt("HONORGUARD", EventPerkDeedTemplate::HONORGUARD);
 
 	luaTemplatesInstance->setGlobalInt("STIM_A", StimPackTemplate::STIM_A);
 	luaTemplatesInstance->setGlobalInt("STIM_B", StimPackTemplate::STIM_B);
