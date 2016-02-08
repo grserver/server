@@ -1,4 +1,4 @@
-del = Creature:new {
+bm_mobile = Creature:new {
 	customName = "",
 	socialGroup = "",
 	pvpFaction = "",
@@ -26,7 +26,7 @@ del = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/del.iff"},
+	templates = {"object/mobile/bm_mobile.iff"},
 	lootGroups = {
 		{
 			groups = {},
@@ -37,4 +37,4 @@ del = Creature:new {
 	conversationTemplate = ""
 }
 
-CreatureTemplates:addCreatureTemplate(del, "del")
+CreatureTemplates:addCreatureTemplate(bm_mobile, "bm_mobile")

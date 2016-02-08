@@ -1,4 +1,4 @@
-del = Creature:new {
+chirq_med_m_2 = Creature:new {
 	customName = "",
 	socialGroup = "",
 	pvpFaction = "",
@@ -26,7 +26,7 @@ del = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/del.iff"},
+	templates = {"object/mobile/chirq_med_m_2.iff"},
 	lootGroups = {
 		{
 			groups = {},
@@ -37,4 +37,4 @@ del = Creature:new {
 	conversationTemplate = ""
 }
 
-CreatureTemplates:addCreatureTemplate(del, "del")
+CreatureTemplates:addCreatureTemplate(chirq_med_m_2, "chirq_med_m_2")

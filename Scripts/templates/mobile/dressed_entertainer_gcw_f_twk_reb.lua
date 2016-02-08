@@ -1,4 +1,4 @@
-del = Creature:new {
+dressed_entertainer_gcw_f_twk_reb = Creature:new {
 	customName = "",
 	socialGroup = "",
 	pvpFaction = "",
@@ -26,7 +26,7 @@ del = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/del.iff"},
+	templates = {"object/mobile/dressed_entertainer_gcw_f_twk_reb.iff"},
 	lootGroups = {
 		{
 			groups = {},
@@ -37,4 +37,4 @@ del = Creature:new {
 	conversationTemplate = ""
 }
 
-CreatureTemplates:addCreatureTemplate(del, "del")
+CreatureTemplates:addCreatureTemplate(dressed_entertainer_gcw_f_twk_reb, "dressed_entertainer_gcw_f_twk_reb")

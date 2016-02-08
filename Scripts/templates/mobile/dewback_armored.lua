@@ -1,4 +1,4 @@
-del = Creature:new {
+dewback_armored = Creature:new {
 	customName = "",
 	socialGroup = "",
 	pvpFaction = "",
@@ -26,7 +26,7 @@ del = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/del.iff"},
+	templates = {"object/mobile/dewback_armored.iff"},
 	lootGroups = {
 		{
 			groups = {},
@@ -37,4 +37,4 @@ del = Creature:new {
 	conversationTemplate = ""
 }
 
-CreatureTemplates:addCreatureTemplate(del, "del")
+CreatureTemplates:addCreatureTemplate(dewback_armored, "dewback_armored")

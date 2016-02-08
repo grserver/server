@@ -1,4 +1,4 @@
-del = Creature:new {
+dressed_ep3_forest_kerritamba_warrior_07 = Creature:new {
 	customName = "",
 	socialGroup = "",
 	pvpFaction = "",
@@ -26,7 +26,7 @@ del = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/del.iff"},
+	templates = {"object/mobile/dressed_ep3_forest_kerritamba_warrior_07.iff"},
 	lootGroups = {
 		{
 			groups = {},
@@ -37,4 +37,4 @@ del = Creature:new {
 	conversationTemplate = ""
 }
 
-CreatureTemplates:addCreatureTemplate(del, "del")
+CreatureTemplates:addCreatureTemplate(dressed_ep3_forest_kerritamba_warrior_07, "dressed_ep3_forest_kerritamba_warrior_07")
