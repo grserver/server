@@ -337,8 +337,8 @@ yavin4 = {
 
 space_corellia = {
 
-	weatherEnabled = 0,
-	gcwEnabled = 0,
+	weatherEnabled = 1,
+	gcwEnabled = 1,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_rebel.iff", x = -7132.79, z = 2340.4, y = 2013.98, ow = 0.641545, ox = -0.0633626, oy = 0.76035, oz = 0.079203, parentid = 0},
@@ -350,8 +350,8 @@ space_corellia = {
 
 space_dantooine = {
 
-	weatherEnabled = 0,
-	gcwEnabled = 0,
+	weatherEnabled = 1,
+	gcwEnabled = 1,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = -2629.72, z = 3585.8, y = 3269.39, ow = 0.103184, ox = 0.031749, oy = 0.936596, oz = -0.333365, parentid = 0},
@@ -365,8 +365,8 @@ space_dantooine = {
 
 space_dathomir = {
 
-	weatherEnabled = 0,
-	gcwEnabled = 0,
+	weatherEnabled = 1,
+	gcwEnabled = 1,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 4842.19, z = -5316.32, y = -4222.79, ow = 0.849126, ox = -0.277752, oy = -0.428531, oz = -0.134908, parentid = 0},
@@ -378,8 +378,8 @@ space_dathomir = {
 
 space_endor = {
 
-	weatherEnabled = 0,
-	gcwEnabled = 0,
+	weatherEnabled = 1,
+	gcwEnabled = 1,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 5773.37, z = -6359.57, y = 6976.04, ow = 0.197218, ox = -0.0157777, oy = 0.978199, oz = 0.0631097, parentid = 0},
@@ -391,8 +391,8 @@ space_endor = {
 
 space_lok = {
 
-	weatherEnabled = 0,
-	gcwEnabled = 0,
+	weatherEnabled = 1,
+	gcwEnabled = 1,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = -1798.64, z = 2649.25, y = 400.89, ow = -0.031722, ox = 0.0158608, oy = 0.999245, oz = 0.0158608, parentid = 0},
@@ -403,8 +403,8 @@ space_lok = {
 
 space_naboo = {
 
-	weatherEnabled = 0,
-	gcwEnabled = 0,
+	weatherEnabled = 1,
+	gcwEnabled = 1,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = 3511.83, z = 1774.71, y = 944.36, ow = -0.670707, ox = 0, oy = 0.741723, oz = 0, parentid = 0},
@@ -415,8 +415,8 @@ space_naboo = {
 
 space_tatooine = {
 
-	weatherEnabled = 0,
-	gcwEnabled = 0,
+	weatherEnabled = 1,
+	gcwEnabled = 1,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_neutral.iff", x = 2311.89, z = -5872.72, y = 1865.29, ow = 0.324318, ox = 0.0734025, oy = 0.94172, oz = -0.0509326, parentid = 0}
@@ -425,8 +425,8 @@ space_tatooine = {
 
 space_yavin4 = {
 
-	weatherEnabled = 0,
-	gcwEnabled = 0,
+	weatherEnabled = 1,
+	gcwEnabled = 1,
 
 	planetObjects = {
 		{templateFile = "object/ship/spacestation_imperial.iff", x = -6798.55, z = 4998.69, y = 4760.4, ow = 0.577296, ox = 0.0316324, oy = 0.814541, oz = -0.0474491, parentid = 0},
