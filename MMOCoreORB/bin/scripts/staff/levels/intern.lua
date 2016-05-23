@@ -1,11 +1,11 @@
-intern = {
-	level = 1,
-	name = "intern",
-	tag = "SWGEmu-Intern",
+Intern = {
+	level = 10,
+	name = "Intern",
+	tag = "GR-Admin-Intern",
 	skills = {
-		"admin_base",
-		"admin_intern_01",
+		"admin_internship",
+		
 	}
 }
 
-addLevel(intern)
+addLevel(Intern)
